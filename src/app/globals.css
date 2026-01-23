@@ -1,26 +1,679 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  
+  /* ============================================
+   * TYPOGRAPHY SYSTEM
+   * ============================================
+   * Body font: DM Sans (Gilroy alternative)
+   *   - Use for: paragraphs, nav items, buttons, labels, 
+   *     form text, card descriptions, footer text
+   *   - Class: .font-body
+   * 
+   * Display font: Oswald (RoadRadio alternative) 
+   *   - Use for: ONLY big headings & section titles
+   *   - Class: .font-display, .hero-title, .section-title
+   * ============================================ */
+  --font-body: var(--font-body), 'DM Sans', 'Inter', system-ui, sans-serif;
+  --font-display: var(--font-display), 'Oswald', 'Impact', system-ui, sans-serif;
+
+  /* Brand Colors - LOCKED (DO NOT CHANGE) */
+  --color-brand-blue: #28547C;
+  --color-brand-blue-50: #E8EEF3;
+  --color-brand-blue-100: #D1DDE7;
+  --color-brand-blue-200: #A3BBCF;
+  --color-brand-blue-300: #7599B7;
+  --color-brand-blue-400: #47779F;
+  --color-brand-blue-500: #28547C;
+  --color-brand-blue-600: #204363;
+  --color-brand-blue-700: #18324A;
+  --color-brand-blue-800: #102131;
+  --color-brand-blue-900: #081018;
+
+  --color-brand-orange: #E67E22;
+  --color-brand-orange-50: #FCF0E6;
+  --color-brand-orange-100: #F9E1CD;
+  --color-brand-orange-200: #F3C39B;
+  --color-brand-orange-300: #EDA569;
+  --color-brand-orange-400: #E78837;
+  --color-brand-orange-500: #E67E22;
+  --color-brand-orange-600: #B8651B;
+  --color-brand-orange-700: #8A4C14;
+  --color-brand-orange-800: #5C320D;
+  --color-brand-orange-900: #2E1907;
+
+  /* Rivo-style neutral colors */
+  --color-neutral-50: #FAFAFA;
+  --color-neutral-100: #F5F5F5;
+  --color-neutral-200: #EDEDED;
+  --color-neutral-300: #D4D4D4;
+  --color-neutral-400: #A3A3A3;
+  --color-neutral-500: #6B6B6B;
+  --color-neutral-600: #525252;
+  --color-neutral-700: #404040;
+  --color-neutral-800: #262626;
+  --color-neutral-900: #111111;
+
+  /* shadcn/ui Theme Colors */
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  --radius: 0.5rem;
+  /* Global gray background for the site */
+  --background: #F6F6F6;
+  --foreground: #111111;
+  /* Cards stay white for contrast */
+  --card: #FFFFFF;
+  --card-foreground: #111111;
+  --popover: #FFFFFF;
+  --popover-foreground: #111111;
+
+  /* Section alternation colors */
+  --section-gray: #F6F6F6;
+  --section-white: #FFFFFF;
+
+  /* Primary = Brand Blue #28547C */
+  --primary: #28547C;
+  --primary-foreground: #FFFFFF;
+
+  /* Secondary = Brand Orange #E67E22 */
+  --secondary: #E67E22;
+  --secondary-foreground: #FFFFFF;
+
+  --muted: #F5F5F5;
+  --muted-foreground: #6B6B6B;
+
+  /* Accent = Brand Orange */
+  --accent: #E67E22;
+  --accent-foreground: #FFFFFF;
+
+  --destructive: #DC2626;
+  --border: #EDEDED;
+  --input: #EDEDED;
+  --ring: #28547C;
+
+  /* Chart colors using brand palette */
+  --chart-1: #28547C;
+  --chart-2: #E67E22;
+  --chart-3: #47779F;
+  --chart-4: #EDA569;
+  --chart-5: #7599B7;
+
+  /* Sidebar */
+  --sidebar: #FAFAFA;
+  --sidebar-foreground: #111111;
+  --sidebar-primary: #28547C;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #E67E22;
+  --sidebar-accent-foreground: #FFFFFF;
+  --sidebar-border: #EDEDED;
+  --sidebar-ring: #28547C;
+}
+
+.dark {
+  --background: #111111;
+  --foreground: #FAFAFA;
+  --card: #1A1A1A;
+  --card-foreground: #FAFAFA;
+  --popover: #1A1A1A;
+  --popover-foreground: #FAFAFA;
+
+  /* Primary = Brand Blue (lighter for dark mode) */
+  --primary: #47779F;
+  --primary-foreground: #FFFFFF;
+
+  /* Secondary = Brand Orange */
+  --secondary: #E67E22;
+  --secondary-foreground: #FFFFFF;
+
+  --muted: #262626;
+  --muted-foreground: #A3A3A3;
+
+  /* Accent = Brand Orange */
+  --accent: #E67E22;
+  --accent-foreground: #FFFFFF;
+
+  --destructive: #EF4444;
+  --border: #404040;
+  --input: #404040;
+  --ring: #47779F;
+
+  /* Chart colors for dark mode */
+  --chart-1: #47779F;
+  --chart-2: #E67E22;
+  --chart-3: #7599B7;
+  --chart-4: #EDA569;
+  --chart-5: #A3BBCF;
+
+  /* Sidebar */
+  --sidebar: #1A1A1A;
+  --sidebar-foreground: #FAFAFA;
+  --sidebar-primary: #47779F;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #E67E22;
+  --sidebar-accent-foreground: #FFFFFF;
+  --sidebar-border: #404040;
+  --sidebar-ring: #47779F;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  /* Rivo-style container - max 1200px */
+  .container-rivo {
+    width: 100%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .container-rivo {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container-rivo {
+      padding-left: 2.5rem;
+      padding-right: 2.5rem;
+    }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Rivo-style typography */
+@layer utilities {
+  /* Body font class - Gilroy/DM Sans for all normal text */
+  .font-body {
+    font-family: var(--font-body), 'DM Sans', 'Inter', system-ui, sans-serif;
+  }
+
+  /* Display font class - RoadRadio ONLY for big headings */
+  .font-display {
+    font-family: var(--font-display), 'RoadRadio', 'Oswald', 'Impact', system-ui, sans-serif;
+    font-weight: 700;
+  }
+
+  .text-brand-blue {
+    color: #28547C;
+  }
+
+  .text-brand-orange {
+    color: #E67E22;
+  }
+
+  .bg-brand-blue {
+    background-color: #28547C;
+  }
+
+  .bg-brand-orange {
+    background-color: #E67E22;
+  }
+
+  .border-brand-blue {
+    border-color: #28547C;
+  }
+
+  .border-brand-orange {
+    border-color: #E67E22;
+  }
+
+  /* Rivo-style section divider */
+  .section-divider {
+    border-top: 1px solid #EDEDED;
+  }
+
+  /* Rivo-style section number */
+  .section-number {
+    font-size: 0.75rem;
+    color: #6B6B6B;
+    letter-spacing: 0.05em;
+  }
+
+  /* Hero title style like Rivo */
+  .hero-title {
+    font-family: var(--font-display), 'Oswald', system-ui, sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    line-height: 0.95;
+    font-size: clamp(2.5rem, 8vw, 6rem);
+  }
+
+  /* Section title style */
+  .section-title {
+    font-family: var(--font-display), 'Oswald', system-ui, sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+  }
+
+  /* Subtle hover underline */
+  .hover-underline {
+    position: relative;
+  }
+
+  .hover-underline::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: currentColor;
+    transition: width 0.3s ease;
+  }
+
+  .hover-underline:hover::after {
+    width: 100%;
+  }
+
+  /* Decorative dot pattern */
+  .dot-pattern {
+    background-image: radial-gradient(circle, #D4D4D4 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+
+  /* Decorative circle outline */
+  .circle-outline {
+    border: 1px solid #EDEDED;
+    border-radius: 50%;
+  }
+
+  /* Pill/badge style like Rivo */
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.375rem 0.875rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    border: 1px solid #EDEDED;
+    background: #FFFFFF;
+  }
+
+  /* Image card with rounded corners */
+  .image-card {
+    border-radius: 1rem;
+    overflow: hidden;
+  }
+
+  /* Stats number style */
+  .stat-number {
+    font-family: var(--font-display), 'Oswald', system-ui, sans-serif;
+    font-weight: 700;
+    font-size: 2.5rem;
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+    color: #6B6B6B;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* Gradient blob for decoration */
+  .gradient-blob {
+    background: radial-gradient(ellipse at center, var(--color-primary) 0%, transparent 70%);
+    filter: blur(80px);
+    opacity: 0.15;
+  }
+
+  .gradient-blob-orange {
+    background: radial-gradient(ellipse at center, var(--color-secondary) 0%, transparent 70%);
+    filter: blur(80px);
+    opacity: 0.12;
+  }
 }
+
+/* Smooth animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Stagger animation delays */
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+.delay-500 { animation-delay: 500ms; }
+
+/* ============================================
+ * INTERACTIVE EFFECTS
+ * ============================================ */
+
+/* Shimmer animation for accent text */
+@keyframes shimmer {
+  0% {
+    background-position: 200% center;
+  }
+  100% {
+    background-position: -200% center;
+  }
+}
+
+/* Shimmer text effect - applied to accent/highlighted words */
+.shimmer-text {
+  background: linear-gradient(
+    110deg,
+    #28547C 0%,
+    #28547C 40%,
+    #47779F 50%,
+    #28547C 60%,
+    #28547C 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 8s ease-in-out infinite;
+}
+
+/* Reduced motion: disable shimmer animation */
+@media (prefers-reduced-motion: reduce) {
+  .shimmer-text {
+    animation: none;
+    background: none;
+    -webkit-text-fill-color: #28547C;
+    color: #28547C;
+  }
+  
+  .animate-fade-in-up,
+  .animate-fade-in,
+  .animate-float {
+    animation: none;
+  }
+}
+
+/* ============================================
+ * GLASSMORPHISM EFFECTS
+ * ============================================ */
+
+/* Glass pill - for tags, badges, small elements */
+.glass-pill {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+}
+
+/* Glass card - for larger containers */
+.glass-card {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+/* Glass dark - for dark backgrounds */
+.glass-dark {
+  background: rgba(17, 17, 17, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Hover state for glass elements */
+.glass-pill:hover,
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* ============================================
+ * SECTION BACKGROUNDS
+ * ============================================ */
+
+/* Section with gray background */
+.section-gray {
+  background-color: var(--section-gray);
+}
+
+/* Section with white background */
+.section-white {
+  background-color: var(--section-white);
+}
+
+/* Soft section transition gradient */
+.section-gradient-top {
+  background: linear-gradient(to bottom, var(--section-gray) 0%, var(--section-white) 100%);
+}
+
+.section-gradient-bottom {
+  background: linear-gradient(to bottom, var(--section-white) 0%, var(--section-gray) 100%);
+}
+
+/* ============================================
+ * PARALLAX & DECORATIONS
+ * ============================================ */
+
+/* Parallax container */
+.parallax-container {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Background pattern with reduced opacity */
+.bg-pattern {
+  opacity: 0.03;
+  position: absolute;
+}
+
+.bg-pattern-light {
+  opacity: 0.015;
+}
+
+/* Floating decoration animation */
+@keyframes float-slow {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(2deg);
+  }
+}
+
+@keyframes float-reverse {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(20px) rotate(-2deg);
+  }
+}
+
+.animate-float-slow {
+  animation: float-slow 8s ease-in-out infinite;
+}
+
+.animate-float-reverse {
+  animation: float-reverse 10s ease-in-out infinite;
+}
+
+/* ============================================
+ * SCROLL INDICATOR
+ * ============================================ */
+
+@keyframes bounce-down {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(8px);
+  }
+}
+
+.animate-bounce-down {
+  animation: bounce-down 2s ease-in-out infinite;
+}
+
+/* Mouse scroll indicator */
+.scroll-indicator {
+  width: 24px;
+  height: 40px;
+  border: 2px solid currentColor;
+  border-radius: 12px;
+  position: relative;
+  opacity: 0.5;
+}
+
+.scroll-indicator::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 8px;
+  background: currentColor;
+  border-radius: 2px;
+  animation: scroll-wheel 2s ease-in-out infinite;
+}
+
+@keyframes scroll-wheel {
+  0%, 100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    opacity: 0.3;
+    transform: translateX(-50%) translateY(10px);
+  }
+}
+
+/* ============================================
+ * ENHANCED HOVER EFFECTS
+ * ============================================ */
+
+/* Card lift on hover */
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+}
+
+/* Scale up on hover */
+.hover-scale {
+  transition: transform 0.3s ease;
+}
+
+.hover-scale:hover {
+  transform: scale(1.02);
+}
+
+/* Glow effect on hover */
+.hover-glow {
+  transition: box-shadow 0.3s ease;
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 30px rgba(40, 84, 124, 0.15);
+}
+
+.hover-glow-orange:hover {
+  box-shadow: 0 0 30px rgba(230, 126, 34, 0.2);
+}
+

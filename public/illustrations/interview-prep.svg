@@ -1,0 +1,24 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Premium mini-illustration: Interviews / Speaking -->
+  <!-- Style: Minimal, editorial, subtle outlines with brand accents -->
+  <rect width="48" height="48" rx="8" fill="#F8F9FA"/>
+  
+  <!-- Speech bubble main -->
+  <path d="M10 12C10 10.8954 10.8954 10 12 10H36C37.1046 10 38 10.8954 38 12V28C38 29.1046 37.1046 30 36 30H20L14 36V30H12C10.8954 30 10 29.1046 10 28V12Z" 
+        stroke="#E5E7EB" stroke-width="1.5" fill="white"/>
+  
+  <!-- Sound wave / speaking lines -->
+  <path d="M18 17C18 17 20 18.5 20 20C20 21.5 18 23 18 23" stroke="#28547C" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+  <path d="M23 17C23 17 26 19 26 20C26 21 23 23 23 23" stroke="#28547C" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+  <path d="M28 17C28 17 32 19.5 32 20C32 20.5 28 23 28 23" stroke="#28547C" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+  
+  <!-- Microphone icon small -->
+  <rect x="31" y="32" width="6" height="10" rx="3" stroke="#E67E22" stroke-width="1.5" fill="none"/>
+  <line x1="34" y1="42" x2="34" y2="45" stroke="#E67E22" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="31" y1="45" x2="37" y2="45" stroke="#E67E22" stroke-width="1.5" stroke-linecap="round"/>
+  
+  <!-- Decorative dots -->
+  <circle cx="14" cy="16" r="1" fill="#D1D5DB"/>
+  <circle cx="14" cy="20" r="1" fill="#D1D5DB"/>
+  <circle cx="14" cy="24" r="1" fill="#D1D5DB"/>
+</svg>

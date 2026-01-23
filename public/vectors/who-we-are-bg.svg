@@ -1,0 +1,21 @@
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="600" fill="#FAFAFA"/>
+  <!-- Topographic contour lines -->
+  <path d="M0 300C100 250 200 280 300 240C400 200 500 260 600 220C700 180 800 220 800 200" stroke="#28547C" stroke-width="1.5" fill="none" opacity="0.1"/>
+  <path d="M0 350C120 300 220 330 320 290C420 250 520 310 620 270C720 230 800 270 800 250" stroke="#28547C" stroke-width="1.5" fill="none" opacity="0.08"/>
+  <path d="M0 400C140 350 240 380 340 340C440 300 540 360 640 320C740 280 800 320 800 300" stroke="#28547C" stroke-width="1.5" fill="none" opacity="0.06"/>
+  <path d="M0 450C160 400 260 430 360 390C460 350 560 410 660 370C760 330 800 370 800 350" stroke="#28547C" stroke-width="1.5" fill="none" opacity="0.05"/>
+  <!-- Abstract shapes -->
+  <ellipse cx="600" cy="200" rx="120" ry="80" stroke="#28547C" stroke-width="1" fill="none" opacity="0.1"/>
+  <ellipse cx="600" cy="200" rx="80" ry="55" stroke="#28547C" stroke-width="1" fill="none" opacity="0.08"/>
+  <!-- Grid dots -->
+  <circle cx="100" cy="100" r="2" fill="#D4D4D4"/>
+  <circle cx="150" cy="100" r="2" fill="#D4D4D4"/>
+  <circle cx="200" cy="100" r="2" fill="#D4D4D4"/>
+  <circle cx="100" cy="150" r="2" fill="#D4D4D4"/>
+  <circle cx="150" cy="150" r="2" fill="#D4D4D4"/>
+  <circle cx="200" cy="150" r="2" fill="#D4D4D4"/>
+  <circle cx="100" cy="200" r="2" fill="#D4D4D4"/>
+  <circle cx="150" cy="200" r="2" fill="#D4D4D4"/>
+  <circle cx="200" cy="200" r="2" fill="#D4D4D4"/>
+</svg>

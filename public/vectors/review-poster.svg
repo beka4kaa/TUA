@@ -1,0 +1,21 @@
+<svg width="600" height="450" viewBox="0 0 600 450" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="600" height="450" fill="#111111"/>
+  <!-- Background gradient effect -->
+  <rect x="0" y="0" width="600" height="450" fill="url(#reviewGrad)" opacity="0.3"/>
+  <defs>
+    <linearGradient id="reviewGrad" x1="0" y1="0" x2="600" y2="450">
+      <stop offset="0%" stop-color="#28547C"/>
+      <stop offset="100%" stop-color="#111111"/>
+    </linearGradient>
+  </defs>
+  <!-- Person silhouette -->
+  <circle cx="300" cy="180" r="60" fill="white" opacity="0.15"/>
+  <rect x="240" y="250" width="120" height="160" rx="12" fill="white" opacity="0.1"/>
+  <!-- Microphone/speech indicator -->
+  <rect x="280" y="320" width="40" height="60" rx="20" stroke="white" stroke-width="2" fill="none" opacity="0.2"/>
+  <line x1="300" y1="390" x2="300" y2="420" stroke="white" stroke-width="2" opacity="0.2"/>
+  <line x1="270" y1="420" x2="330" y2="420" stroke="white" stroke-width="2" opacity="0.2"/>
+  <!-- Decorative quotes -->
+  <text x="100" y="120" font-family="Georgia, serif" font-size="120" fill="white" opacity="0.1">"</text>
+  <text x="450" y="400" font-family="Georgia, serif" font-size="120" fill="white" opacity="0.1">"</text>
+</svg>

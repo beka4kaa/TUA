@@ -1,0 +1,23 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Premium mini-illustration: Scholarships / Money -->
+  <!-- Style: Minimal, editorial, subtle outlines with brand accents -->
+  <rect width="48" height="48" rx="8" fill="#F8F9FA"/>
+  
+  <!-- Award ribbon base -->
+  <circle cx="24" cy="18" r="10" stroke="#E5E7EB" stroke-width="1.5" fill="white"/>
+  <circle cx="24" cy="18" r="6" stroke="#E67E22" stroke-width="1.5" fill="none"/>
+  
+  <!-- Star in center -->
+  <path d="M24 13L25.5 16.5L29 17L26.5 19.5L27 23L24 21.5L21 23L21.5 19.5L19 17L22.5 16.5L24 13Z" 
+        fill="#E67E22" opacity="0.8"/>
+  
+  <!-- Ribbon tails -->
+  <path d="M18 26L16 38L20 34L24 38" stroke="#28547C" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M30 26L32 38L28 34L24 38" stroke="#28547C" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Decorative dots -->
+  <circle cx="14" cy="12" r="1" fill="#E67E22" opacity="0.4"/>
+  <circle cx="34" cy="12" r="1" fill="#E67E22" opacity="0.4"/>
+  <circle cx="11" cy="18" r="0.75" fill="#28547C" opacity="0.3"/>
+  <circle cx="37" cy="18" r="0.75" fill="#28547C" opacity="0.3"/>
+</svg>

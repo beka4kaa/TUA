@@ -1,0 +1,11 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Favicon version: Geometric Y mark with brand blue color -->
+  <!-- Centered in 32x32 with some padding -->
+  <rect width="32" height="32" fill="white"/>
+  <!-- Left diagonal stroke -->
+  <path d="M6 6L16 17" stroke="#28547C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Right diagonal stroke -->
+  <path d="M26 6L16 17" stroke="#28547C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Vertical stem -->
+  <path d="M16 17V26" stroke="#28547C" stroke-width="3" stroke-linecap="round"/>
+</svg>

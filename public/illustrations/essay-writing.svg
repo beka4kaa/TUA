@@ -1,0 +1,28 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Premium mini-illustration: Essay Review / Writing -->
+  <!-- Style: Minimal, editorial, subtle outlines with brand accents -->
+  <rect width="48" height="48" rx="8" fill="#F8F9FA"/>
+  
+  <!-- Paper/document base -->
+  <rect x="12" y="8" width="24" height="32" rx="2" stroke="#E5E7EB" stroke-width="1.5" fill="white"/>
+  
+  <!-- Corner fold -->
+  <path d="M30 8V14H36" stroke="#E5E7EB" stroke-width="1.5" fill="none"/>
+  <path d="M30 8L36 14V8H30Z" fill="#F3F4F6"/>
+  
+  <!-- Text lines -->
+  <line x1="16" y1="18" x2="28" y2="18" stroke="#D1D5DB" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="16" y1="22" x2="32" y2="22" stroke="#D1D5DB" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="16" y1="26" x2="26" y2="26" stroke="#D1D5DB" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="16" y1="30" x2="30" y2="30" stroke="#D1D5DB" stroke-width="1.5" stroke-linecap="round"/>
+  
+  <!-- Pen/edit indicator -->
+  <g transform="translate(28, 28) rotate(-45)">
+    <rect x="0" y="0" width="4" height="14" rx="1" fill="#28547C"/>
+    <path d="M0 14L2 18L4 14" fill="#28547C"/>
+    <rect x="0" y="0" width="4" height="3" rx="1" fill="#E67E22"/>
+  </g>
+  
+  <!-- Highlight mark on important line -->
+  <rect x="16" y="25" width="10" height="3" rx="1" fill="#28547C" opacity="0.1"/>
+</svg>

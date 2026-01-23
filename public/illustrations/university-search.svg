@@ -1,0 +1,28 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Premium mini-illustration: University Shortlist / Search -->
+  <!-- Style: Minimal, editorial, subtle outlines with brand accents -->
+  <rect width="48" height="48" rx="8" fill="#F8F9FA"/>
+  
+  <!-- University building silhouette -->
+  <path d="M24 8L10 18V20H38V18L24 8Z" stroke="#E5E7EB" stroke-width="1.5" fill="white"/>
+  <rect x="12" y="20" width="24" height="16" stroke="#E5E7EB" stroke-width="1.5" fill="white"/>
+  
+  <!-- Columns -->
+  <rect x="15" y="22" width="3" height="12" fill="#F3F4F6" stroke="#E5E7EB" stroke-width="0.75"/>
+  <rect x="22.5" y="22" width="3" height="12" fill="#F3F4F6" stroke="#E5E7EB" stroke-width="0.75"/>
+  <rect x="30" y="22" width="3" height="12" fill="#F3F4F6" stroke="#E5E7EB" stroke-width="0.75"/>
+  
+  <!-- Pediment detail -->
+  <circle cx="24" cy="14" r="2" fill="#28547C" opacity="0.3"/>
+  
+  <!-- Search/magnifying glass -->
+  <circle cx="36" cy="36" r="6" stroke="#28547C" stroke-width="2" fill="white"/>
+  <line x1="40.5" y1="40.5" x2="45" y2="45" stroke="#28547C" stroke-width="2" stroke-linecap="round"/>
+  
+  <!-- Checkmark inside search (found/shortlisted) -->
+  <path d="M33 36L35 38L39 34" stroke="#E67E22" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Stars for ranking -->
+  <circle cx="8" cy="10" r="1" fill="#E67E22" opacity="0.5"/>
+  <circle cx="40" cy="10" r="1" fill="#E67E22" opacity="0.5"/>
+</svg>

@@ -1,0 +1,25 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Premium mini-illustration: Mentorship / Guidance -->
+  <!-- Style: Minimal, editorial, subtle outlines with brand accents -->
+  <rect width="48" height="48" rx="8" fill="#F8F9FA"/>
+  
+  <!-- Large mentor figure (abstract) -->
+  <circle cx="18" cy="14" r="5" stroke="#28547C" stroke-width="1.5" fill="white"/>
+  <path d="M8 36V28C8 24 12 22 18 22C24 22 28 24 28 28V36" stroke="#28547C" stroke-width="1.5" fill="none"/>
+  
+  <!-- Smaller mentee figure -->
+  <circle cx="34" cy="20" r="4" stroke="#E5E7EB" stroke-width="1.5" fill="white"/>
+  <path d="M26 40V34C26 31 29 29 34 29C39 29 42 31 42 34V40" stroke="#E5E7EB" stroke-width="1.5" fill="none"/>
+  
+  <!-- Guiding arrow / connection -->
+  <path d="M23 16L29 19" stroke="#E67E22" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="2 2"/>
+  <circle cx="29" cy="19" r="1.5" fill="#E67E22"/>
+  
+  <!-- Rising path indicator -->
+  <path d="M36 14L38 10L40 14" stroke="#28547C" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/>
+  <path d="M38 10V16" stroke="#28547C" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+  
+  <!-- Sparkles -->
+  <circle cx="10" cy="8" r="1" fill="#E67E22" opacity="0.4"/>
+  <circle cx="44" cy="8" r="1" fill="#28547C" opacity="0.4"/>
+</svg>

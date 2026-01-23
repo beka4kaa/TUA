@@ -1,0 +1,18 @@
+<svg width="600" height="400" viewBox="0 0 600 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="600" height="400" fill="#F8F8F8"/>
+  <!-- Abstract meeting/consultation scene -->
+  <rect x="50" y="200" width="200" height="150" rx="10" fill="#28547C" opacity="0.08"/>
+  <rect x="350" y="200" width="200" height="150" rx="10" fill="#28547C" opacity="0.06"/>
+  <!-- Table -->
+  <rect x="150" y="280" width="300" height="20" rx="4" fill="#28547C" opacity="0.15"/>
+  <!-- People silhouettes -->
+  <circle cx="200" cy="220" r="30" fill="#28547C" opacity="0.12"/>
+  <rect x="170" y="260" width="60" height="80" rx="8" fill="#28547C" opacity="0.1"/>
+  <circle cx="400" cy="220" r="30" fill="#E67E22" opacity="0.12"/>
+  <rect x="370" y="260" width="60" height="80" rx="8" fill="#E67E22" opacity="0.1"/>
+  <!-- Laptop -->
+  <rect x="260" y="250" width="80" height="50" rx="4" fill="#28547C" opacity="0.2"/>
+  <rect x="265" y="255" width="70" height="35" rx="2" fill="white" opacity="0.5"/>
+  <!-- Decorative lines -->
+  <path d="M0 100C50 80 100 90 150 70C200 50 250 70 300 60" stroke="#28547C" stroke-width="1" fill="none" opacity="0.08"/>
+</svg>

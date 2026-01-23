@@ -1,0 +1,13 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Topographic pattern - Orange accent -->
+  <rect width="200" height="200" fill="#FFFBF7"/>
+  
+  <!-- Topo lines -->
+  <path d="M0 40C30 35 60 50 100 45C140 40 170 55 200 50" stroke="#E67E22" stroke-width="1" fill="none" opacity="0.12"/>
+  <path d="M0 60C40 55 80 70 120 65C160 60 180 75 200 70" stroke="#E67E22" stroke-width="1" fill="none" opacity="0.1"/>
+  <path d="M0 80C50 75 90 90 130 85C170 80 190 95 200 90" stroke="#E67E22" stroke-width="1" fill="none" opacity="0.08"/>
+  <path d="M0 100C30 95 70 110 110 105C150 100 180 115 200 110" stroke="#E67E22" stroke-width="1" fill="none" opacity="0.06"/>
+  <path d="M0 120C40 115 80 130 120 125C160 120 185 135 200 130" stroke="#E67E22" stroke-width="1" fill="none" opacity="0.05"/>
+  <path d="M0 140C50 135 90 150 130 145C170 140 190 155 200 150" stroke="#E67E22" stroke-width="1" fill="none" opacity="0.04"/>
+  <path d="M0 160C30 155 70 170 110 165C150 160 180 175 200 170" stroke="#E67E22" stroke-width="1" fill="none" opacity="0.03"/>
+</svg>

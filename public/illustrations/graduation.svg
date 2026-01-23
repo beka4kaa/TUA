@@ -1,0 +1,25 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Premium mini-illustration: Graduation / Academic -->
+  <!-- Style: Minimal, editorial, subtle outlines with brand accents -->
+  <rect width="48" height="48" rx="8" fill="#F8F9FA"/>
+  
+  <!-- Graduation cap top -->
+  <path d="M24 10L6 20L24 30L42 20L24 10Z" stroke="#28547C" stroke-width="1.5" fill="white"/>
+  
+  <!-- Cap surface -->
+  <path d="M12 22V30C12 30 18 36 24 36C30 36 36 30 36 30V22" stroke="#E5E7EB" stroke-width="1.5" fill="none"/>
+  
+  <!-- Button on top -->
+  <circle cx="24" cy="18" r="2" fill="#28547C"/>
+  
+  <!-- Tassel -->
+  <path d="M24 18V24" stroke="#E67E22" stroke-width="1.5"/>
+  <path d="M24 24L20 30" stroke="#E67E22" stroke-width="1.5" stroke-linecap="round"/>
+  <circle cx="20" cy="32" r="2" fill="#E67E22"/>
+  
+  <!-- Decorative elements -->
+  <circle cx="8" cy="14" r="1" fill="#28547C" opacity="0.3"/>
+  <circle cx="40" cy="14" r="1" fill="#28547C" opacity="0.3"/>
+  <circle cx="6" cy="28" r="0.75" fill="#E67E22" opacity="0.4"/>
+  <circle cx="42" cy="28" r="0.75" fill="#E67E22" opacity="0.4"/>
+</svg>
