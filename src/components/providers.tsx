@@ -1,6 +1,6 @@
 "use client";
 
-import { SessionProvider } from "next-auth/react";
+import { AuthProvider } from "@/contexts/auth-context";
 import { Toaster } from "@/components/ui/sonner";
 
 interface ProvidersProps {
@@ -9,9 +9,9 @@ interface ProvidersProps {
 
 export function Providers({ children }: ProvidersProps) {
     return (
-        <SessionProvider>
+        <AuthProvider>
             {children}
-            <Toaster position="top-right" richColors />
-        </SessionProvider>
+            <Toaster position="top-right" richColors duration={4000} closeButton />
+        </AuthProvider>
     );
 }

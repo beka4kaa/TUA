@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useSession } from "next-auth/react";
+import { useAuth } from "@/contexts/auth-context";
 import { formatDistanceToNow } from "date-fns";
 import { Heart, MessageCircle, MoreHorizontal, Trash2, Edit } from "lucide-react";
 import { toast } from "sonner";
@@ -59,7 +59,7 @@ interface FeedListProps {
 }
 
 export function FeedList({ initialPosts }: FeedListProps) {
-    const { data: session } = useSession();
+    const { user } = useAuth();
     const [posts, setPosts] = useState<Post[]>(initialPosts);
     const [expandedComments, setExpandedComments] = useState<Set<string>>(new Set());
     const [newComment, setNewComment] = useState<Record<string, string>>({});
@@ -67,8 +67,8 @@ export function FeedList({ initialPosts }: FeedListProps) {
     const [postToDelete, setPostToDelete] = useState<string | null>(null);
     const [isLoading, setIsLoading] = useState(false);
 
-    const isAdmin = session?.user?.role === "ADMIN";
-    const currentUserId = session?.user?.id;
+    const isAdmin = user?.role === "ADMIN";
+    const currentUserId = user?.id;
 
     const toggleComments = (postId: string) => {
         setExpandedComments((prev) => {
@@ -83,7 +83,7 @@ export function FeedList({ initialPosts }: FeedListProps) {
     };
 
     const handleLike = async (postId: string) => {
-        if (!session) {
+        if (!user) {
             toast.error("Please sign in to like posts");
             return;
         }
@@ -122,7 +122,7 @@ export function FeedList({ initialPosts }: FeedListProps) {
     };
 
     const handleComment = async (postId: string) => {
-        if (!session) {
+        if (!user) {
             toast.error("Please sign in to comment");
             return;
         }
@@ -308,7 +308,7 @@ export function FeedList({ initialPosts }: FeedListProps) {
                             {expandedComments.has(post.id) && (
                                 <div className="w-full border-t pt-4 space-y-4">
                                     {/* Comment Input */}
-                                    {session && (
+                                    {user && (
                                         <div className="flex gap-2">
                                             <Textarea
                                                 placeholder="Write a comment..."

@@ -1,12 +1,14 @@
-import { redirect } from "next/navigation";
-import { getServerSession } from "next-auth";
-import Link from "next/link";
-import { Home, Newspaper, Calendar, CreditCard, Settings, LogOut } from "lucide-react";
+"use client";
 
-import { authOptions } from "@/lib/auth";
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
+import { Home, Newspaper, Calendar, CreditCard, Settings, LogOut, Loader2 } from "lucide-react";
+
+import { useAuth } from "@/contexts/auth-context";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { YmitLogo, YmitMark } from "@/components/brand/logo";
+import { YmitLogo } from "@/components/brand/logo";
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -23,16 +25,19 @@ const navItems = [
     { href: "/subscription", label: "Subscription", icon: CreditCard },
 ];
 
-export default async function DashboardLayout({
+export default function DashboardLayout({
     children,
 }: {
     children: React.ReactNode;
 }) {
-    const session = await getServerSession(authOptions);
+    const { user, isLoading, logout } = useAuth();
+    const router = useRouter();
 
-    if (!session) {
-        redirect("/login");
-    }
+    useEffect(() => {
+        if (!isLoading && !user) {
+            router.push("/login");
+        }
+    }, [user, isLoading, router]);
 
     const getInitials = (name: string | null | undefined) => {
         if (!name) return "U";
@@ -44,13 +49,30 @@ export default async function DashboardLayout({
             .slice(0, 2);
     };
 
+    const handleLogout = async () => {
+        await logout();
+        router.push("/");
+    };
+
+    if (isLoading) {
+        return (
+            <div className="min-h-screen flex items-center justify-center">
+                <Loader2 className="h-8 w-8 animate-spin text-primary" />
+            </div>
+        );
+    }
+
+    if (!user) {
+        return null;
+    }
+
     return (
         <div className="min-h-screen flex flex-col">
             {/* Header */}
             <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-                <div className="container flex h-16 items-center justify-between">
+                <div className="max-w-7xl mx-auto px-8 md:px-10 flex h-16 items-center justify-between">
                     <div className="flex items-center gap-6">
-                        <Link href="/dashboard" className="flex items-center">
+                        <Link href="/dashboard" className="flex items-center pl-1">
                             <YmitLogo color="black" />
                         </Link>
 
@@ -69,7 +91,7 @@ export default async function DashboardLayout({
                     </div>
 
                     <div className="flex items-center gap-4">
-                        {session.user.role === "ADMIN" && (
+                        {user.role === "ADMIN" && (
                             <Button variant="outline" size="sm" asChild>
                                 <Link href="/admin">Admin Panel</Link>
                             </Button>
@@ -79,9 +101,9 @@ export default async function DashboardLayout({
                             <DropdownMenuTrigger asChild>
                                 <Button variant="ghost" className="relative h-8 w-8 rounded-full">
                                     <Avatar className="h-8 w-8">
-                                        <AvatarImage src={session.user.image ?? undefined} />
+                                        <AvatarImage src={user.image ?? undefined} />
                                         <AvatarFallback className="bg-primary text-primary-foreground text-xs">
-                                            {getInitials(session.user.name)}
+                                            {getInitials(user.displayName || user.email)}
                                         </AvatarFallback>
                                     </Avatar>
                                 </Button>
@@ -90,10 +112,10 @@ export default async function DashboardLayout({
                                 <DropdownMenuLabel className="font-normal">
                                     <div className="flex flex-col space-y-1">
                                         <p className="text-sm font-medium leading-none">
-                                            {session.user.name}
+                                            {user.displayName || user.email?.split("@")[0] || "User"}
                                         </p>
                                         <p className="text-xs leading-none text-muted-foreground">
-                                            {session.user.email}
+                                            {user.email}
                                         </p>
                                     </div>
                                 </DropdownMenuLabel>
@@ -105,11 +127,12 @@ export default async function DashboardLayout({
                                     </Link>
                                 </DropdownMenuItem>
                                 <DropdownMenuSeparator />
-                                <DropdownMenuItem asChild>
-                                    <Link href="/api/auth/signout" className="text-destructive">
-                                        <LogOut className="mr-2 h-4 w-4" />
-                                        Sign out
-                                    </Link>
+                                <DropdownMenuItem
+                                    onClick={handleLogout}
+                                    className="text-destructive cursor-pointer"
+                                >
+                                    <LogOut className="mr-2 h-4 w-4" />
+                                    Sign out
                                 </DropdownMenuItem>
                             </DropdownMenuContent>
                         </DropdownMenu>

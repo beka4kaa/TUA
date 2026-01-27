@@ -8,14 +8,14 @@ export async function GET(
   try {
     const { slug } = await params;
     const post = await getPostBySlug(slug);
-    
+
     if (!post) {
       return NextResponse.json(
         { error: "Post not found" },
         { status: 404 }
       );
     }
-    
+
     // Only return published posts via public API
     if (post.status !== "PUBLISHED") {
       return NextResponse.json(
@@ -23,11 +23,11 @@ export async function GET(
         { status: 404 }
       );
     }
-    
+
     // Get related posts
-    const tagIds = post.tags.map((t) => t.tagId);
+    const tagIds = post.tags.map((t) => t.tag.slug);
     const relatedPosts = await getRelatedPosts(post.id, tagIds, 3);
-    
+
     return NextResponse.json({
       post,
       relatedPosts,

@@ -1,60 +1,69 @@
-import { getServerSession } from "next-auth";
-import { Users, FileText, Calendar, TrendingUp } from "lucide-react";
+"use client";
 
-import { authOptions } from "@/lib/auth";
-import { prisma } from "@/lib/prisma";
+import { useEffect, useState } from "react";
+import { Users, FileText, Calendar, TrendingUp, Loader2 } from "lucide-react";
+import Link from "next/link";
+
+import { useAuth } from "@/contexts/auth-context";
+import { usersApi } from "@/lib/api";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-async function getStats() {
-    const [
-        totalUsers,
-        totalMembers,
-        totalPosts,
-        totalBookings,
-        upcomingConsultations,
-        recentSignups,
-    ] = await Promise.all([
-        prisma.user.count(),
-        prisma.user.count({
-            where: { role: { in: ["MEMBER", "ADMIN"] } },
-        }),
-        prisma.post.count({ where: { published: true } }),
-        prisma.booking.count(),
-        prisma.booking.count({
-            where: {
-                scheduledAt: { gte: new Date() },
-                status: { in: ["PENDING", "CONFIRMED"] },
-            },
-        }),
-        prisma.user.count({
-            where: {
-                createdAt: {
-                    gte: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000), // Last 7 days
-                },
-            },
-        }),
-    ]);
-
-    return {
-        totalUsers,
-        totalMembers,
-        totalPosts,
-        totalBookings,
-        upcomingConsultations,
-        recentSignups,
-    };
+interface Stats {
+    totalUsers: number;
+    totalMembers: number;
+    totalPosts: number;
+    totalBookings: number;
+    upcomingConsultations: number;
+    recentSignups: number;
 }
 
-export default async function AdminDashboardPage() {
-    const session = await getServerSession(authOptions);
-    const stats = await getStats();
+export default function AdminDashboardPage() {
+    const { user } = useAuth();
+    const [stats, setStats] = useState<Stats>({
+        totalUsers: 0,
+        totalMembers: 0,
+        totalPosts: 0,
+        totalBookings: 0,
+        upcomingConsultations: 0,
+        recentSignups: 0,
+    });
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        async function fetchStats() {
+            try {
+                const usersData = await usersApi.list({ page: 1 });
+                setStats({
+                    totalUsers: usersData.count,
+                    totalMembers: 0, // TODO: filter by role from API
+                    totalPosts: 0, // TODO: fetch from blog API
+                    totalBookings: 0, // TODO: fetch from bookings API
+                    upcomingConsultations: 0,
+                    recentSignups: 0,
+                });
+            } catch (error) {
+                console.error("Failed to fetch stats:", error);
+            } finally {
+                setIsLoading(false);
+            }
+        }
+        fetchStats();
+    }, []);
+
+    if (isLoading) {
+        return (
+            <div className="flex items-center justify-center min-h-[60vh]">
+                <Loader2 className="h-8 w-8 animate-spin text-primary" />
+            </div>
+        );
+    }
 
     return (
         <div className="space-y-6">
             <div>
                 <h1 className="text-2xl font-bold tracking-tight">Dashboard</h1>
                 <p className="text-muted-foreground">
-                    Welcome back, {session?.user?.name ?? "Admin"}!
+                    Welcome back, {user?.displayName ?? "Admin"}!
                 </p>
             </div>
 
@@ -68,7 +77,7 @@ export default async function AdminDashboardPage() {
                     <CardContent>
                         <div className="text-2xl font-bold">{stats.totalUsers}</div>
                         <p className="text-xs text-muted-foreground">
-                            +{stats.recentSignups} this week
+                            Registered accounts
                         </p>
                     </CardContent>
                 </Card>
@@ -81,8 +90,7 @@ export default async function AdminDashboardPage() {
                     <CardContent>
                         <div className="text-2xl font-bold">{stats.totalMembers}</div>
                         <p className="text-xs text-muted-foreground">
-                            {((stats.totalMembers / stats.totalUsers) * 100).toFixed(1)}% of
-                            users
+                            Premium members
                         </p>
                     </CardContent>
                 </Card>

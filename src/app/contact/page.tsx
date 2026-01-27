@@ -374,6 +374,24 @@ export default function ContactPage() {
                   {/* Divider */}
                   <div className="border-t border-gray-100" />
 
+                  {/* Book Consultation CTA */}
+                  <div className="bg-[#E67E22]/5 rounded-lg p-4">
+                    <h4 className="font-medium text-gray-900 mb-2">
+                      Prefer a live consultation?
+                    </h4>
+                    <p className="text-sm text-gray-600 mb-3">
+                      Schedule a one-on-one session with our experts.
+                    </p>
+                    <Link href="/bookings">
+                      <Button className="w-full bg-[#E67E22] hover:bg-[#E67E22]/90 text-white">
+                        Schedule a Consultation
+                      </Button>
+                    </Link>
+                  </div>
+
+                  {/* Divider */}
+                  <div className="border-t border-gray-100" />
+
                   {/* Social links */}
                   <div>
                     <h4 className="text-sm font-medium text-gray-500 mb-3">

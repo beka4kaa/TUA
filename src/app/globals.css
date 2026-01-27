@@ -9,16 +9,17 @@
   /* ============================================
    * TYPOGRAPHY SYSTEM
    * ============================================
-   * Body font: DM Sans (Gilroy alternative)
+   * Body font: Gilroy (with DM Sans fallback)
    *   - Use for: paragraphs, nav items, buttons, labels, 
    *     form text, card descriptions, footer text
    *   - Class: .font-body
+   *   - TODO: Add Gilroy font files to src/assets/fonts/
    * 
    * Display font: Oswald (RoadRadio alternative) 
    *   - Use for: ONLY big headings & section titles
    *   - Class: .font-display, .hero-title, .section-title
    * ============================================ */
-  --font-body: var(--font-body), 'DM Sans', 'Inter', system-ui, sans-serif;
+  --font-body: var(--font-gilroy, var(--font-body)), 'Gilroy', 'DM Sans', 'Inter', system-ui, sans-serif;
   --font-display: var(--font-display), 'Oswald', 'Impact', system-ui, sans-serif;
 
   /* Brand Colors - LOCKED (DO NOT CHANGE) */
@@ -57,6 +58,11 @@
   --color-neutral-700: #404040;
   --color-neutral-800: #262626;
   --color-neutral-900: #111111;
+
+  /* Section background colors */
+  --color-section-gray: #F6F6F6;
+  --color-section-white: #FFFFFF;
+  --color-section-light: #FAFAFA;
 
   /* shadcn/ui Theme Colors */
   --color-sidebar-ring: var(--sidebar-ring);
@@ -479,42 +485,76 @@
 }
 
 /* ============================================
- * GLASSMORPHISM EFFECTS
+ * GLASSMORPHISM EFFECTS - Premium & Subtle
  * ============================================ */
 
 /* Glass pill - for tags, badges, small elements */
 .glass-pill {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.5);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  box-shadow: 
+    0 4px 24px rgba(0, 0, 0, 0.04),
+    0 1px 2px rgba(0, 0, 0, 0.02),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.glass-pill:hover {
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.06),
+    0 2px 4px rgba(0, 0, 0, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  transform: translateY(-1px);
 }
 
 /* Glass card - for larger containers */
 .glass-card {
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
   border: 1px solid rgba(255, 255, 255, 0.6);
   box-shadow: 
-    0 8px 32px rgba(0, 0, 0, 0.06),
+    0 8px 40px rgba(0, 0, 0, 0.04),
+    0 2px 8px rgba(0, 0, 0, 0.02),
     inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 
+    0 12px 48px rgba(0, 0, 0, 0.08),
+    0 4px 12px rgba(0, 0, 0, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
 /* Glass dark - for dark backgrounds */
 .glass-dark {
   background: rgba(17, 17, 17, 0.6);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
 }
 
-/* Hover state for glass elements */
-.glass-pill:hover,
-.glass-card:hover {
-  background: rgba(255, 255, 255, 0.85);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+/* Glass nav - specifically for navigation header */
+.glass-nav {
+  background: rgba(246, 246, 246, 0.8);
+  backdrop-filter: blur(20px) saturate(1.2);
+  -webkit-backdrop-filter: blur(20px) saturate(1.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.03);
+}
+
+/* Glass badge - minimal glass effect for inline badges */
+.glass-badge {
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
 }
 
 /* ============================================
@@ -642,22 +682,25 @@
 }
 
 /* ============================================
- * ENHANCED HOVER EFFECTS
+ * ENHANCED HOVER EFFECTS - Premium Feel
  * ============================================ */
 
 /* Card lift on hover */
 .hover-lift {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), 
+              box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .hover-lift:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+  transform: translateY(-6px);
+  box-shadow: 
+    0 20px 50px rgba(0, 0, 0, 0.08),
+    0 8px 20px rgba(0, 0, 0, 0.04);
 }
 
 /* Scale up on hover */
 .hover-scale {
-  transition: transform 0.3s ease;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .hover-scale:hover {
@@ -666,14 +709,70 @@
 
 /* Glow effect on hover */
 .hover-glow {
-  transition: box-shadow 0.3s ease;
+  transition: box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .hover-glow:hover {
-  box-shadow: 0 0 30px rgba(40, 84, 124, 0.15);
+  box-shadow: 0 0 40px rgba(40, 84, 124, 0.18);
+  transform: translateY(-2px);
 }
 
 .hover-glow-orange:hover {
-  box-shadow: 0 0 30px rgba(230, 126, 34, 0.2);
+  box-shadow: 0 0 40px rgba(230, 126, 34, 0.22);
+  transform: translateY(-2px);
+}
+
+/* Button hover - subtle scale + shadow */
+.btn-hover {
+  transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.btn-hover:hover {
+  transform: translateY(-2px) scale(1.01);
+}
+
+.btn-hover:active {
+  transform: translateY(0) scale(0.99);
+}
+
+/* Image zoom on hover */
+.hover-zoom {
+  overflow: hidden;
+}
+
+.hover-zoom img,
+.hover-zoom > * {
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hover-zoom:hover img,
+.hover-zoom:hover > * {
+  transform: scale(1.05);
+}
+
+/* Border glow effect */
+.hover-border-glow {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.hover-border-glow::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(40, 84, 124, 0), rgba(40, 84, 124, 0));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.hover-border-glow:hover::before {
+  background: linear-gradient(135deg, rgba(40, 84, 124, 0.3), rgba(230, 126, 34, 0.2));
 }
 

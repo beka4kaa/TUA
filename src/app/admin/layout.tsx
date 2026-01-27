@@ -1,5 +1,7 @@
-import { redirect } from "next/navigation";
-import { getServerSession } from "next-auth";
+"use client";
+
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import {
     Users,
@@ -8,9 +10,10 @@ import {
     LayoutDashboard,
     LogOut,
     Settings,
+    Loader2,
 } from "lucide-react";
 
-import { authOptions } from "@/lib/auth";
+import { useAuth } from "@/contexts/auth-context";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Separator } from "@/components/ui/separator";
@@ -58,16 +61,30 @@ const adminNavItems = [
     },
 ];
 
-export default async function AdminLayout({
+export default function AdminLayout({
     children,
 }: {
     children: React.ReactNode;
 }) {
-    const session = await getServerSession(authOptions);
+    const router = useRouter();
+    const { user, isLoading, isAuthenticated, logout } = useAuth();
 
-    // Redirect non-admins
-    if (!session || session.user.role !== "ADMIN") {
-        redirect("/dashboard");
+    useEffect(() => {
+        if (!isLoading && (!isAuthenticated || user?.role !== "ADMIN")) {
+            router.push("/dashboard");
+        }
+    }, [isLoading, isAuthenticated, user, router]);
+
+    if (isLoading) {
+        return (
+            <div className="flex items-center justify-center min-h-screen">
+                <Loader2 className="h-8 w-8 animate-spin text-primary" />
+            </div>
+        );
+    }
+
+    if (!isAuthenticated || !user || user.role !== "ADMIN") {
+        return null;
     }
 
     const getInitials = (name: string | null | undefined) => {
@@ -78,6 +95,11 @@ export default async function AdminLayout({
             .join("")
             .toUpperCase()
             .slice(0, 2);
+    };
+
+    const handleLogout = async () => {
+        await logout();
+        router.push("/login");
     };
 
     return (
@@ -116,17 +138,17 @@ export default async function AdminLayout({
                         <Separator className="mb-4" />
                         <div className="flex items-center gap-3">
                             <Avatar className="h-9 w-9">
-                                <AvatarImage src={session.user.image ?? undefined} />
+                                <AvatarImage src={user.image ?? undefined} />
                                 <AvatarFallback className="bg-primary text-primary-foreground text-sm">
-                                    {getInitials(session.user.name)}
+                                    {getInitials(user.displayName)}
                                 </AvatarFallback>
                             </Avatar>
                             <div className="flex-1 min-w-0">
                                 <p className="text-sm font-medium truncate">
-                                    {session.user.name ?? "Admin"}
+                                    {user.displayName ?? "Admin"}
                                 </p>
                                 <p className="text-xs text-muted-foreground truncate">
-                                    {session.user.email}
+                                    {user.email}
                                 </p>
                             </div>
                         </div>
@@ -134,12 +156,10 @@ export default async function AdminLayout({
                             variant="ghost"
                             size="sm"
                             className="w-full justify-start mt-2 text-muted-foreground"
-                            asChild
+                            onClick={handleLogout}
                         >
-                            <Link href="/api/auth/signout">
-                                <LogOut className="h-4 w-4 mr-2" />
-                                Sign Out
-                            </Link>
+                            <LogOut className="h-4 w-4 mr-2" />
+                            Sign Out
                         </Button>
                     </SidebarFooter>
                 </Sidebar>

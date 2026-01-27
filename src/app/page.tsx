@@ -1,9 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
-import { getServerSession } from "next-auth";
 import { ArrowRight, Play, ArrowUpRight, ChevronRight } from "lucide-react";
 
-import { authOptions } from "@/lib/auth";
 import { Button } from "@/components/ui/button";
 import { SocialLinks } from "@/components/ui/social-icons";
 import { YmitLogo, YmitMark } from "@/components/brand/logo";
@@ -19,117 +17,43 @@ import {
 } from "@/constants/assets";
 import { servicesIcons, getServiceIcon } from "@/constants/illustrations";
 import { HeroSection } from "@/components/home/hero-section";
-import { AnimatedSection, AnimatedItem, AnimatedLine, ParallaxItem } from "@/components/motion/animations";
-import { ParallaxCircle } from "@/components/decorations/parallax-circle";
-import { 
-  CircleOutline, 
-  TopographicLines, 
-  GridDots,
-  WavyLine,
-  DottedCircle,
-  DotCluster,
-  AccentDots
-} from "@/components/decorations/svg-decorations";
+import { AnimatedSection, AnimatedItem, AnimatedLine } from "@/components/motion/animations";
+import { SectionDecoration, LargeParallaxCircle } from "@/components/decorations/section-decoration";
+import { HomeNavigation } from "@/components/home/home-navigation";
 
-export default async function HomePage() {
-  const session = await getServerSession(authOptions);
-
+export default function HomePage() {
   return (
     <div className="flex flex-col min-h-screen bg-[#F6F6F6] overflow-x-hidden relative">
-      {/* ===== PARALLAX CIRCLE DECORATION (right side) ===== */}
-      {/* This circle moves slower than scroll for holographic/parallax effect */}
-      <ParallaxCircle
-        top="15%"
-        right="-200px"
-        size={550}
-        opacity={0.05}
-        speedFactor={0.3}
-        color="gray"
-        holographic={true}
-        className="hidden xl:block"
-      />
 
       {/* ===== NAVIGATION ===== */}
-      <header className="sticky top-0 z-50 w-full glass-card rounded-none border-b border-white/20">
-        <div className="container-rivo">
-          <div className="flex h-14 sm:h-16 items-center justify-between">
-            {/* Logo - New minimal design */}
-            <Link href="/" className="flex items-center">
-              <YmitLogo variant="full" color="black" />
-            </Link>
-
-            {/* Center Navigation - hidden on mobile/tablet */}
-            <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
-              <Link href="#about" className="font-body text-sm text-[#6B6B6B] hover:text-[#111111] transition-colors">
-                Who We Are
-              </Link>
-              <Link href="#services" className="font-body text-sm text-[#6B6B6B] hover:text-[#111111] transition-colors">
-                Services
-              </Link>
-              <Link href="#expertise" className="font-body text-sm text-[#6B6B6B] hover:text-[#111111] transition-colors">
-                Expertise
-              </Link>
-              <Link href="#results" className="font-body text-sm text-[#6B6B6B] hover:text-[#111111] transition-colors">
-                Results
-              </Link>
-              <Link href="#reviews" className="font-body text-sm text-[#6B6B6B] hover:text-[#111111] transition-colors">
-                Reviews
-              </Link>
-              <Link href="/blog" className="font-body text-sm text-[#6B6B6B] hover:text-[#111111] transition-colors">
-                Blog
-              </Link>
-              <Link href="#contact" className="font-body text-sm text-[#6B6B6B] hover:text-[#111111] transition-colors">
-                Contact
-              </Link>
-            </nav>
-
-            {/* Auth Buttons */}
-            <div className="flex items-center gap-3 sm:gap-4">
-              {/* Mobile fullscreen menu - visible on < lg */}
-              <FullscreenMenu session={session} />
-              
-              {session ? (
-                <Link
-                  href="/dashboard"
-                  className="hidden sm:block font-body text-sm font-medium text-[#111111] hover:opacity-70 transition-opacity"
-                >
-                  Dashboard
-                </Link>
-              ) : (
-                <>
-                  <Link
-                    href="/login"
-                    className="hidden lg:block font-body text-sm text-[#6B6B6B] hover:text-[#111111] transition-colors"
-                  >
-                    Sign In
-                  </Link>
-                  <Link
-                    href="/signup"
-                    className="hidden sm:inline-flex group items-center gap-1.5 sm:gap-2 px-4 sm:px-5 py-2 bg-[#111111] text-white font-body text-sm font-medium rounded-full hover:bg-[#333] transition-colors"
-                  >
-                    <span className="hidden xs:inline">Get Started</span>
-                    <span className="xs:hidden">Start</span>
-                    <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                  </Link>
-                </>
-              )}
-            </div>
-          </div>
-        </div>
-      </header>
+      <HomeNavigation />
 
       {/* ===== HERO SECTION ===== */}
       <HeroSection />
 
       {/* ===== WHO WE ARE SECTION - White background ===== */}
       <AnimatedSection id="about" className="relative py-16 sm:py-20 md:py-24 lg:py-32 section-white">
-        {/* Decorative elements - hidden on mobile */}
-        <div className="absolute top-16 right-0 w-60 md:w-80 h-40 md:h-52 hidden md:block pointer-events-none">
-          <TopographicLines className="w-full h-full" color="blue" opacity={0.06} />
-        </div>
-        <div className="absolute -bottom-16 -left-16 w-32 md:w-40 h-32 md:h-40 hidden lg:block pointer-events-none">
-          <DottedCircle className="w-full h-full" color="gray" opacity={0.06} />
-        </div>
+        {/* Decorative elements with parallax */}
+        <SectionDecoration 
+          type="topographic"
+          color="blue"
+          top="40px"
+          right="0"
+          width="320px"
+          height="200px"
+          opacity={0.06}
+          parallaxSpeed={0.2}
+        />
+        <SectionDecoration 
+          type="circles"
+          color="gray"
+          bottom="-60px"
+          left="-60px"
+          width="160px"
+          height="160px"
+          opacity={0.04}
+          parallaxSpeed={0.15}
+        />
 
         <div className="container-rivo relative z-10">
           <div className="flex flex-col lg:flex-row gap-8 sm:gap-10 lg:gap-20">
@@ -181,14 +105,14 @@ export default async function HomePage() {
               </AnimatedItem>
 
               <AnimatedItem>
-                {/* Rating badge like reference's Clutch badge - glassmorphism */}
-                <div className="glass-pill inline-flex items-center gap-2.5 sm:gap-3 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl w-fit">
-                  <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-brand-blue flex items-center justify-center">
-                    <span className="text-white text-[10px] sm:text-xs font-bold">5.0</span>
+                {/* Rating badge like reference's Clutch badge - enhanced glassmorphism */}
+                <div className="glass-card inline-flex items-center gap-3 sm:gap-4 px-4 sm:px-5 py-3 sm:py-3.5 rounded-2xl w-fit hover-lift">
+                  <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-gradient-to-br from-brand-blue to-brand-blue-600 flex items-center justify-center shadow-lg shadow-brand-blue/20">
+                    <span className="text-white text-xs sm:text-sm font-bold">5.0</span>
                   </div>
                   <div>
-                    <p className="text-[10px] sm:text-xs font-medium text-[#111111]">Student Rating</p>
-                    <p className="text-[9px] sm:text-[10px] text-[#A3A3A3]">Based on 200+ reviews</p>
+                    <p className="text-xs sm:text-sm font-medium text-[#111111]">Student Rating</p>
+                    <p className="text-[10px] sm:text-xs text-[#A3A3A3]">Based on 200+ reviews</p>
                   </div>
                 </div>
               </AnimatedItem>
@@ -199,13 +123,27 @@ export default async function HomePage() {
 
       {/* ===== SERVICES & TECH STACK SECTION - Gray background ===== */}
       <AnimatedSection id="services" className="relative py-16 sm:py-20 md:py-24 lg:py-32 section-gray">
-        {/* Decorative elements */}
-        <div className="absolute bottom-0 left-0 w-full h-16 sm:h-20 overflow-hidden pointer-events-none hidden sm:block">
-          <WavyLine className="w-full h-full" color="gray" opacity={0.04} />
-        </div>
-        <div className="absolute top-1/2 -right-8 w-20 sm:w-24 h-20 sm:h-24 hidden lg:block pointer-events-none">
-          <GridDots className="w-full h-full" color="blue" opacity={0.08} />
-        </div>
+        {/* Decorative elements with parallax */}
+        <SectionDecoration 
+          type="wave"
+          color="gray"
+          bottom="0"
+          left="0"
+          width="100%"
+          height="80px"
+          opacity={0.04}
+          parallaxSpeed={0.1}
+        />
+        <SectionDecoration 
+          type="dots"
+          color="blue"
+          top="50%"
+          right="-30px"
+          width="100px"
+          height="100px"
+          opacity={0.08}
+          parallaxSpeed={0.2}
+        />
 
         <div className="container-rivo relative z-10">
           <div className="flex flex-col lg:flex-row gap-8 sm:gap-10 lg:gap-24">
@@ -263,13 +201,27 @@ export default async function HomePage() {
 
       {/* ===== INDUSTRY EXPERTISE SECTION - White background ===== */}
       <AnimatedSection id="expertise" className="relative py-16 sm:py-20 md:py-24 lg:py-32 section-white">
-        {/* Decorative elements */}
-        <div className="absolute top-12 left-8 w-20 sm:w-28 h-20 sm:h-28 hidden md:block pointer-events-none">
-          <GridDots className="w-full h-full" color="gray" opacity={0.08} />
-        </div>
-        <div className="absolute bottom-20 right-1/4 w-32 sm:w-40 h-32 sm:h-40 hidden lg:block pointer-events-none">
-          <CircleOutline className="w-full h-full" color="blue" opacity={0.04} />
-        </div>
+        {/* Decorative elements with parallax */}
+        <SectionDecoration 
+          type="dots"
+          color="gray"
+          top="48px"
+          left="32px"
+          width="120px"
+          height="120px"
+          opacity={0.08}
+          parallaxSpeed={0.15}
+        />
+        <SectionDecoration 
+          type="circles"
+          color="blue"
+          bottom="80px"
+          right="25%"
+          width="180px"
+          height="180px"
+          opacity={0.03}
+          parallaxSpeed={0.2}
+        />
 
         <div className="container-rivo relative z-10">
           <AnimatedItem>
@@ -295,13 +247,25 @@ export default async function HomePage() {
 
       {/* ===== PROJECTS / SUCCESS STORIES SECTION - Gray background ===== */}
       <AnimatedSection id="results" className="relative py-16 sm:py-20 md:py-24 lg:py-32 section-gray">
-        {/* Decorative elements with parallax - hidden on mobile */}
-        <ParallaxItem speed={0.1} direction="up" className="absolute -left-32 md:-left-48 top-1/2 -translate-y-1/2 w-64 md:w-96 h-64 md:h-96 hidden lg:block pointer-events-none">
-          <CircleOutline className="w-full h-full" color="blue" opacity={0.04} />
-        </ParallaxItem>
-        <ParallaxItem speed={0.15} direction="down" className="absolute top-16 right-8 sm:right-12 w-16 sm:w-20 h-16 sm:h-20 hidden md:block pointer-events-none">
-          <GridDots className="w-full h-full" color="gray" opacity={0.06} />
-        </ParallaxItem>
+        {/* Large circle with parallax - left side */}
+        <LargeParallaxCircle 
+          position="left" 
+          top="20%" 
+          size={500} 
+          opacity={0.04}
+          speedFactor={0.15}
+          color="blue"
+        />
+        <SectionDecoration 
+          type="dots"
+          color="gray"
+          top="64px"
+          right="48px"
+          width="80px"
+          height="80px"
+          opacity={0.06}
+          parallaxSpeed={0.2}
+        />
 
         <div className="container-rivo relative z-10">
           <AnimatedItem>
@@ -356,10 +320,17 @@ export default async function HomePage() {
 
       {/* ===== REVIEWS SECTION - White background ===== */}
       <AnimatedSection id="reviews" className="relative py-16 sm:py-20 md:py-24 lg:py-32 section-white">
-        {/* Decorative elements */}
-        <div className="absolute top-0 right-0 w-48 sm:w-72 h-32 sm:h-48 hidden md:block pointer-events-none">
-          <TopographicLines className="w-full h-full" color="orange" opacity={0.04} />
-        </div>
+        {/* Decorative elements with parallax */}
+        <SectionDecoration 
+          type="topographic"
+          color="orange"
+          top="0"
+          right="0"
+          width="280px"
+          height="180px"
+          opacity={0.05}
+          parallaxSpeed={0.18}
+        />
 
         <div className="container-rivo relative z-10">
           <AnimatedItem>
@@ -412,13 +383,27 @@ export default async function HomePage() {
 
       {/* ===== WE ARE YMIT ACADEMY / TEAM SECTION - Gray background ===== */}
       <AnimatedSection className="relative py-16 sm:py-20 md:py-24 lg:py-32 section-gray">
-        {/* Decorative elements */}
-        <div className="absolute bottom-0 right-0 w-64 sm:w-96 h-36 sm:h-52 hidden md:block pointer-events-none">
-          <TopographicLines className="w-full h-full" color="orange" opacity={0.03} />
-        </div>
-        <div className="absolute top-1/3 -left-8 w-16 sm:w-20 h-16 sm:h-20 hidden lg:block pointer-events-none">
-          <GridDots className="w-full h-full" color="gray" opacity={0.06} />
-        </div>
+        {/* Decorative elements with parallax */}
+        <SectionDecoration 
+          type="topographic"
+          color="orange"
+          bottom="0"
+          right="0"
+          width="380px"
+          height="220px"
+          opacity={0.04}
+          parallaxSpeed={0.12}
+        />
+        <SectionDecoration 
+          type="dots"
+          color="gray"
+          top="33%"
+          left="-30px"
+          width="80px"
+          height="80px"
+          opacity={0.06}
+          parallaxSpeed={0.15}
+        />
 
         <div className="container-rivo relative z-10">
           <AnimatedItem>
@@ -460,10 +445,17 @@ export default async function HomePage() {
 
       {/* ===== CONTACTS SECTION - White background ===== */}
       <AnimatedSection id="contact" className="relative py-16 sm:py-20 md:py-24 lg:py-32 section-white">
-        {/* Decorative elements */}
-        <div className="absolute -top-16 left-1/4 w-28 sm:w-36 h-28 sm:h-36 hidden md:block pointer-events-none">
-          <DottedCircle className="w-full h-full" color="gray" opacity={0.04} />
-        </div>
+        {/* Decorative elements with parallax */}
+        <SectionDecoration 
+          type="circles"
+          color="gray"
+          top="-60px"
+          left="25%"
+          width="140px"
+          height="140px"
+          opacity={0.04}
+          parallaxSpeed={0.18}
+        />
 
         <div className="container-rivo relative z-10">
           <div className="flex flex-col lg:flex-row gap-10 sm:gap-12 lg:gap-20">

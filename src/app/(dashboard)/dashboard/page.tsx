@@ -1,189 +1,178 @@
-import { getServerSession } from "next-auth";
-import Link from "next/link";
-import { Calendar, MessageSquare, CreditCard, ArrowRight } from "lucide-react";
+"use client";
 
-import { authOptions } from "@/lib/auth";
-import { prisma } from "@/lib/prisma";
+import { useEffect } from "react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { Calendar, MessageSquare, CreditCard, ArrowRight, Loader2 } from "lucide-react";
+
+import { useAuth } from "@/contexts/auth-context";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { DashboardShell, DashboardHeader } from "@/components/layout/dashboard-shell";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
-export const metadata = {
-    title: "Dashboard",
-    description: "Your Ymit Academy dashboard",
-};
+export default function DashboardPage() {
+    const router = useRouter();
+    const { user, isLoading, isAuthenticated } = useAuth();
 
-async function getUserData(userId: string) {
-    const [subscription, upcomingBookings, recentPosts] = await Promise.all([
-        prisma.subscription.findUnique({
-            where: { userId },
-        }),
-        prisma.booking.findMany({
-            where: {
-                userId,
-                scheduledAt: { gte: new Date() },
-                status: { in: ["PENDING", "CONFIRMED"] },
-            },
-            orderBy: { scheduledAt: "asc" },
-            take: 3,
-        }),
-        prisma.post.findMany({
-            where: { published: true },
-            orderBy: { createdAt: "desc" },
-            take: 3,
-            include: {
-                author: {
-                    select: { name: true },
-                },
-            },
-        }),
-    ]);
+    useEffect(() => {
+        if (!isLoading && !isAuthenticated) {
+            router.push("/login");
+        }
+    }, [isLoading, isAuthenticated, router]);
 
-    return { subscription, upcomingBookings, recentPosts };
-}
+    if (isLoading) {
+        return (
+            <div className="flex items-center justify-center min-h-[60vh]">
+                <Loader2 className="h-8 w-8 animate-spin text-primary" />
+            </div>
+        );
+    }
 
-export default async function DashboardPage() {
-    const session = await getServerSession(authOptions);
-
-    if (!session?.user?.id) {
+    if (!isAuthenticated || !user) {
         return null;
     }
 
-    const { subscription, upcomingBookings, recentPosts } = await getUserData(
-        session.user.id
-    );
-
-    const tierLabels: Record<string, string> = {
-        FREE: "Free",
-        BASIC: "Basic",
-        STANDARD: "Standard",
-        PREMIUM: "Premium",
+    const getTierColor = (tier: string) => {
+        switch (tier) {
+            case "PREMIUM": return "bg-purple-500";
+            case "STANDARD": return "bg-blue-500";
+            default: return "bg-gray-500";
+        }
     };
 
-    return (
-        <div className="container py-8">
-            <div className="mb-8">
-                <h1 className="text-2xl font-bold tracking-tight">
-                    Welcome back, {session.user.name?.split(" ")[0] ?? "there"}!
-                </h1>
-                <p className="text-muted-foreground">
-                    Here&apos;s an overview of your Ymit Academy journey
-                </p>
-            </div>
+    const getInitials = (name: string | null | undefined) => {
+        if (!name) return "U";
+        return name
+            .split(" ")
+            .map((n) => n[0])
+            .join("")
+            .toUpperCase()
+            .slice(0, 2);
+    };
 
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-                {/* Subscription Status */}
+    const subscriptionTier = user.subscription?.tier || "FREE";
+    const displayName = user.displayName || user.email?.split("@")[0] || "User";
+
+    return (
+        <DashboardShell>
+            {/* Welcome Section */}
+            <DashboardHeader
+                title={`Welcome back, ${displayName}! 👋`}
+                description="Here's what's happening with your account today."
+            />
+
+            {/* Stats Cards */}
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 mb-8">
+                {/* Subscription Card */}
                 <Card>
-                    <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                    <CardHeader className="flex flex-row items-center justify-between pb-2">
                         <CardTitle className="text-sm font-medium">Subscription</CardTitle>
                         <CreditCard className="h-4 w-4 text-muted-foreground" />
                     </CardHeader>
                     <CardContent>
-                        <div className="flex items-center gap-2 mb-2">
-                            <span className="text-2xl font-bold">
-                                {tierLabels[subscription?.tier ?? "FREE"]}
-                            </span>
-                            <Badge
-                                variant={subscription?.status === "ACTIVE" ? "default" : "secondary"}
-                                className={
-                                    subscription?.status === "ACTIVE"
-                                        ? "bg-green-100 text-green-800"
-                                        : ""
-                                }
-                            >
-                                {subscription?.status ?? "ACTIVE"}
+                        <div className="flex items-center gap-2">
+                            <Badge className={getTierColor(subscriptionTier)}>
+                                {subscriptionTier}
                             </Badge>
                         </div>
-                        <Button variant="outline" size="sm" asChild>
-                            <Link href="/subscription">
-                                {subscription?.tier === "FREE" ? "Upgrade Plan" : "Manage"}
-                            </Link>
-                        </Button>
+                        <p className="text-xs text-muted-foreground mt-2">
+                            {subscriptionTier === "FREE"
+                                ? "Upgrade to unlock premium features"
+                                : "Active subscription"}
+                        </p>
                     </CardContent>
                 </Card>
 
-                {/* Upcoming Consultations */}
+                {/* Account Status */}
                 <Card>
-                    <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                        <CardTitle className="text-sm font-medium">
-                            Upcoming Consultations
-                        </CardTitle>
+                    <CardHeader className="flex flex-row items-center justify-between pb-2">
+                        <CardTitle className="text-sm font-medium">Account Status</CardTitle>
+                        <MessageSquare className="h-4 w-4 text-muted-foreground" />
+                    </CardHeader>
+                    <CardContent>
+                        <div className="flex items-center gap-2">
+                            <Badge variant={user.status === "ACTIVE" ? "default" : "secondary"}>
+                                {user.status}
+                            </Badge>
+                            <Badge variant="outline">{user.role?.toUpperCase()}</Badge>
+                        </div>
+                        <p className="text-xs text-muted-foreground mt-2">
+                            {user.email}
+                        </p>
+                    </CardContent>
+                </Card>
+
+                {/* Bookings */}
+                <Card>
+                    <CardHeader className="flex flex-row items-center justify-between pb-2">
+                        <CardTitle className="text-sm font-medium">Upcoming Sessions</CardTitle>
                         <Calendar className="h-4 w-4 text-muted-foreground" />
                     </CardHeader>
                     <CardContent>
-                        <div className="text-2xl font-bold mb-2">
-                            {upcomingBookings.length}
-                        </div>
-                        <Button variant="outline" size="sm" asChild>
-                            <Link href="/bookings">View Bookings</Link>
-                        </Button>
-                    </CardContent>
-                </Card>
-
-                {/* Quick Actions */}
-                <Card className="md:col-span-2 lg:col-span-1">
-                    <CardHeader>
-                        <CardTitle className="text-sm font-medium">Quick Actions</CardTitle>
-                    </CardHeader>
-                    <CardContent className="space-y-2">
-                        <Button className="w-full justify-between" variant="outline" asChild>
-                            <Link href="/bookings/new">
-                                Book Consultation
-                                <ArrowRight className="h-4 w-4" />
-                            </Link>
-                        </Button>
-                        <Button className="w-full justify-between" variant="outline" asChild>
-                            <Link href="/feed">
-                                View News Feed
-                                <ArrowRight className="h-4 w-4" />
-                            </Link>
-                        </Button>
+                        <div className="text-2xl font-bold">0</div>
+                        <p className="text-xs text-muted-foreground mt-2">
+                            No upcoming bookings
+                        </p>
                     </CardContent>
                 </Card>
             </div>
 
-            {/* Recent Posts */}
-            <Card className="mt-6">
-                <CardHeader className="flex flex-row items-center justify-between">
-                    <div>
-                        <CardTitle>Latest Updates</CardTitle>
-                        <CardDescription>Recent posts from our team</CardDescription>
-                    </div>
-                    <Button variant="ghost" size="sm" asChild>
-                        <Link href="/feed">
-                            View All
-                            <ArrowRight className="ml-2 h-4 w-4" />
+            {/* Quick Actions */}
+            <div className="grid gap-6 md:grid-cols-2">
+                <Card>
+                    <CardHeader>
+                        <CardTitle>Quick Actions</CardTitle>
+                        <CardDescription>
+                            Common tasks and features
+                        </CardDescription>
+                    </CardHeader>
+                    <CardContent className="grid gap-4">
+                        <Link href="/bookings">
+                            <Button variant="outline" className="w-full justify-between">
+                                Book a Consultation
+                                <ArrowRight className="h-4 w-4" />
+                            </Button>
                         </Link>
-                    </Button>
-                </CardHeader>
-                <CardContent>
-                    {recentPosts.length === 0 ? (
-                        <p className="text-muted-foreground text-center py-4">
-                            No posts yet. Check back later!
-                        </p>
-                    ) : (
-                        <div className="space-y-4">
-                            {recentPosts.map((post: typeof recentPosts[number]) => (
-                                <div
-                                    key={post.id}
-                                    className="flex items-start gap-4 p-4 rounded-lg border hover:bg-muted/50 transition-colors"
-                                >
-                                    <MessageSquare className="h-5 w-5 text-primary mt-0.5" />
-                                    <div className="flex-1 min-w-0">
-                                        <h4 className="font-medium truncate">{post.title}</h4>
-                                        <p className="text-sm text-muted-foreground line-clamp-2">
-                                            {post.content}
-                                        </p>
-                                        <p className="text-xs text-muted-foreground mt-1">
-                                            By {post.author.name ?? "Admin"}
-                                        </p>
-                                    </div>
-                                </div>
-                            ))}
+                        <Link href="/blog">
+                            <Button variant="outline" className="w-full justify-between">
+                                Read Latest Articles
+                                <ArrowRight className="h-4 w-4" />
+                            </Button>
+                        </Link>
+                        <Link href="/feed">
+                            <Button variant="outline" className="w-full justify-between">
+                                Browse Feed
+                                <ArrowRight className="h-4 w-4" />
+                            </Button>
+                        </Link>
+                    </CardContent>
+                </Card>
+
+                <Card>
+                    <CardHeader>
+                        <CardTitle>Your Profile</CardTitle>
+                        <CardDescription>
+                            Manage your account settings
+                        </CardDescription>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                        <div className="flex items-center gap-4">
+                            <Avatar className="h-16 w-16">
+                                <AvatarImage src={user.image ?? undefined} />
+                                <AvatarFallback className="bg-primary text-primary-foreground text-xl">
+                                    {getInitials(displayName)}
+                                </AvatarFallback>
+                            </Avatar>
+                            <div>
+                                <p className="font-medium">{displayName}</p>
+                                <p className="text-sm text-muted-foreground">{user.email}</p>
+                            </div>
                         </div>
-                    )}
-                </CardContent>
-            </Card>
-        </div>
+                    </CardContent>
+                </Card>
+            </div>
+        </DashboardShell>
     );
 }

@@ -19,6 +19,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { YmitLogo } from "@/components/brand/logo";
 import { cn } from "@/lib/utils";
+import { useAuth } from "@/contexts/auth-context";
 
 // Primary navigation links (left column - large text)
 const primaryLinks = [
@@ -85,11 +86,8 @@ const footerInfo = {
   email: "info@ymitacademy.com",
 };
 
-interface FullscreenMenuProps {
-  session?: { user?: { name?: string | null } } | null;
-}
-
-export function FullscreenMenu({ session }: FullscreenMenuProps) {
+export function FullscreenMenu() {
+  const { user } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);

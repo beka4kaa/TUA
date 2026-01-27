@@ -7,14 +7,15 @@
  * - Typing effect on headline (desktop only, respects reduced motion)
  * - Clean mobile layout (no chips/badges)
  * - Subtle background decorations with parallax
- * - Glassmorphism effects
+ * - Enhanced glassmorphism effects
  * - Smooth entrance animations
  * - Scroll indicator
+ * - Social icons (desktop only)
  */
 
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Instagram, Linkedin, Youtube } from "lucide-react";
 import { useMultiLineTyping } from "@/hooks/use-typing-effect";
 import { useIsMobile } from "@/hooks/use-media-query";
 import { usePrefersReducedMotion, useIsTouchDevice } from "@/hooks/use-reduced-motion";
@@ -30,6 +31,7 @@ import {
   GridDots,
   DottedCircle 
 } from "@/components/decorations/svg-decorations";
+import { LargeParallaxCircle } from "@/components/decorations/section-decoration";
 import Image from "next/image";
 
 // Hero headline lines
@@ -162,22 +164,33 @@ export function HeroSection() {
   const y1 = useTransform(scrollY, [0, 500], [0, -80]);
   const y2 = useTransform(scrollY, [0, 500], [0, -120]);
   const y3 = useTransform(scrollY, [0, 500], [0, 60]);
+  const bgY = useTransform(scrollY, [0, 800], [0, 150]);
 
   // Simplified variants for reduced motion
   const getVariants = (variant: typeof fadeInUp) => 
     shouldReduceMotion ? { hidden: { opacity: 0 }, visible: { opacity: 1 } } : variant;
 
   return (
-    <section className="relative min-h-[75vh] sm:min-h-[85vh] flex flex-col justify-center py-16 sm:py-20 md:py-28 overflow-hidden">
+    <section className="relative min-h-[75vh] sm:min-h-[85vh] flex flex-col justify-center py-16 sm:py-20 md:py-28 overflow-hidden bg-gradient-to-b from-white to-[#F6F6F6]">
       {/* Background particles - desktop only */}
       {ENABLE_HERO_INTERACTIVITY && !isMobile && <BackgroundParticles />}
 
-      {/* Background topographic pattern - subtle */}
-      <div className="parallax-container">
-        <motion.div
-          className="absolute top-0 left-0 w-full h-full opacity-[0.02] pointer-events-none"
-          style={{ y: shouldReduceMotion ? 0 : y1 }}
-        >
+      {/* Large parallax circle - right side */}
+      <LargeParallaxCircle 
+        position="right" 
+        top="5%" 
+        size={650} 
+        opacity={0.05}
+        speedFactor={0.2}
+        color="gray"
+      />
+
+      {/* Background topographic pattern - subtle with parallax */}
+      <motion.div
+        className="absolute top-0 left-0 w-full h-full pointer-events-none"
+        style={{ y: shouldReduceMotion ? 0 : bgY }}
+      >
+        <div className="absolute top-0 left-0 w-full h-full opacity-[0.015]">
           <Image
             src="/vectors/topographic-1.svg"
             alt=""
@@ -185,8 +198,8 @@ export function HeroSection() {
             className="object-cover"
             priority={false}
           />
-        </motion.div>
-      </div>
+        </div>
+      </motion.div>
 
       {/* Background decorations - hidden on mobile */}
       {!isMobile && (
@@ -231,9 +244,10 @@ export function HeroSection() {
           initial="hidden"
           animate="visible"
         >
-          {/* Small tagline - Glassmorphism pill */}
+          {/* Small tagline - Enhanced Glassmorphism pill */}
           <motion.div variants={getVariants(fadeInUp)} className="mb-6 sm:mb-8">
-            <span className="glass-pill inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-[10px] sm:text-xs font-medium text-[#6B6B6B] uppercase tracking-wider transition-all duration-300 hover:shadow-md">
+            <span className="glass-pill inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-[10px] sm:text-xs font-medium text-[#525252] uppercase tracking-wider">
+              <span className="w-1.5 h-1.5 rounded-full bg-brand-orange animate-pulse" />
               University Admissions Consulting
             </span>
           </motion.div>
@@ -256,26 +270,69 @@ export function HeroSection() {
           >
             <Link
               href="/signup"
-              className="group inline-flex items-center justify-center gap-2 w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 bg-brand-orange text-white text-sm font-medium rounded-full hover:shadow-lg hover:shadow-brand-orange/20 hover:-translate-y-0.5 transition-all duration-300 hover-glow-orange"
+              className="group inline-flex items-center justify-center gap-2 w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 bg-brand-orange text-white text-sm font-medium rounded-full hover:shadow-lg hover:shadow-brand-orange/25 hover:-translate-y-0.5 transition-all duration-300 btn-hover"
             >
               Book Free Consultation
               <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
             </Link>
             <Link
               href="#results"
-              className="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 border border-[#111111] text-[#111111] text-sm font-medium rounded-full hover:bg-[#111111] hover:text-white transition-all duration-300"
+              className="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 glass-pill text-[#111111] text-sm font-medium rounded-full hover:bg-white/90 transition-all duration-300"
             >
               View Success Stories
             </Link>
           </motion.div>
         </motion.div>
+
+        {/* Social Icons - desktop only, left side */}
+        {!isMobile && (
+          <motion.div 
+            className="absolute left-0 bottom-0 hidden lg:flex flex-col gap-4 items-center"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 1.2, duration: 0.6 }}
+          >
+            <div className="flex flex-col gap-3">
+              <a 
+                href="https://instagram.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="w-9 h-9 rounded-full glass-pill flex items-center justify-center text-[#6B6B6B] hover:text-brand-blue transition-colors"
+              >
+                <Instagram className="w-4 h-4" />
+              </a>
+              <a 
+                href="https://linkedin.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="w-9 h-9 rounded-full glass-pill flex items-center justify-center text-[#6B6B6B] hover:text-brand-blue transition-colors"
+              >
+                <Linkedin className="w-4 h-4" />
+              </a>
+              <a 
+                href="https://youtube.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="w-9 h-9 rounded-full glass-pill flex items-center justify-center text-[#6B6B6B] hover:text-brand-blue transition-colors"
+              >
+                <Youtube className="w-4 h-4" />
+              </a>
+            </div>
+            <div className="w-px h-12 bg-[#D4D4D4]/50" />
+          </motion.div>
+        )}
       </div>
 
       {/* Scroll Indicator - desktop only */}
       {!isMobile && (
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10">
+        <motion.div 
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.5, duration: 0.6 }}
+        >
           <ScrollChevrons targetId="about" />
-        </div>
+        </motion.div>
       )}
     </section>
   );

@@ -29,7 +29,6 @@ interface Tag {
 }
 
 interface PostTag {
-  tagId: string;
   tag: Tag;
 }
 
@@ -44,9 +43,9 @@ interface Post {
   title: string;
   slug: string;
   excerpt: string | null;
-  content: string;
+  content?: string;
   coverImageUrl: string | null;
-  publishedAt: Date | null;
+  publishedAt: string | null;
   readingTimeMinutes: number;
   tags: PostTag[];
   author: Author;
@@ -87,7 +86,7 @@ export function ArticleClient({ post, relatedPosts }: ArticleClientProps) {
           className="absolute right-0 top-0 w-96 h-96 opacity-[0.02]"
           color="#28547C"
         />
-        
+
         <div className="container mx-auto px-4 py-12 md:py-20">
           <motion.div
             variants={containerVariants}
@@ -105,7 +104,7 @@ export function ArticleClient({ post, relatedPosts }: ArticleClientProps) {
                 Back to Blog
               </Link>
             </motion.div>
-            
+
             {/* Tags */}
             {post.tags.length > 0 && (
               <motion.div variants={itemVariants} className="flex flex-wrap gap-2 mb-6">
@@ -121,7 +120,7 @@ export function ArticleClient({ post, relatedPosts }: ArticleClientProps) {
                 ))}
               </motion.div>
             )}
-            
+
             {/* Title */}
             <motion.h1
               variants={itemVariants}
@@ -129,7 +128,7 @@ export function ArticleClient({ post, relatedPosts }: ArticleClientProps) {
             >
               {post.title}
             </motion.h1>
-            
+
             {/* Meta */}
             <motion.div
               variants={itemVariants}
@@ -141,12 +140,12 @@ export function ArticleClient({ post, relatedPosts }: ArticleClientProps) {
                   {formatDate(post.publishedAt)}
                 </span>
               )}
-              
+
               <span className="inline-flex items-center gap-1.5">
                 <Clock className="w-4 h-4" />
                 {post.readingTimeMinutes} min read
               </span>
-              
+
               {post.author.name && (
                 <span className="inline-flex items-center gap-1.5">
                   <User className="w-4 h-4" />
@@ -157,7 +156,7 @@ export function ArticleClient({ post, relatedPosts }: ArticleClientProps) {
           </motion.div>
         </div>
       </section>
-      
+
       {/* Cover Image */}
       {post.coverImageUrl && (
         <section className="relative">
@@ -181,14 +180,14 @@ export function ArticleClient({ post, relatedPosts }: ArticleClientProps) {
           </div>
         </section>
       )}
-      
+
       {/* Content */}
       <section className="relative py-12 md:py-20">
         <DecorDots
           className="absolute left-0 top-1/4 w-24 h-24 opacity-[0.03]"
           color="#28547C"
         />
-        
+
         <div className="container mx-auto px-4">
           <motion.article
             initial={{ opacity: 0, y: 20 }}
@@ -202,17 +201,17 @@ export function ArticleClient({ post, relatedPosts }: ArticleClientProps) {
                 {post.excerpt}
               </p>
             )}
-            
+
             {/* Markdown content */}
             <div className="prose prose-lg prose-gray max-w-none prose-headings:font-display prose-headings:text-[#111111] prose-a:text-[#28547C] prose-a:no-underline hover:prose-a:underline prose-img:rounded-xl prose-pre:bg-gray-900 prose-code:text-[#E67E22]">
               <ReactMarkdown remarkPlugins={[remarkGfm]}>
-                {post.content}
+                {post.content || ""}
               </ReactMarkdown>
             </div>
           </motion.article>
         </div>
       </section>
-      
+
       {/* Subscribe CTA */}
       <section className="py-16 border-y border-gray-100">
         <div className="container mx-auto px-4">
@@ -233,7 +232,7 @@ export function ArticleClient({ post, relatedPosts }: ArticleClientProps) {
           </motion.div>
         </div>
       </section>
-      
+
       {/* Related Posts */}
       {relatedPosts.length > 0 && (
         <section className="py-16 md:py-24 bg-gray-50/50">
@@ -247,7 +246,7 @@ export function ArticleClient({ post, relatedPosts }: ArticleClientProps) {
               <h2 className="font-display text-2xl md:text-3xl font-bold text-[#111111] mb-10">
                 OTHER ARTICLES
               </h2>
-              
+
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {relatedPosts.map((relatedPost, index) => (
                   <BlogCard
