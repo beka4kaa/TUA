@@ -19,11 +19,14 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-dev-secret-key-change-in-p
 
 DEBUG = os.getenv('DEBUG', 'True').lower() == 'true'
 
-# Allow Railway and localhost
+# Allow Railway, Vercel and localhost
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
 ALLOWED_HOSTS.append('.railway.app')
+ALLOWED_HOSTS.append('.vercel.app')
 CSRF_TRUSTED_ORIGINS = [
     'https://*.railway.app',
+    'https://*.vercel.app',
+    'https://ymit.vercel.app',
     'http://localhost:3000',
     'http://127.0.0.1:3000',
 ]
@@ -159,6 +162,8 @@ CORS_ALLOW_ALL_ORIGINS = DEBUG
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
     'http://127.0.0.1:3000',
+    'https://ymit.vercel.app',
+    'https://ymit-production.up.railway.app',
 ]
 CORS_ALLOW_CREDENTIALS = True
 
