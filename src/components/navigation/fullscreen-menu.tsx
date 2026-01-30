@@ -205,7 +205,7 @@ export function FullscreenMenu() {
     open: { 
       opacity: 1, 
       y: 0,
-      transition: { delay: 0.05, duration: 0.3, ease: "easeOut" }
+      transition: { delay: 0.05, duration: 0.3, ease: "easeOut" as const }
     },
   };
 
@@ -220,7 +220,7 @@ export function FullscreenMenu() {
     open: { 
       opacity: 1, 
       x: 0,
-      transition: { duration: 0.25, ease: "easeOut" }
+      transition: { duration: 0.25, ease: "easeOut" as const }
     },
   };
 
@@ -229,7 +229,7 @@ export function FullscreenMenu() {
     open: { 
       opacity: 1, 
       y: 0,
-      transition: { duration: 0.3, ease: "easeOut" }
+      transition: { duration: 0.3, ease: "easeOut" as const }
     },
   };
 

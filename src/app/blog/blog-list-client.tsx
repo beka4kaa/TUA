@@ -19,10 +19,10 @@ import { BlogPagination } from "@/components/blog/blog-pagination";
 import { DecorRings, DecorDots } from "@/components/decor/background-decorations";
 
 interface Tag {
-  id: string;
+  id: number;
   name: string;
   slug: string;
-  postCount: number;
+  postCount?: number;
 }
 
 interface PostTag {

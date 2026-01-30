@@ -10,10 +10,10 @@ import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 interface Tag {
-  id: string;
+  id: number;
   name: string;
   slug: string;
-  postCount: number;
+  postCount?: number;
 }
 
 interface TagFilterProps {
@@ -62,7 +62,7 @@ export function TagFilter({ tags, activeTag, onTagChange }: TagFilterProps) {
             )}
           >
             {tag.name}
-            {tag.postCount > 0 && (
+            {tag.postCount && tag.postCount > 0 && (
               <span className={cn(
                 "ml-1.5 text-xs",
                 activeTag === tag.slug ? "text-white/70" : "text-gray-400"
