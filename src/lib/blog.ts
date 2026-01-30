@@ -4,7 +4,7 @@
  * This module provides functions to interact with the Django blog API
  */
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://ymit-production.up.railway.app/api';
 
 // Types
 export interface Tag {

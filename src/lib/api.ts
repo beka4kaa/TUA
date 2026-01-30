@@ -118,7 +118,7 @@ export interface ApiSuccess {
 // API Configuration
 // ============================================
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://ymit-production.up.railway.app/api';
 
 // Token storage keys
 const ACCESS_TOKEN_KEY = 'ymit_access_token';
