@@ -72,8 +72,8 @@ class SignUpSerializer(serializers.Serializer):
     
     email = serializers.EmailField()
     password = serializers.CharField(min_length=8, max_length=128, write_only=True)
-    first_name = serializers.CharField(min_length=1, max_length=100, required=False, allow_blank=True)
-    last_name = serializers.CharField(min_length=1, max_length=100, required=False, allow_blank=True)
+    first_name = serializers.CharField(max_length=100, required=False, allow_blank=True, default='')
+    last_name = serializers.CharField(max_length=100, required=False, allow_blank=True, default='')
     
     def validate_email(self, value):
         value = value.lower().strip()
