@@ -1,10 +1,71 @@
 """
 Email utilities for YMIT Academy
+Supports: Django SMTP, Resend API
 """
 
+import os
+import requests
 from django.core.mail import send_mail
 from django.conf import settings
 from django.template.loader import render_to_string
+
+
+def send_email_via_resend(to_email: str, subject: str, html_content: str, text_content: str) -> bool:
+    """Send email using Resend API"""
+    api_key = os.getenv('RESEND_API_KEY')
+    if not api_key:
+        print("RESEND_API_KEY not configured")
+        return False
+    
+    try:
+        response = requests.post(
+            'https://api.resend.com/emails',
+            headers={
+                'Authorization': f'Bearer {api_key}',
+                'Content-Type': 'application/json'
+            },
+            json={
+                'from': os.getenv('RESEND_FROM_EMAIL', 'YMIT Academy <onboarding@resend.dev>'),
+                'to': [to_email],
+                'subject': subject,
+                'html': html_content,
+                'text': text_content,
+            },
+            timeout=10
+        )
+        
+        if response.status_code == 200:
+            print(f"Email sent via Resend to {to_email}")
+            return True
+        else:
+            print(f"Resend error: {response.status_code} - {response.text}")
+            return False
+    except Exception as e:
+        print(f"Resend exception: {e}")
+        return False
+
+
+def send_email(to_email: str, subject: str, html_content: str, text_content: str) -> bool:
+    """Send email using configured provider (Resend or Django SMTP)"""
+    
+    # Try Resend first if configured
+    if os.getenv('RESEND_API_KEY'):
+        return send_email_via_resend(to_email, subject, html_content, text_content)
+    
+    # Fallback to Django SMTP
+    try:
+        send_mail(
+            subject=subject,
+            message=text_content,
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            recipient_list=[to_email],
+            html_message=html_content,
+            fail_silently=False,
+        )
+        return True
+    except Exception as e:
+        print(f"Django SMTP error: {e}")
+        return False
 
 
 def send_verification_email(user, token: str):
@@ -80,19 +141,7 @@ YMIT Academy Team
 </html>
 """
     
-    try:
-        send_mail(
-            subject=subject,
-            message=message,
-            from_email=settings.DEFAULT_FROM_EMAIL,
-            recipient_list=[user.email],
-            html_message=html_message,
-            fail_silently=False,
-        )
-        return True
-    except Exception as e:
-        print(f"Failed to send verification email: {e}")
-        return False
+    return send_email(user.email, subject, html_message, message)
 
 
 def send_password_reset_email(user, token: str):
@@ -170,16 +219,4 @@ YMIT Academy Team
 </html>
 """
     
-    try:
-        send_mail(
-            subject=subject,
-            message=message,
-            from_email=settings.DEFAULT_FROM_EMAIL,
-            recipient_list=[user.email],
-            html_message=html_message,
-            fail_silently=False,
-        )
-        return True
-    except Exception as e:
-        print(f"Failed to send password reset email: {e}")
-        return False
+    return send_email(user.email, subject, html_message, message)
