@@ -274,8 +274,8 @@ export const authApi = {
       body: JSON.stringify({
         email: data.email,
         password: data.password,
-        first_name: data.firstName,
-        last_name: data.lastName,
+        first_name: data.firstName || '',
+        last_name: data.lastName || '',
       }),
       skipAuth: true,
     });

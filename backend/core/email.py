@@ -17,6 +17,8 @@ def send_email_via_resend(to_email: str, subject: str, html_content: str, text_c
         print("RESEND_API_KEY not configured")
         return False
     
+    from_email = os.getenv('RESEND_FROM_EMAIL', 'onboarding@resend.dev')
+    
     try:
         response = requests.post(
             'https://api.resend.com/emails',
@@ -25,17 +27,16 @@ def send_email_via_resend(to_email: str, subject: str, html_content: str, text_c
                 'Content-Type': 'application/json'
             },
             json={
-                'from': os.getenv('RESEND_FROM_EMAIL', 'YMIT Academy <onboarding@resend.dev>'),
-                'to': [to_email],
+                'from': from_email,
+                'to': to_email,
                 'subject': subject,
                 'html': html_content,
-                'text': text_content,
             },
             timeout=10
         )
         
         if response.status_code == 200:
-            print(f"Email sent via Resend to {to_email}")
+            print(f"Email sent via Resend to {to_email}, id: {response.json().get('id')}")
             return True
         else:
             print(f"Resend error: {response.status_code} - {response.text}")
