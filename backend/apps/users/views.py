@@ -57,39 +57,26 @@ class SignUpView(APIView):
             status=Subscription.Status.ACTIVE,
         )
         
-        # Send verification email
-        email_sent = send_verification_email(user, token)
-        
-        # Get frontend URL with fallback
-        frontend_url = getattr(settings, 'FRONTEND_URL', 'http://localhost:3000')
-        verification_url = f"{frontend_url}/verify-email?token={token}"
-        
-        if settings.DEBUG:
-            print(f"\n{'='*50}")
-            print(f"EMAIL VERIFICATION")
-            print(f"Email: {user.email}")
-            print(f"Token: {token}")
-            print(f"URL: {verification_url}")
-            print(f"Email sent: {email_sent}")
-            print(f"{'='*50}\n")
-        
+        # Активируем пользователя сразу, не требуем подтверждения email
+        user.status = User.Status.ACTIVE
+        user.email_verified = timezone.now()
+        user.save()
+
+        # Create default FREE subscription
+        Subscription.objects.create(
+            user=user,
+            tier=Subscription.Tier.FREE,
+            status=Subscription.Status.ACTIVE,
+        )
+
         return Response(
             {
                 'success': True,
-                'message': 'Account created. Please check your email for verification link.',
+                'message': 'Account created. You can now log in.',
                 'email': user.email,
-                **({"verificationUrl": verification_url} if settings.DEBUG else {}),
             },
             status=status.HTTP_201_CREATED
         )
-
-
-class VerifyEmailView(APIView):
-    """Verify email with token"""
-    
-    permission_classes = [permissions.AllowAny]
-    
-    def post(self, request):
         serializer = VerifyEmailSerializer(data=request.data)
         
         if not serializer.is_valid():

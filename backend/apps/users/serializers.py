@@ -154,13 +154,13 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
         except User.DoesNotExist:
             raise serializers.ValidationError({'detail': 'Invalid email or password'})
         
-        # Check if email is verified
-        if not user.is_verified:
-            raise serializers.ValidationError({
-                'detail': 'Please verify your email before logging in',
-                'code': 'email_not_verified',
-                'email': email
-            })
+        # Отключаем проверку подтверждения email при логине
+        # if not user.is_verified:
+        #     raise serializers.ValidationError({
+        #         'detail': 'Please verify your email before logging in',
+        #         'code': 'email_not_verified',
+        #         'email': email
+        #     })
         
         # Check if account is suspended
         if user.status == User.Status.SUSPENDED:
