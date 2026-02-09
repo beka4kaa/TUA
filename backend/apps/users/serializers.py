@@ -98,7 +98,8 @@ class SignUpSerializer(serializers.Serializer):
             last_name=validated_data.get('last_name', ''),
             password=make_password(validated_data['password']),
             role=User.Role.USER,
-            status=User.Status.NEW,
+            status=User.Status.ACTIVE,
+            email_verified=timezone.now(),
         )
         return user
 
