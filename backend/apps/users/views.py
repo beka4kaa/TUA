@@ -54,7 +54,6 @@ class SignUpView(APIView):
         Subscription.objects.create(
             user=user,
             tier=Subscription.Tier.FREE,
-            status=Subscription.Status.ACTIVE,
         )
         
         return Response(
