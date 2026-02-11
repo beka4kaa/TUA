@@ -57,18 +57,6 @@ class SignUpView(APIView):
             status=Subscription.Status.ACTIVE,
         )
         
-        # Активируем пользователя сразу, не требуем подтверждения email
-        user.status = User.Status.ACTIVE
-        user.email_verified = timezone.now()
-        user.save()
-
-        # Create default FREE subscription
-        Subscription.objects.create(
-            user=user,
-            tier=Subscription.Tier.FREE,
-            status=Subscription.Status.ACTIVE,
-        )
-
         return Response(
             {
                 'success': True,
@@ -77,6 +65,14 @@ class SignUpView(APIView):
             },
             status=status.HTTP_201_CREATED
         )
+
+
+class VerifyEmailView(APIView):
+    """Verify email with token"""
+    
+    permission_classes = [permissions.AllowAny]
+    
+    def post(self, request):
         serializer = VerifyEmailSerializer(data=request.data)
         
         if not serializer.is_valid():
