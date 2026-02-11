@@ -90,6 +90,7 @@ class SignUpSerializer(serializers.Serializer):
         return value
     
     def create(self, validated_data):
+        from django.utils import timezone
         email = validated_data['email'].lower().strip()
         user = User.objects.create(
             username=email,
@@ -100,6 +101,8 @@ class SignUpSerializer(serializers.Serializer):
             role=User.Role.USER,
             status=User.Status.ACTIVE,
             email_verified=timezone.now(),
+            verification_token=None,
+            verification_expires=None,
         )
         return user
 
@@ -155,13 +158,7 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
         except User.DoesNotExist:
             raise serializers.ValidationError({'detail': 'Invalid email or password'})
         
-        # Отключаем проверку подтверждения email при логине
-        # if not user.is_verified:
-        #     raise serializers.ValidationError({
-        #         'detail': 'Please verify your email before logging in',
-        #         'code': 'email_not_verified',
-        #         'email': email
-        #     })
+        # Отключаем проверку подтверждения email при логине (всегда считаем email подтвержденным)
         
         # Check if account is suspended
         if user.status == User.Status.SUSPENDED:
