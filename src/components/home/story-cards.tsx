@@ -21,6 +21,7 @@
 import { Play, Quote } from "lucide-react";
 import Image from "next/image";
 import { AnimatedItem } from "@/components/motion/animations";
+import { useLanguage } from "@/contexts/language-context";
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -50,7 +51,7 @@ export type StoryCardData = {
 };
 
 // ─── Story card data  ─────────────────────────────────────────────────────────
-// TODO: replace coverImage/videoUrl null values with real paths/URLs
+// Static non-translatable ids + structure; text comes from language context in StoryMasonryGrid
 
 export const storyCards: StoryCardData[] = [
   // ── Photo cards ─────────────────────────────────────────────────────────
@@ -154,13 +155,13 @@ function PhotoCard({ card }: { card: StoryCardData }) {
 
   return (
     <div
-      className={`group cursor-pointer glass-card p-3 sm:p-4 rounded-xl sm:rounded-2xl hover-lift break-inside-avoid mb-4 sm:mb-5 ${
+      className={`group cursor-pointer p-3 sm:p-4 rounded-xl sm:rounded-2xl break-inside-avoid mb-4 sm:mb-5 transition-all duration-300 hover:shadow-xl hover:shadow-black/[0.08] dark:hover:shadow-black/30 hover:-translate-y-1 hover:bg-white dark:hover:bg-[#1e1e1e] ${
         isTall ? "row-span-2" : ""
       }`}
     >
       {/* Image / placeholder */}
       <div
-        className={`relative ${isTall ? "aspect-[3/4]" : "aspect-[16/10]"} rounded-lg sm:rounded-xl overflow-hidden mb-3 sm:mb-4 bg-[#E8EEF3]`}
+        className={`relative ${isTall ? "aspect-[3/4]" : "aspect-[16/10]"} rounded-lg sm:rounded-xl overflow-hidden mb-3 sm:mb-4 bg-[#E8E8E8] dark:bg-[#252525]`}
       >
         {card.coverImage ? (
           <Image
@@ -190,11 +191,11 @@ function PhotoCard({ card }: { card: StoryCardData }) {
       </div>
 
       {/* Text */}
-      <h3 className="font-medium text-sm sm:text-base text-[#111111] group-hover:text-brand-blue transition-colors">
+      <h3 className="font-medium text-sm sm:text-base text-[#111111] dark:text-[#F0F0F0] group-hover:text-brand-blue transition-colors">
         {card.title}
       </h3>
       {card.subtitle && (
-        <p className="text-[10px] sm:text-xs text-[#6B6B6B] mt-0.5">{card.subtitle}</p>
+        <p className="text-[10px] sm:text-xs text-[#6B6B6B] dark:text-[#888] mt-0.5">{card.subtitle}</p>
       )}
     </div>
   );
@@ -206,7 +207,7 @@ function VideoCard({ card }: { card: StoryCardData }) {
 
   return (
     <div
-      className={`group cursor-pointer glass-card p-3 sm:p-4 rounded-xl sm:rounded-2xl hover-lift break-inside-avoid mb-4 sm:mb-5 ${
+      className={`group cursor-pointer p-3 sm:p-4 rounded-xl sm:rounded-2xl break-inside-avoid mb-4 sm:mb-5 transition-all duration-300 hover:shadow-xl hover:shadow-black/[0.08] dark:hover:shadow-black/30 hover:-translate-y-1 hover:bg-white dark:hover:bg-[#1e1e1e] ${
         isTall ? "row-span-2" : ""
       }`}
     >
@@ -254,11 +255,11 @@ function VideoCard({ card }: { card: StoryCardData }) {
         )}
       </div>
 
-      <h3 className="font-medium text-sm sm:text-base text-[#111111] group-hover:text-brand-blue transition-colors">
+      <h3 className="font-medium text-sm sm:text-base text-[#111111] dark:text-[#F0F0F0] group-hover:text-brand-blue transition-colors">
         {card.title}
       </h3>
       {card.subtitle && (
-        <p className="text-[10px] sm:text-xs text-[#6B6B6B] mt-0.5">{card.subtitle}</p>
+        <p className="text-[10px] sm:text-xs text-[#6B6B6B] dark:text-[#888] mt-0.5">{card.subtitle}</p>
       )}
     </div>
   );
@@ -269,7 +270,7 @@ function QuoteCard({ card }: { card: StoryCardData }) {
 
   return (
     <div
-      className={`relative glass-card p-5 sm:p-6 rounded-xl sm:rounded-2xl hover-lift break-inside-avoid mb-4 sm:mb-5 overflow-hidden border ${
+      className={`relative p-5 sm:p-6 rounded-xl sm:rounded-2xl break-inside-avoid mb-4 sm:mb-5 overflow-hidden border transition-all duration-300 hover:shadow-xl hover:shadow-black/[0.08] dark:hover:shadow-black/30 hover:-translate-y-1 hover:bg-white dark:hover:bg-[#1e1e1e] ${
         isOrange ? "border-[#8B3B3B]/20" : "border-[#2F3B69]/20"
       }`}
     >
@@ -285,7 +286,7 @@ function QuoteCard({ card }: { card: StoryCardData }) {
         className={`w-7 h-7 mb-3 ${isOrange ? "text-[#8B3B3B]/30" : "text-[#2F3B69]/30"}`}
       />
 
-      <blockquote className="text-sm sm:text-base text-[#111111] leading-relaxed mb-4 italic">
+      <blockquote className="text-sm sm:text-base text-[#111111] dark:text-[#F0F0F0] leading-relaxed mb-4 italic">
         &ldquo;{card.quote}&rdquo;
       </blockquote>
 
@@ -299,7 +300,7 @@ function QuoteCard({ card }: { card: StoryCardData }) {
           {card.author?.charAt(0) ?? "?"}
         </div>
         <div>
-          <p className="text-xs font-semibold text-[#111111]">{card.author}</p>
+          <p className="text-xs font-semibold text-[#111111] dark:text-[#F0F0F0]">{card.author}</p>
           <p className="text-[10px] text-[#A3A3A3]">{card.school}</p>
         </div>
       </div>
@@ -316,9 +317,41 @@ function StoryCard({ card }: { card: StoryCardData }) {
 }
 
 export function StoryMasonryGrid() {
+  const { t } = useLanguage();
+
+  // Merge translated text over the static card base data
+  const translatedCards: StoryCardData[] = storyCards.map((card) => {
+    if (card.type === "photo") {
+      const photoKey = card.id === "harvard-2024" ? "harvard"
+        : card.id === "stanford-2024" ? "stanford"
+        : card.id === "mit-2024" ? "mit"
+        : null;
+      if (photoKey && t.results.cards.photo[photoKey as keyof typeof t.results.cards.photo]) {
+        const p = t.results.cards.photo[photoKey as keyof typeof t.results.cards.photo];
+        return { ...card, title: p.title, subtitle: p.subtitle };
+      }
+    }
+    if (card.type === "video") {
+      const videoKey = card.id === "video-ivy-2024" ? "ivy"
+        : card.id === "video-oxford-2023" ? "oxford"
+        : null;
+      if (videoKey && t.results.cards.video[videoKey as keyof typeof t.results.cards.video]) {
+        const v = t.results.cards.video[videoKey as keyof typeof t.results.cards.video];
+        return { ...card, title: v.title, subtitle: v.subtitle };
+      }
+    }
+    if (card.type === "quote") {
+      const qTranslated = t.results.cards.quotes.find((q) => q.id === card.id);
+      if (qTranslated) {
+        return { ...card, quote: qTranslated.quote, author: qTranslated.author, school: qTranslated.school };
+      }
+    }
+    return card;
+  });
+
   return (
     <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 sm:gap-5">
-      {storyCards.map((card, index) => (
+      {translatedCards.map((card, index) => (
         <AnimatedItem key={card.id} index={index}>
           <StoryCard card={card} />
         </AnimatedItem>

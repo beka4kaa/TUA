@@ -15,10 +15,11 @@
 
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
-import { ArrowUpRight, Instagram, Linkedin, Youtube } from "lucide-react";
+import { ArrowUpRight, Instagram } from "lucide-react";
 import { useMultiLineTyping } from "@/hooks/use-typing-effect";
 import { useIsMobile } from "@/hooks/use-media-query";
 import { usePrefersReducedMotion, useIsTouchDevice } from "@/hooks/use-reduced-motion";
+import { useMemo } from "react";
 import { BackgroundParticles } from "@/components/interactive/background-particles";
 import { ScrollChevrons } from "@/components/ui/scroll-indicator";
 import { 
@@ -33,9 +34,10 @@ import {
 } from "@/components/decorations/svg-decorations";
 import { LargeParallaxCircle } from "@/components/decorations/section-decoration";
 import Image from "next/image";
+import { useLanguage } from "@/contexts/language-context";
 
-// Hero headline lines
-const HERO_LINES = ["WE HELP", "STUDENTS REACH", "TOP UNIVERSITIES"];
+// Hero headline lines — now driven by language context (see HeroTitle)
+// const HERO_LINES = ["WE HELP", "STUDENTS REACH", "TOP UNIVERSITIES"];
 
 // Animation variants
 const containerVariants = {
@@ -93,7 +95,10 @@ function HeroTitle() {
   const isMobile = useIsMobile();
   const prefersReducedMotion = usePrefersReducedMotion();
   const isTouchDevice = useIsTouchDevice();
+  const { t, language } = useLanguage();
   
+  const HERO_LINES = useMemo(() => [...t.hero.lines] as string[], [language]);
+
   // Disable typing on mobile, touch devices, or if user prefers reduced motion
   const shouldType = ENABLE_HERO_TYPING && !isMobile && !prefersReducedMotion && !isTouchDevice;
   
@@ -111,7 +116,7 @@ function HeroTitle() {
         {HERO_LINES.map((line, index) => (
           <motion.h1
             key={index}
-            className={`hero-title ${index === 2 ? "text-brand-blue" : "text-[#111111]"}`}
+            className={`hero-title ${index === 2 ? "text-brand-blue" : "text-[#111111] dark:text-[#F0F0F0]"}`}
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
@@ -138,7 +143,7 @@ function HeroTitle() {
         return (
           <h1
             key={index}
-            className={`hero-title ${isLastLine ? "text-brand-blue" : "text-[#111111]"}`}
+            className={`hero-title ${isLastLine ? "text-brand-blue" : "text-[#111111] dark:text-[#F0F0F0]"}`}
             style={{ 
               minHeight: "1.1em",
               visibility: index <= currentLine || displayText ? "visible" : "hidden"
@@ -158,6 +163,7 @@ function HeroTitle() {
 export function HeroSection() {
   const shouldReduceMotion = useReducedMotion();
   const isMobile = useIsMobile();
+  const { t } = useLanguage();
   
   // Parallax effect for decorations
   const { scrollY } = useScroll();
@@ -171,7 +177,7 @@ export function HeroSection() {
     shouldReduceMotion ? { hidden: { opacity: 0 }, visible: { opacity: 1 } } : variant;
 
   return (
-    <section className="relative min-h-[75vh] sm:min-h-[85vh] flex flex-col justify-center py-16 sm:py-20 md:py-28 overflow-hidden bg-gradient-to-b from-white to-[#F6F6F6]">
+    <section className="relative min-h-[75vh] sm:min-h-[85vh] flex flex-col justify-center py-16 sm:py-20 md:py-28 overflow-hidden bg-gradient-to-b from-white to-[#F6F6F6] dark:from-[#111111] dark:to-[#111111]">
       {/* Background particles - desktop only */}
       {ENABLE_HERO_INTERACTIVITY && !isMobile && <BackgroundParticles />}
 
@@ -246,9 +252,9 @@ export function HeroSection() {
         >
           {/* Small tagline - Enhanced Glassmorphism pill */}
           <motion.div variants={getVariants(fadeInUp)} className="mb-6 sm:mb-8">
-            <span className="glass-pill inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-[10px] sm:text-xs font-medium text-[#525252] uppercase tracking-wider">
+              <span className="glass-pill inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-[10px] sm:text-xs font-medium text-[#525252] dark:text-[#AAAAAA] uppercase tracking-wider">
               <span className="w-1.5 h-1.5 rounded-full bg-[#8B3B3B] animate-pulse" />
-              University Admissions Consulting
+              {t.hero.tagline}
             </span>
           </motion.div>
 
@@ -257,10 +263,10 @@ export function HeroSection() {
 
           {/* Subheadline */}
           <motion.p 
-            className="text-[#6B6B6B] text-sm sm:text-base md:text-lg max-w-md sm:max-w-lg mb-8 sm:mb-10 leading-relaxed"
+            className="text-[#6B6B6B] dark:text-[#999999] text-sm sm:text-base md:text-lg max-w-md sm:max-w-lg mb-8 sm:mb-10 leading-relaxed"
             variants={getVariants(fadeInUp)}
           >
-            Expert admissions consulting for undergraduate programs at elite institutions worldwide.
+            {t.hero.subheadline}
           </motion.p>
 
           {/* CTA Buttons */}
@@ -272,14 +278,14 @@ export function HeroSection() {
               href="/signup"
               className="group inline-flex items-center justify-center gap-2 w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 bg-[#8B3B3B] text-white text-sm font-medium rounded-full hover:shadow-lg hover:shadow-[#8B3B3B]/25 hover:-translate-y-0.5 transition-all duration-300 btn-hover"
             >
-              Book Free Consultation
+              {t.hero.bookConsultation}
               <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
             </Link>
             <Link
               href="#results"
-              className="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 glass-pill text-[#111111] text-sm font-medium rounded-full hover:bg-white/90 transition-all duration-300"
+              className="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 glass-pill text-[#111111] dark:text-[#F0F0F0] text-sm font-medium rounded-full hover:bg-white/90 dark:hover:bg-white/10 transition-all duration-300"
             >
-              View Success Stories
+              {t.hero.viewStories}
             </Link>
           </motion.div>
         </motion.div>
@@ -294,28 +300,12 @@ export function HeroSection() {
           >
             <div className="flex flex-col gap-3">
               <a 
-                href="https://instagram.com" 
+                href="https://instagram.com/top_universities_advisors" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="w-9 h-9 rounded-full glass-pill flex items-center justify-center text-[#6B6B6B] hover:text-brand-blue transition-colors"
               >
                 <Instagram className="w-4 h-4" />
-              </a>
-              <a 
-                href="https://linkedin.com" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="w-9 h-9 rounded-full glass-pill flex items-center justify-center text-[#6B6B6B] hover:text-brand-blue transition-colors"
-              >
-                <Linkedin className="w-4 h-4" />
-              </a>
-              <a 
-                href="https://youtube.com" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="w-9 h-9 rounded-full glass-pill flex items-center justify-center text-[#6B6B6B] hover:text-brand-blue transition-colors"
-              >
-                <Youtube className="w-4 h-4" />
               </a>
             </div>
             <div className="w-px h-12 bg-[#D4D4D4]/50" />

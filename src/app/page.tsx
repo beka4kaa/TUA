@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Play, ArrowUpRight } from "lucide-react";
@@ -8,7 +10,6 @@ import { FullscreenMenu } from "@/components/navigation/fullscreen-menu";
 import {
   whoWeAreAssets,
   reviewsAssets,
-  services,
 } from "@/constants/assets";
 import { servicesIcons, getServiceIcon } from "@/constants/illustrations";
 import { HeroSection } from "@/components/home/hero-section";
@@ -17,10 +18,13 @@ import { StoryMasonryGrid } from "@/components/home/story-cards";
 import { AnimatedSection, AnimatedItem, AnimatedLine } from "@/components/motion/animations";
 import { SectionDecoration, LargeParallaxCircle } from "@/components/decorations/section-decoration";
 import { HomeNavigation } from "@/components/home/home-navigation";
+import { useLanguage } from "@/contexts/language-context";
 
 export default function HomePage() {
+  const { t } = useLanguage();
+  const services = t.services.items;
   return (
-    <div className="flex flex-col min-h-screen bg-[#F6F6F6] relative">
+    <div className="flex flex-col min-h-screen bg-background relative">
 
       {/* ===== NAVIGATION ===== */}
       <HomeNavigation />
@@ -81,12 +85,12 @@ export default function HomePage() {
                   </button>
                   {/* Caption */}
                   <p className="text-white/50 text-xs uppercase tracking-widest mt-2">
-                    Meet the team — 2 min
+                    {t.about.videoCaption}
                   </p>
                 </div>
                 {/* Corner label */}
                 <span className="absolute top-3 left-3 bg-[#8B3B3B] text-white text-[10px] font-semibold uppercase tracking-wider px-2.5 py-1 rounded-full">
-                  Intro Video
+                  {t.about.videoLabel}
                 </span>
               </div>
             </AnimatedItem>
@@ -95,40 +99,40 @@ export default function HomePage() {
             <div className="w-full lg:w-1/2 flex flex-col justify-center">
               <AnimatedItem>
                 <p className="text-[10px] sm:text-xs text-[#A3A3A3] uppercase tracking-widest mb-3 sm:mb-4">
-                  We are a team of professionals
+                  {t.about.sectionLabel}
                 </p>
               </AnimatedItem>
 
               <AnimatedItem>
-                <h2 className="section-title text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-[#111111] mb-4 sm:mb-6">
-                  WHO WE ARE
+                <h2 className="section-title text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-[#111111] dark:text-[#F0F0F0] mb-4 sm:mb-6">
+                  {t.about.heading}
                 </h2>
               </AnimatedItem>
 
               <AnimatedItem>
-                <div className="space-y-3 sm:space-y-4 text-[#6B6B6B] text-sm leading-relaxed mb-6 sm:mb-8">
+                <div className="space-y-3 sm:space-y-4 text-[#6B6B6B] dark:text-[#9B9B9B] text-sm leading-relaxed mb-6 sm:mb-8">
                   {/* Paragraph 1 */}
-                  <p className="text-sm sm:text-base text-[#111111] font-medium">
-                    A dedicated team helping students achieve their dreams of studying at top universities worldwide from the US, Canada, the UK, Asia, Australia and Europe.
+                  <p className="text-sm sm:text-base text-[#111111] dark:text-[#F0F0F0] font-medium">
+                    {t.about.intro}
                   </p>
 
                   {/* University reference list */}
-                  <div className="text-xs text-[#6B6B6B] leading-relaxed space-y-1 pl-3 border-l-2 border-brand-blue/20">
-                    <p><span className="font-semibold text-[#111111]">USA:</span> Harvard, Yale, Columbia, UPenn, Cornell, Brown, NYU (New York, Abu Dhabi, Shanghai), Georgetown, U Chicago, Amherst, Pomona, Northwestern, Northeastern, Boston U, Boulder, UC Berkeley, UC Irvine, UCLA, UCSD, Stanford, Caltech…</p>
-                    <p><span className="font-semibold text-[#111111]">Canada:</span> U of T (Lester B Pearson); UBC (International Scholarship), McGill…</p>
-                    <p><span className="font-semibold text-[#111111]">UK:</span> Oxford, Cambridge, Imperial, UCL, King&apos;s, Warwick, Bath, Manchester, St Andrews…</p>
-                    <p><span className="font-semibold text-[#111111]">Europe:</span> TU Delft, Amsterdam, Sciences Po, École Polytechnique, KU Leuven, Polimi, Bocconi, IE, ESADE, Sapienza</p>
+                  <div className="text-xs text-[#6B6B6B] dark:text-[#888888] leading-relaxed space-y-1 pl-3 border-l-2 border-brand-blue/20">
+                    <p><span className="font-semibold text-[#111111] dark:text-[#F0F0F0]">USA:</span> {t.about.usa}</p>
+                    <p><span className="font-semibold text-[#111111] dark:text-[#F0F0F0]">Canada:</span> {t.about.canada}</p>
+                    <p><span className="font-semibold text-[#111111] dark:text-[#F0F0F0]">UK:</span> {t.about.uk}</p>
+                    <p><span className="font-semibold text-[#111111] dark:text-[#F0F0F0]">Europe:</span> {t.about.europe}</p>
                   </div>
 
                   {/* Paragraph 2 — OUR APPROACH */}
                   <p>
-                    <strong className="text-[#111111]">OUR APPROACH</strong><br />
-                    Personalized guidance based on your unique profile, strengths, and aspirations, with packages from middle school to last minute emergency applications.
+                    <strong className="text-[#111111] dark:text-[#F0F0F0]">{t.about.approachLabel}</strong><br />
+                    {t.about.approachText}
                   </p>
 
-                  {/* Paragraph 3 — new */}
+                  {/* Paragraph 3 */}
                   <p>
-                    An experienced team of counselors, teachers, alumni, and former admissions officers from all over the world helping students achieve their dreams of studying at Top Universities worldwide.
+                    {t.about.teamText}
                   </p>
                 </div>
               </AnimatedItem>
@@ -179,8 +183,10 @@ export default function HomePage() {
             {/* Left - Title only */}
             <div className="w-full lg:w-1/3">
               <AnimatedItem>
-                <h2 className="section-title text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-[#111111]">
-                  SERVICES &<br />APPROACH
+                <h2 className="section-title text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-[#111111] dark:text-[#F0F0F0]">
+                  {t.services.heading.split("\n").map((line, i) => (
+                    <span key={i}>{line}{i === 0 && <br />}</span>
+                  ))}
                 </h2>
               </AnimatedItem>
             </div>
@@ -188,16 +194,16 @@ export default function HomePage() {
             {/* Right - Services List */}
             <div className="w-full lg:w-2/3">
               {/* Animated line at top */}
-              <AnimatedLine className="mb-0" />
+              {/* removed AnimatedLine — white strip was too distracting */}
               {services.map((service, index) => {
                 const serviceIcon = getServiceIcon(service.number);
                 return (
                   <AnimatedItem key={service.number} index={index}>
-                    <div className="group py-4 sm:py-6 border-b border-[#EDEDED]/60 cursor-pointer hover:bg-white/50 -mx-3 sm:-mx-4 px-3 sm:px-4 rounded-xl transition-all duration-300 hover-lift">
+                    <div className="group py-4 sm:py-6 border-b border-[#EDEDED]/60 dark:border-[#333]/60 cursor-pointer hover:bg-black/[0.03] dark:hover:bg-white/[0.04] -mx-3 sm:-mx-4 px-3 sm:px-4 rounded-xl transition-all duration-300 hover-lift">
                       <div className="flex items-start gap-4 sm:gap-6">
                         {/* Service illustration */}
                         {serviceIcon && (
-                          <div className="relative w-10 h-10 sm:w-12 sm:h-12 flex-shrink-0 rounded-lg overflow-hidden bg-[#F8F9FA]">
+                          <div className="relative w-10 h-10 sm:w-12 sm:h-12 flex-shrink-0 rounded-lg overflow-hidden bg-[#F8F9FA] dark:bg-[#2a2a2a]">
                             <Image
                               src={serviceIcon.illustration}
                               alt={serviceIcon.alt}
@@ -208,12 +214,12 @@ export default function HomePage() {
                         )}
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center gap-2 mb-1 sm:mb-2">
-                            <span className="text-[10px] sm:text-xs text-[#A3A3A3] font-medium">{service.number}</span>
-                            <h3 className="font-display text-base sm:text-lg md:text-xl text-[#111111] group-hover:text-brand-blue transition-colors">
+                            <span className="text-[10px] sm:text-xs text-[#A3A3A3] dark:text-[#666] font-medium">{service.number}</span>
+                            <h3 className="font-display text-base sm:text-lg md:text-xl text-[#111111] dark:text-[#F0F0F0] group-hover:text-brand-blue transition-colors">
                               {service.title}
                             </h3>
                           </div>
-                          <p className="text-xs sm:text-sm text-[#6B6B6B] leading-relaxed max-w-lg">
+                          <p className="text-xs sm:text-sm text-[#6B6B6B] dark:text-[#888888] leading-relaxed max-w-lg">
                             {service.description}
                           </p>
                         </div>
@@ -228,19 +234,19 @@ export default function HomePage() {
               <AnimatedItem>
                 <div className="mt-6 sm:mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="border-l-2 border-[#8B3B3B] pl-4 py-1">
-                    <p className="text-xs sm:text-sm font-semibold text-[#111111] mb-1">
-                      Make the Best Academic Profile
+                    <p className="text-xs sm:text-sm font-semibold text-[#111111] dark:text-[#F0F0F0] mb-1">
+                      {t.services.pillars.academic.title}
                     </p>
-                    <p className="text-xs text-[#6B6B6B] leading-relaxed">
-                      We will help you improve your grades, your SAT scores, and your IELTS.
+                    <p className="text-xs text-[#6B6B6B] dark:text-[#888888] leading-relaxed">
+                      {t.services.pillars.academic.desc}
                     </p>
                   </div>
                   <div className="border-l-2 border-brand-blue pl-4 py-1">
-                    <p className="text-xs sm:text-sm font-semibold text-[#111111] mb-1">
-                      Make the Best Activity Profile
+                    <p className="text-xs sm:text-sm font-semibold text-[#111111] dark:text-[#F0F0F0] mb-1">
+                      {t.services.pillars.activity.title}
                     </p>
-                    <p className="text-xs text-[#6B6B6B] leading-relaxed">
-                      We will help you find the extracurricular activities that make your Spike work.
+                    <p className="text-xs text-[#6B6B6B] dark:text-[#888888] leading-relaxed">
+                      {t.services.pillars.activity.desc}
                     </p>
                   </div>
                 </div>
@@ -277,8 +283,8 @@ export default function HomePage() {
 
         <div className="container-rivo relative z-10">
           <AnimatedItem>
-            <h2 className="section-title text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-[#111111] mb-8 sm:mb-12">
-              SUCCESS STORIES
+            <h2 className="section-title text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-[#111111] dark:text-[#F0F0F0] mb-8 sm:mb-12">
+              {t.results.heading}
             </h2>
           </AnimatedItem>
 
@@ -286,8 +292,8 @@ export default function HomePage() {
           <StoryMasonryGrid />
 
           <AnimatedItem className="mt-8 sm:mt-12 text-center">
-            <button className="inline-flex items-center gap-2 text-xs sm:text-sm text-[#6B6B6B] hover:text-[#111111] transition-colors group uppercase tracking-wider">
-              Show more cases
+            <button className="inline-flex items-center gap-2 text-xs sm:text-sm text-[#6B6B6B] dark:text-[#888] hover:text-[#111111] dark:hover:text-[#F0F0F0] transition-colors group uppercase tracking-wider">
+              {t.results.showMore}
               <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" />
             </button>
           </AnimatedItem>
@@ -310,8 +316,8 @@ export default function HomePage() {
 
         <div className="container-rivo relative z-10">
           <AnimatedItem>
-            <h2 className="section-title text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-[#111111] mb-8 sm:mb-12">
-              REVIEWS
+            <h2 className="section-title text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-[#111111] dark:text-[#F0F0F0] mb-8 sm:mb-12">
+              {t.reviews.heading}
             </h2>
           </AnimatedItem>
 
@@ -326,7 +332,7 @@ export default function HomePage() {
                   className="object-cover"
                 />
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-full bg-white flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg">
+                  <div className="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-full bg-white dark:bg-[#222222] flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg">
                     <Play className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 text-brand-blue fill-brand-blue ml-1" />
                   </div>
                 </div>
@@ -336,16 +342,16 @@ export default function HomePage() {
             {/* Right - Quote */}
             <div className="w-full lg:w-1/2 flex flex-col justify-center">
               <AnimatedItem>
-                <blockquote className="text-lg sm:text-xl md:text-2xl text-[#111111] leading-relaxed mb-6 sm:mb-8">
-                  &ldquo;Ymit Academy transformed my application journey. Their strategic guidance helped me secure admission to my dream school with a full scholarship. The personalized attention made all the difference.&rdquo;
+                <blockquote className="text-lg sm:text-xl md:text-2xl text-[#111111] dark:text-[#F0F0F0] leading-relaxed mb-6 sm:mb-8">
+                  &ldquo;{t.reviews.quote}&rdquo;
                 </blockquote>
               </AnimatedItem>
 
               <AnimatedItem>
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="font-medium text-sm sm:text-base text-[#111111]">Sarah Chen</p>
-                    <p className="text-xs sm:text-sm text-[#6B6B6B]">Harvard University &apos;24</p>
+                    <p className="font-medium text-sm sm:text-base text-[#111111] dark:text-[#F0F0F0]">{t.reviews.author}</p>
+                    <p className="text-xs sm:text-sm text-[#6B6B6B] dark:text-[#888888]">{t.reviews.school}</p>
                   </div>
                   <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#8B3B3B] rounded-lg flex items-center justify-center hover:scale-105 hover:shadow-lg hover:shadow-[#8B3B3B]/20 transition-all cursor-pointer">
                     <ArrowUpRight className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
@@ -377,8 +383,8 @@ export default function HomePage() {
             {/* Left - Form */}
             <div className="w-full lg:w-1/2">
               <AnimatedItem>
-                <h2 className="section-title text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-[#111111] mb-6 sm:mb-8">
-                  CONTACTS
+                <h2 className="section-title text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-[#111111] dark:text-[#F0F0F0] mb-6 sm:mb-8">
+                  {t.contact.heading}
                 </h2>
               </AnimatedItem>
 
@@ -386,43 +392,43 @@ export default function HomePage() {
                 <form className="space-y-4 sm:space-y-6">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                     <div>
-                      <label className="block text-[9px] sm:text-[10px] text-[#A3A3A3] uppercase tracking-wider mb-1.5 sm:mb-2">Name</label>
+                      <label className="block text-[9px] sm:text-[10px] text-[#A3A3A3] dark:text-[#666] uppercase tracking-wider mb-1.5 sm:mb-2">{t.contact.nameLabel}</label>
                       <input
                         type="text"
-                        placeholder="Your name"
-                        className="w-full px-0 py-2 bg-transparent border-b border-[#EDEDED] focus:border-brand-blue outline-none text-sm transition-colors placeholder:text-[#D4D4D4]"
+                        placeholder={t.contact.namePlaceholder}
+                        className="w-full px-0 py-2 bg-transparent border-b border-[#EDEDED] dark:border-[#333] focus:border-brand-blue outline-none text-sm dark:text-[#F0F0F0] transition-colors placeholder:text-[#D4D4D4] dark:placeholder:text-[#555]"
                       />
                     </div>
                     <div>
-                      <label className="block text-[9px] sm:text-[10px] text-[#A3A3A3] uppercase tracking-wider mb-1.5 sm:mb-2">Email</label>
+                      <label className="block text-[9px] sm:text-[10px] text-[#A3A3A3] dark:text-[#666] uppercase tracking-wider mb-1.5 sm:mb-2">{t.contact.emailLabel}</label>
                       <input
                         type="email"
-                        placeholder="your@email.com"
-                        className="w-full px-0 py-2 bg-transparent border-b border-[#EDEDED] focus:border-brand-blue outline-none text-sm transition-colors placeholder:text-[#D4D4D4]"
+                        placeholder={t.contact.emailPlaceholder}
+                        className="w-full px-0 py-2 bg-transparent border-b border-[#EDEDED] dark:border-[#333] focus:border-brand-blue outline-none text-sm dark:text-[#F0F0F0] transition-colors placeholder:text-[#D4D4D4] dark:placeholder:text-[#555]"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-[9px] sm:text-[10px] text-[#A3A3A3] uppercase tracking-wider mb-1.5 sm:mb-2">Phone</label>
+                    <label className="block text-[9px] sm:text-[10px] text-[#A3A3A3] dark:text-[#666] uppercase tracking-wider mb-1.5 sm:mb-2">{t.contact.phoneLabel}</label>
                     <input
                       type="tel"
-                      placeholder="+1 (___) ___-____"
-                      className="w-full px-0 py-2 bg-transparent border-b border-[#EDEDED] focus:border-brand-blue outline-none text-sm transition-colors placeholder:text-[#D4D4D4]"
+                      placeholder={t.contact.phonePlaceholder}
+                      className="w-full px-0 py-2 bg-transparent border-b border-[#EDEDED] dark:border-[#333] focus:border-brand-blue outline-none text-sm dark:text-[#F0F0F0] transition-colors placeholder:text-[#D4D4D4] dark:placeholder:text-[#555]"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-[9px] sm:text-[10px] text-[#A3A3A3] uppercase tracking-wider mb-1.5 sm:mb-2">Message</label>
+                    <label className="block text-[9px] sm:text-[10px] text-[#A3A3A3] dark:text-[#666] uppercase tracking-wider mb-1.5 sm:mb-2">{t.contact.messageLabel}</label>
                     <textarea
-                      placeholder="Tell us about your goals..."
+                      placeholder={t.contact.messagePlaceholder}
                       rows={3}
-                      className="w-full px-0 py-2 bg-transparent border-b border-[#EDEDED] focus:border-brand-blue outline-none text-sm resize-none transition-colors placeholder:text-[#D4D4D4]"
+                      className="w-full px-0 py-2 bg-transparent border-b border-[#EDEDED] dark:border-[#333] focus:border-brand-blue outline-none text-sm dark:text-[#F0F0F0] resize-none transition-colors placeholder:text-[#D4D4D4] dark:placeholder:text-[#555]"
                     />
                   </div>
 
                   <Button className="w-full bg-[#111111] hover:bg-[#333] text-white rounded-full py-4 sm:py-5 mt-2 sm:mt-4 group text-sm">
-                    Send message
+                    {t.contact.sendButton}
                     <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </form>
@@ -430,14 +436,16 @@ export default function HomePage() {
             </div>
 
             {/* Right - Info */}
-            <div className="w-full lg:w-1/2 lg:pl-12 xl:pl-16 lg:border-l border-[#EDEDED]/60">
+            <div className="w-full lg:w-1/2 lg:pl-12 xl:pl-16 lg:border-l border-[#EDEDED]/60 dark:border-[#333]/60">
               <AnimatedItem>
                 <div className="mb-8 sm:mb-12">
-                  <h3 className="font-display text-lg sm:text-xl md:text-2xl text-[#111111] mb-3 sm:mb-4 leading-tight">
-                    LET&apos;S MAKE SOMETHING<br />THAT MATTERS
+                  <h3 className="font-display text-lg sm:text-xl md:text-2xl text-[#111111] dark:text-[#F0F0F0] mb-3 sm:mb-4 leading-tight">
+                    {t.contact.rightHeading.split("\n").map((line, i) => (
+                      <span key={i}>{line}{i === 0 && <br />}</span>
+                    ))}
                   </h3>
-                  <p className="text-xs sm:text-sm text-[#6B6B6B] leading-relaxed">
-                    Every student deserves expert guidance on their journey to higher education. Let&apos;s discuss how we can help you achieve your dreams.
+                  <p className="text-xs sm:text-sm text-[#6B6B6B] dark:text-[#888888] leading-relaxed">
+                    {t.contact.rightSubtext}
                   </p>
                 </div>
               </AnimatedItem>
@@ -445,26 +453,26 @@ export default function HomePage() {
               <AnimatedItem>
                 <div className="space-y-4 sm:space-y-6">
                   <div>
-                    <p className="text-[9px] sm:text-[10px] text-[#A3A3A3] uppercase tracking-wider mb-1">Email</p>
-                    <a href="mailto:topuniversitiesadvisors@gmail.com" className="text-xs sm:text-sm text-[#111111] hover:text-brand-blue transition-colors">
+                    <p className="text-[9px] sm:text-[10px] text-[#A3A3A3] dark:text-[#666] uppercase tracking-wider mb-1">{t.contact.emailContact}</p>
+                    <a href="mailto:topuniversitiesadvisors@gmail.com" className="text-xs sm:text-sm text-[#111111] dark:text-[#D0D0D0] hover:text-brand-blue transition-colors">
                       topuniversitiesadvisors@gmail.com
                     </a>
                   </div>
 
                   <div>
-                    <p className="text-[9px] sm:text-[10px] text-[#A3A3A3] uppercase tracking-wider mb-1">WhatsApp</p>
-                    <a href="https://wa.me/77013092147" target="_blank" rel="noopener noreferrer" className="text-xs sm:text-sm text-[#111111] hover:text-brand-blue transition-colors">
+                    <p className="text-[9px] sm:text-[10px] text-[#A3A3A3] dark:text-[#666] uppercase tracking-wider mb-1">{t.contact.whatsapp}</p>
+                    <a href="https://wa.me/77013092147" target="_blank" rel="noopener noreferrer" className="text-xs sm:text-sm text-[#111111] dark:text-[#D0D0D0] hover:text-brand-blue transition-colors">
                       +7 701 309 2147
                     </a>
                   </div>
 
                   <div>
-                    <p className="text-[9px] sm:text-[10px] text-[#A3A3A3] uppercase tracking-wider mb-1">Instagram</p>
+                    <p className="text-[9px] sm:text-[10px] text-[#A3A3A3] dark:text-[#666] uppercase tracking-wider mb-1">{t.contact.instagram}</p>
                     <a
                       href="https://instagram.com/top_universities_advisors"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-xs sm:text-sm text-[#111111] hover:text-brand-blue transition-colors"
+                      className="text-xs sm:text-sm text-[#111111] dark:text-[#D0D0D0] hover:text-brand-blue transition-colors"
                     >
                       @top_universities_advisors
                     </a>
@@ -483,51 +491,52 @@ export default function HomePage() {
             {/* Left - Logo and tagline */}
             <div className="w-full lg:w-1/4">
               <Link href="/" className="inline-flex items-center mb-4 sm:mb-6">
-                <YmitLogo color="black" />
+                <YmitLogo color="black" className="dark:hidden" />
+                <YmitLogo color="white" className="hidden dark:block" />
               </Link>
-              <p className="font-body text-xs sm:text-sm text-[#6B6B6B] max-w-[200px]">
-                Guiding students toward their academic dreams.
+              <p className="font-body text-xs sm:text-sm text-[#6B6B6B] dark:text-[#888888] max-w-[200px]">
+                {t.footer.tagline}
               </p>
             </div>
 
             {/* Right - Links columns */}
             <div className="w-full lg:w-3/4 grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-8">
               <nav className="space-y-2 sm:space-y-3">
-                <p className="font-body text-[10px] sm:text-xs text-[#A3A3A3] uppercase tracking-wider mb-2 sm:mb-4">Navigation</p>
-                <Link href="/" className="block font-body text-xs sm:text-sm text-[#111111] hover:text-brand-blue transition-colors">Home</Link>
-                <Link href="#about" className="block font-body text-xs sm:text-sm text-[#111111] hover:text-brand-blue transition-colors">Who We Are</Link>
-                <Link href="#reviews" className="block font-body text-xs sm:text-sm text-[#111111] hover:text-brand-blue transition-colors">Reviews</Link>
-                <Link href="#contact" className="block font-body text-xs sm:text-sm text-[#111111] hover:text-brand-blue transition-colors">Contact</Link>
+                <p className="font-body text-[10px] sm:text-xs text-[#A3A3A3] uppercase tracking-wider mb-2 sm:mb-4">{t.footer.nav.title}</p>
+                <Link href="/" className="block font-body text-xs sm:text-sm text-[#111111] dark:text-[#D0D0D0] hover:text-brand-blue transition-colors">{t.footer.nav.home}</Link>
+                <Link href="#about" className="block font-body text-xs sm:text-sm text-[#111111] dark:text-[#D0D0D0] hover:text-brand-blue transition-colors">{t.footer.nav.whoWeAre}</Link>
+                <Link href="#reviews" className="block font-body text-xs sm:text-sm text-[#111111] dark:text-[#D0D0D0] hover:text-brand-blue transition-colors">{t.footer.nav.reviews}</Link>
+                <Link href="#contact" className="block font-body text-xs sm:text-sm text-[#111111] dark:text-[#D0D0D0] hover:text-brand-blue transition-colors">{t.footer.nav.contact}</Link>
               </nav>
 
               <nav className="space-y-2 sm:space-y-3">
-                <p className="font-body text-[10px] sm:text-xs text-[#A3A3A3] uppercase tracking-wider mb-2 sm:mb-4">Results</p>
-                <Link href="#results" className="block font-body text-xs sm:text-sm text-[#111111] hover:text-brand-blue transition-colors">Success Stories</Link>
-                <Link href="/feed" className="block font-body text-xs sm:text-sm text-[#111111] hover:text-brand-blue transition-colors">News</Link>
-                <Link href="/signup" className="block font-body text-xs sm:text-sm text-[#111111] hover:text-brand-blue transition-colors">Get Started</Link>
+                <p className="font-body text-[10px] sm:text-xs text-[#A3A3A3] uppercase tracking-wider mb-2 sm:mb-4">{t.footer.results.title}</p>
+                <Link href="#results" className="block font-body text-xs sm:text-sm text-[#111111] dark:text-[#D0D0D0] hover:text-brand-blue transition-colors">{t.footer.results.successStories}</Link>
+                <Link href="/feed" className="block font-body text-xs sm:text-sm text-[#111111] dark:text-[#D0D0D0] hover:text-brand-blue transition-colors">{t.footer.results.news}</Link>
+                <Link href="/signup" className="block font-body text-xs sm:text-sm text-[#111111] dark:text-[#D0D0D0] hover:text-brand-blue transition-colors">{t.footer.results.getStarted}</Link>
               </nav>
 
               <nav className="space-y-2 sm:space-y-3">
-                <p className="font-body text-[10px] sm:text-xs text-[#A3A3A3] uppercase tracking-wider mb-2 sm:mb-4">Services</p>
-                <Link href="#services" className="block font-body text-xs sm:text-sm text-[#6B6B6B] hover:text-[#111111] transition-colors">Strategy</Link>
-                <Link href="#services" className="block font-body text-xs sm:text-sm text-[#6B6B6B] hover:text-[#111111] transition-colors">Essays</Link>
-                <Link href="#services" className="block font-body text-xs sm:text-sm text-[#6B6B6B] hover:text-[#111111] transition-colors">Scholarships</Link>
-                <Link href="#services" className="block font-body text-xs sm:text-sm text-[#6B6B6B] hover:text-[#111111] transition-colors">Interviews</Link>
+                <p className="font-body text-[10px] sm:text-xs text-[#A3A3A3] uppercase tracking-wider mb-2 sm:mb-4">{t.footer.servicesCol.title}</p>
+                <Link href="#services" className="block font-body text-xs sm:text-sm text-[#6B6B6B] hover:text-[#111111] transition-colors">{t.footer.servicesCol.strategy}</Link>
+                <Link href="#services" className="block font-body text-xs sm:text-sm text-[#6B6B6B] hover:text-[#111111] transition-colors">{t.footer.servicesCol.essays}</Link>
+                <Link href="#services" className="block font-body text-xs sm:text-sm text-[#6B6B6B] hover:text-[#111111] transition-colors">{t.footer.servicesCol.scholarships}</Link>
+                <Link href="#services" className="block font-body text-xs sm:text-sm text-[#6B6B6B] hover:text-[#111111] transition-colors">{t.footer.servicesCol.interviews}</Link>
               </nav>
 
               <nav className="space-y-2 sm:space-y-3">
-                <p className="font-body text-[10px] sm:text-xs text-[#A3A3A3] uppercase tracking-wider mb-2 sm:mb-4">Regions</p>
-                <Link href="#" className="block font-body text-xs sm:text-sm text-[#6B6B6B] hover:text-[#111111] transition-colors">USA & Canada</Link>
-                <Link href="#" className="block font-body text-xs sm:text-sm text-[#6B6B6B] hover:text-[#111111] transition-colors">UK & Europe</Link>
-                <Link href="#" className="block font-body text-xs sm:text-sm text-[#6B6B6B] hover:text-[#111111] transition-colors">Asia & Pacific</Link>
+                <p className="font-body text-[10px] sm:text-xs text-[#A3A3A3] uppercase tracking-wider mb-2 sm:mb-4">{t.footer.regions.title}</p>
+                <Link href="#" className="block font-body text-xs sm:text-sm text-[#6B6B6B] hover:text-[#111111] transition-colors">{t.footer.regions.usCanada}</Link>
+                <Link href="#" className="block font-body text-xs sm:text-sm text-[#6B6B6B] hover:text-[#111111] transition-colors">{t.footer.regions.ukEurope}</Link>
+                <Link href="#" className="block font-body text-xs sm:text-sm text-[#6B6B6B] hover:text-[#111111] transition-colors">{t.footer.regions.asiaPacific}</Link>
               </nav>
             </div>
           </div>
 
           {/* Bottom */}
-          <div className="pt-6 sm:pt-8 border-t border-[#EDEDED]/60 flex flex-col sm:flex-row justify-between items-center gap-4 sm:gap-6">
+          <div className="pt-6 sm:pt-8 border-t border-[#EDEDED]/60 dark:border-[#333]/60 flex flex-col sm:flex-row justify-between items-center gap-4 sm:gap-6">
             <p className="font-body text-[10px] sm:text-xs text-[#A3A3A3] order-2 sm:order-1">
-              © {new Date().getFullYear()} TUA – Top Universities Advisor. All rights reserved.
+              © {new Date().getFullYear()} TUA – Top Universities Advisor. {t.footer.copyright}
             </p>
             <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-8 order-1 sm:order-2">
               <a
@@ -540,10 +549,10 @@ export default function HomePage() {
               </a>
               <div className="flex items-center gap-4 sm:gap-6">
                 <Link href="#" className="font-body text-[10px] sm:text-xs text-[#A3A3A3] hover:text-[#111111] transition-colors">
-                  Privacy Policy
+                  {t.footer.privacy}
                 </Link>
                 <Link href="#" className="font-body text-[10px] sm:text-xs text-[#A3A3A3] hover:text-[#111111] transition-colors">
-                  Terms of Service
+                  {t.footer.terms}
                 </Link>
               </div>
             </div>

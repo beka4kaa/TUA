@@ -18,47 +18,24 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { YmitLogo } from "@/components/brand/logo";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
+import { LanguageSwitcher } from "@/components/ui/language-switcher";
 import { cn } from "@/lib/utils";
 import { useAuth } from "@/contexts/auth-context";
+import { useLanguage } from "@/contexts/language-context";
 
 // Primary navigation links (left column - large text)
-const primaryLinks = [
-  { label: "Home", href: "#top" },
-  { label: "Who We Are", href: "#who-we-are" },
-  { label: "Reviews", href: "#reviews" },
-  { label: "Contact", href: "#contact" },
-  { label: "Blog", href: "/blog" },
+const primaryLinkHrefs = [
+  { key: "home" as const, href: "#top" },
+  { key: "whoWeAre" as const, href: "#about" },
+  { key: "services" as const, href: "#services" },
+  { key: "results" as const, href: "#results" },
+  { key: "reviews" as const, href: "#reviews" },
+  { key: "contact" as const, href: "#contact" },
 ];
 
 // Grouped sections (right column - like reference)
-const groupedSections = [
-  {
-    title: "Services",
-    links: [
-      { label: "Application Strategy", href: "#contact" },
-      { label: "Essay Coaching", href: "#contact" },
-      { label: "Interview Preparation", href: "#contact" },
-      { label: "Scholarship Search", href: "#contact" },
-    ],
-  },
-  {
-    title: "Regions We Cover",
-    links: [
-      { label: "USA & Canada", href: "#who-we-are" },
-      { label: "United Kingdom", href: "#who-we-are" },
-      { label: "Europe", href: "#who-we-are" },
-      { label: "Asia & Australia", href: "#who-we-are" },
-    ],
-  },
-  {
-    title: "Get Started",
-    links: [
-      { label: "Book Free Consultation", href: "/signup" },
-      { label: "Read Our Blog", href: "/blog" },
-      { label: "Student Dashboard", href: "/dashboard" },
-    ],
-  },
-];
+// Now built dynamically from translations in the component
 
 // Footer contact info
 const footerInfo = {
@@ -73,11 +50,46 @@ const footerInfo = {
 
 export function FullscreenMenu() {
   const { user } = useAuth();
+  const { t } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const scrollYRef = useRef(0);
+
+  // Build dynamic link arrays from translations
+  const primaryLinks = primaryLinkHrefs.map((item) => ({
+    label: t.nav[item.key],
+    href: item.href,
+  }));
+
+  const groupedSections = [
+    {
+      title: t.menu.services.title,
+      links: [
+        { label: t.menu.services.strategy, href: "#services" },
+        { label: t.menu.services.essays, href: "#services" },
+        { label: t.menu.services.interview, href: "#services" },
+        { label: t.menu.services.scholarship, href: "#services" },
+      ],
+    },
+    {
+      title: t.menu.regions.title,
+      links: [
+        { label: t.menu.regions.usCanada, href: "#about" },
+        { label: t.menu.regions.uk, href: "#about" },
+        { label: t.menu.regions.europe, href: "#about" },
+        { label: t.menu.regions.asia, href: "#about" },
+      ],
+    },
+    {
+      title: t.menu.getStarted.title,
+      links: [
+        { label: t.menu.getStarted.book, href: "/signup" },
+        { label: t.menu.getStarted.studentDashboard, href: "/dashboard" },
+      ],
+    },
+  ];
 
   // Client-side only mounting for portal
   useEffect(() => {
@@ -239,25 +251,29 @@ export function FullscreenMenu() {
           exit="closed"
           variants={overlayVariants}
           transition={{ duration: 0.25 }}
-          className="fixed inset-0 z-[9999] flex flex-col bg-[#F4F4F4] overflow-y-auto font-body"
+          className="fixed inset-0 z-[9999] flex flex-col bg-[#F4F4F4] dark:bg-[#111111] overflow-y-auto font-body"
           style={{ pointerEvents: 'auto' }}
         >
           {/* ===== TOP BAR ===== */}
           <motion.header 
             variants={contentVariants}
-            className="flex items-center justify-between px-6 md:px-10 lg:px-16 py-5 md:py-6 border-b border-[#E5E5E5]"
+            className="flex items-center justify-between px-6 md:px-10 lg:px-16 py-5 md:py-6 border-b border-[#E5E5E5] dark:border-[#2a2a2a]"
           >
             <Link href="/" onClick={() => setIsOpen(false)} className="flex items-center">
               <YmitLogo variant="full" color="black" />
             </Link>
-            <button
-              onClick={handleClose}
-              className="flex items-center gap-3 text-[#111] hover:text-[#666] transition-colors group"
-              aria-label="Close navigation menu"
-            >
-              <span className="text-sm font-medium tracking-[0.1em] uppercase">Close</span>
-              <X className="w-5 h-5 group-hover:rotate-90 transition-transform duration-300" strokeWidth={1.5} />
-            </button>
+            <div className="flex items-center gap-3">
+              <LanguageSwitcher />
+              <ThemeToggle />
+              <button
+                onClick={handleClose}
+                className="flex items-center gap-3 text-[#111] dark:text-white hover:text-[#666] dark:hover:text-[#aaa] transition-colors group"
+                aria-label="Close navigation menu"
+              >
+                <span className="text-sm font-medium tracking-[0.1em] uppercase">{t.nav.close}</span>
+                <X className="w-5 h-5 group-hover:rotate-90 transition-transform duration-300" strokeWidth={1.5} />
+              </button>
+            </div>
           </motion.header>
 
           {/* ===== MAIN CONTENT - 2 COLUMN LAYOUT ===== */}
@@ -278,7 +294,7 @@ export function FullscreenMenu() {
                         className={cn(
                           "block py-1.5 md:py-2",
                           "text-[1.75rem] sm:text-[2rem] md:text-[2.5rem] lg:text-[2.75rem] xl:text-[3rem]",
-                          "font-semibold text-[#111] leading-[1.15] tracking-[-0.02em]",
+                          "font-semibold text-[#111] dark:text-[#F0F0F0] leading-[1.15] tracking-[-0.02em]",
                           "hover:text-brand-blue transition-colors duration-200",
                           "relative group cursor-pointer inline-flex items-center gap-2"
                         )}
@@ -302,7 +318,7 @@ export function FullscreenMenu() {
                       className="space-y-3"
                     >
                       {/* Section heading */}
-                      <h3 className="text-xl md:text-2xl font-semibold text-[#111] tracking-tight">
+                      <h3 className="text-xl md:text-2xl font-semibold text-[#111] dark:text-[#F0F0F0] tracking-tight">
                         {section.title}
                       </h3>
                       
@@ -314,7 +330,7 @@ export function FullscreenMenu() {
                             href={link.href}
                             onClick={(e) => handleAnchorClick(e, link.href)}
                             className={cn(
-                              "text-sm md:text-base text-[#777] hover:text-[#111]",
+                              "text-sm md:text-base text-[#777] dark:text-[#888] hover:text-[#111] dark:hover:text-[#F0F0F0]",
                               "transition-colors duration-200 cursor-pointer",
                               "hover:underline underline-offset-2"
                             )}
@@ -336,20 +352,20 @@ export function FullscreenMenu() {
             className="px-6 md:px-10 lg:px-16 pb-6 md:pb-8"
           >
             <div className="max-w-[1400px] mx-auto">
-              <div className="border border-[#E0E0E0] rounded-xl overflow-hidden">
+              <div className="border border-[#E0E0E0] dark:border-[#2a2a2a] rounded-xl overflow-hidden">
                 {/* Tagline row */}
-                <div className="px-6 py-5 border-b border-[#E0E0E0]">
-                  <p className="text-sm md:text-base tracking-[0.1em] uppercase text-[#111] font-medium">
+                <div className="px-6 py-5 border-b border-[#E0E0E0] dark:border-[#2a2a2a]">
+                  <p className="text-sm md:text-base tracking-[0.1em] uppercase text-[#111] dark:text-[#F0F0F0] font-medium">
                     {footerInfo.tagline}
                   </p>
                 </div>
                 
                 {/* Info row */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-[#E0E0E0]">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-[#E0E0E0] dark:divide-[#2a2a2a]">
                   {/* Address */}
                   <div className="px-6 py-5">
                     <p className="text-xs text-[#999] uppercase tracking-wider mb-2">Address</p>
-                    <p className="text-sm text-[#111] whitespace-pre-line">{footerInfo.address}</p>
+                    <p className="text-sm text-[#111] dark:text-[#D0D0D0] whitespace-pre-line">{footerInfo.address}</p>
                   </div>
                   
                   {/* Social */}
@@ -367,16 +383,16 @@ export function FullscreenMenu() {
                   
                   {/* Phone 1 */}
                   <div className="px-6 py-5">
-                    <p className="text-xs text-[#999] uppercase tracking-wider mb-2">{footerInfo.countries[0].name}</p>
-                    <a href={`tel:${footerInfo.countries[0].phone}`} className="text-sm text-[#111] hover:underline">
+                    <p className="text-xs text-[#999] dark:text-[#666] uppercase tracking-wider mb-2">{footerInfo.countries[0].name}</p>
+                    <a href={`tel:${footerInfo.countries[0].phone}`} className="text-sm text-[#111] dark:text-[#D0D0D0] hover:underline">
                       {footerInfo.countries[0].phone}
                     </a>
                   </div>
                   
                   {/* Phone 2 */}
                   <div className="px-6 py-5">
-                    <p className="text-xs text-[#999] uppercase tracking-wider mb-2">{footerInfo.countries[1].name}</p>
-                    <a href={`tel:${footerInfo.countries[1].phone}`} className="text-sm text-[#111] hover:underline">
+                    <p className="text-xs text-[#999] dark:text-[#666] uppercase tracking-wider mb-2">{footerInfo.countries[1].name}</p>
+                    <a href={`tel:${footerInfo.countries[1].phone}`} className="text-sm text-[#111] dark:text-[#D0D0D0] hover:underline">
                       {footerInfo.countries[1].phone}
                     </a>
                   </div>
@@ -395,7 +411,7 @@ export function FullscreenMenu() {
       <button
         ref={triggerRef}
         onClick={() => setIsOpen(true)}
-        className="lg:hidden flex items-center justify-center w-10 h-10 rounded-full border border-[#EDEDED] hover:bg-[#F5F5F5] transition-colors"
+        className="lg:hidden flex items-center justify-center w-10 h-10 rounded-full border border-[#EDEDED] dark:border-[#333] hover:bg-[#F5F5F5] dark:hover:bg-[#2a2a2a] transition-colors"
         aria-label="Open navigation menu"
         aria-expanded={isOpen}
         aria-controls="fullscreen-menu"

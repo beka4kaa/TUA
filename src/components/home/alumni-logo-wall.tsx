@@ -22,6 +22,7 @@
 
 import Image from "next/image";
 import { AnimatedItem } from "@/components/motion/animations";
+import { useLanguage } from "@/contexts/language-context";
 
 // ─── Data ────────────────────────────────────────────────────────────────────
 
@@ -116,7 +117,7 @@ function LogoCard({ uni }: { uni: UniversityEntry }) {
     <div
       className="flex-shrink-0 flex flex-col items-center justify-center gap-2
                  w-28 sm:w-32 h-20 sm:h-24
-                 bg-white rounded-xl border border-[#EDEDED]
+                 bg-white dark:bg-[#1e1e1e] rounded-xl border border-[#EDEDED] dark:border-[#333]
                  shadow-sm hover:shadow-md hover:-translate-y-0.5
                  transition-all duration-200 cursor-default px-3"
       title={`${uni.name} — ${uni.region}`}
@@ -133,7 +134,7 @@ function LogoCard({ uni }: { uni: UniversityEntry }) {
         </div>
       ) : (
         /* ── Text fallback until logo file is provided ── */
-        <span className="text-[11px] sm:text-xs font-semibold text-[#111111] text-center leading-tight">
+        <span className="text-[11px] sm:text-xs font-semibold text-[#111111] dark:text-[#F0F0F0] text-center leading-tight">
           {uni.name}
         </span>
       )}
@@ -163,8 +164,8 @@ function MarqueeRow({
   return (
     <div className="relative overflow-hidden w-full">
       {/* Fade masks on both sides */}
-      <div className="pointer-events-none absolute inset-y-0 left-0  w-16 sm:w-24 z-10 bg-gradient-to-r from-white to-transparent" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 w-16 sm:w-24 z-10 bg-gradient-to-l from-white to-transparent" />
+      <div className="pointer-events-none absolute inset-y-0 left-0  w-16 sm:w-24 z-10 bg-gradient-to-r from-white dark:from-[#1A1A1A] to-transparent" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 w-16 sm:w-24 z-10 bg-gradient-to-l from-white dark:from-[#1A1A1A] to-transparent" />
 
       <div
         className={`flex gap-3 sm:gap-4 w-max ${
@@ -182,6 +183,7 @@ function MarqueeRow({
 
 // ─── Exported section component ──────────────────────────────────────────────
 export function AlumniLogoWall() {
+  const { t } = useLanguage();
   const usa       = universities.filter((u) => u.region === "USA");
   const canada    = universities.filter((u) => u.region === "Canada");
   const uk        = universities.filter((u) => u.region === "UK");
@@ -202,10 +204,12 @@ export function AlumniLogoWall() {
       <div className="container-rivo relative z-10 mb-10 sm:mb-14">
         <AnimatedItem>
           <p className="text-[10px] sm:text-xs text-[#A3A3A3] uppercase tracking-widest mb-3 sm:mb-4">
-            Our alumni
+            {t.alumni.sectionLabel}
           </p>
-          <h2 className="section-title text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-[#111111]">
-            WHERE SOME OF OUR<br className="hidden sm:block" /> STUDENTS ARE NOW
+          <h2 className="section-title text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-[#111111] dark:text-[#F0F0F0]">
+            {t.alumni.heading.split("\n").map((line, i) => (
+              <span key={i}>{line}{i === 0 && <br className="hidden sm:block" />}</span>
+            ))}
           </h2>
         </AnimatedItem>
       </div>

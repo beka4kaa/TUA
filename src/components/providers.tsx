@@ -1,6 +1,8 @@
 "use client";
 
+import { ThemeProvider } from "next-themes";
 import { AuthProvider } from "@/contexts/auth-context";
+import { LanguageProvider } from "@/contexts/language-context";
 import { Toaster } from "@/components/ui/sonner";
 
 interface ProvidersProps {
@@ -9,9 +11,13 @@ interface ProvidersProps {
 
 export function Providers({ children }: ProvidersProps) {
     return (
-        <AuthProvider>
-            {children}
-            <Toaster position="top-right" richColors duration={4000} closeButton />
-        </AuthProvider>
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false} disableTransitionOnChange={false}>
+            <LanguageProvider>
+                <AuthProvider>
+                    {children}
+                    <Toaster position="top-right" richColors duration={4000} closeButton />
+                </AuthProvider>
+            </LanguageProvider>
+        </ThemeProvider>
     );
 }
