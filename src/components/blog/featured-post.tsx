@@ -76,10 +76,10 @@ export function FeaturedPost({ post }: FeaturedPostProps) {
               priority
             />
           ) : (
-            <div className="absolute inset-0 bg-linear-to-br from-[#28547C]/80 via-[#1a3a5c] to-[#111111]">
+            <div className="absolute inset-0 bg-linear-to-br from-[#2F3B69]/80 via-[#262F54] to-[#111111]">
               {/* Decorative elements */}
-              <div className="absolute top-1/4 right-1/4 w-64 h-64 bg-[#E67E22]/10 rounded-full blur-3xl" />
-              <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-[#28547C]/20 rounded-full blur-3xl" />
+              <div className="absolute top-1/4 right-1/4 w-64 h-64 bg-[#8B3B3B]/10 rounded-full blur-3xl" />
+              <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-[#2F3B69]/20 rounded-full blur-3xl" />
               
               {/* Grid pattern */}
               <svg className="absolute inset-0 w-full h-full opacity-[0.03]" viewBox="0 0 100 100" preserveAspectRatio="none">

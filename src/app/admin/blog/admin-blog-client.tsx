@@ -175,7 +175,7 @@ export function AdminBlogClient({ posts: initialPosts }: AdminBlogClientProps) {
           </p>
         </div>
         <Link href="/admin/blog/new">
-          <Button className="bg-[#28547C] hover:bg-[#28547C]/90">
+          <Button className="bg-[#2F3B69] hover:bg-[#2F3B69]/90">
             <PlusIcon className="w-4 h-4 mr-2" />
             Новая статья
           </Button>
@@ -248,7 +248,7 @@ export function AdminBlogClient({ posts: initialPosts }: AdminBlogClientProps) {
                     <div className="space-y-1">
                       <Link
                         href={`/admin/blog/${post.id}`}
-                        className="font-medium text-[#111111] hover:text-[#28547C] transition-colors line-clamp-1"
+                        className="font-medium text-[#111111] hover:text-[#2F3B69] transition-colors line-clamp-1"
                       >
                         {post.title}
                       </Link>
@@ -330,7 +330,7 @@ export function AdminBlogClient({ posts: initialPosts }: AdminBlogClientProps) {
                           <DropdownMenuItem
                             onClick={() => handleStatusChange(post.id, "DRAFT")}
                           >
-                            <XCircleIcon className="w-4 h-4 mr-2 text-yellow-600" />
+                            <XCircleIcon className="w-4 h-4 mr-2 text-[#8B3B3B]" />
                             Снять с публикации
                           </DropdownMenuItem>
                         )}
@@ -365,7 +365,7 @@ function StatusBadge({ status }: { status: PostStatus }) {
     );
   }
   return (
-    <Badge variant="secondary" className="bg-yellow-100 text-yellow-700">
+    <Badge variant="secondary" className="bg-[#F5EAEA] text-[#8B3B3B]">
       <DocumentIcon className="w-3 h-3 mr-1" />
       Черновик
     </Badge>

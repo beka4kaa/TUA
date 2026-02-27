@@ -330,7 +330,7 @@ END:VCALENDAR`;
                                                         className={cn(
                                                             "h-12 w-full font-semibold",
                                                             isBooked && "bg-muted text-muted-foreground border-muted cursor-not-allowed opacity-60",
-                                                            isSelected && "bg-[#E67E22] hover:bg-[#E67E22]/90 text-white border-none"
+                                                            isSelected && "bg-[#8B3B3B] hover:bg-[#8B3B3B]/90 text-white border-none"
                                                         )}
                                                         onClick={() => handleTimeSelect(time)}
                                                         disabled={isBooked}
@@ -367,7 +367,7 @@ END:VCALENDAR`;
                                             </div>
                                         </div>
                                         <Button
-                                            className="w-full bg-[#E67E22] hover:bg-[#E67E22]/90"
+                                            className="w-full bg-[#8B3B3B] hover:bg-[#8B3B3B]/90"
                                             onClick={() => setConfirmDialogOpen(true)}
                                         >
                                             Confirm Booking
@@ -403,8 +403,8 @@ END:VCALENDAR`;
                                 <Card key={booking.id}>
                                     <CardContent className="flex items-center justify-between py-4">
                                         <div className="flex items-center gap-4">
-                                            <div className="h-12 w-12 rounded-full bg-[#28547C]/10 flex items-center justify-center">
-                                                <CalendarIcon className="h-6 w-6 text-[#28547C]" />
+                                            <div className="h-12 w-12 rounded-full bg-[#2F3B69]/10 flex items-center justify-center">
+                                                <CalendarIcon className="h-6 w-6 text-[#2F3B69]" />
                                             </div>
                                             <div>
                                                 <p className="font-medium">
@@ -425,7 +425,7 @@ END:VCALENDAR`;
                                             <Button
                                                 variant="default"
                                                 size="sm"
-                                                className="bg-[#E67E22] hover:bg-[#d67118] gap-2"
+                                                className="bg-[#8B3B3B] hover:bg-[#6F2F2F] gap-2"
                                                 onClick={() => window.open(GOOGLE_MEET_LINK, "_blank")}
                                             >
                                                 <Video className="h-4 w-4" />
@@ -504,7 +504,7 @@ END:VCALENDAR`;
                     </DialogHeader>
                     <div className="py-4 space-y-4">
                         <div className="flex items-center gap-3 p-4 bg-muted rounded-lg">
-                            <CalendarIcon className="h-5 w-5 text-[#28547C]" />
+                            <CalendarIcon className="h-5 w-5 text-[#2F3B69]" />
                             <div>
                                 <p className="font-medium">
                                     {selectedDate && format(selectedDate, "EEEE, MMMM d, yyyy")}
@@ -523,7 +523,7 @@ END:VCALENDAR`;
                             Cancel
                         </Button>
                         <Button
-                            className="bg-[#E67E22] hover:bg-[#E67E22]/90"
+                            className="bg-[#8B3B3B] hover:bg-[#8B3B3B]/90"
                             onClick={handleConfirmBooking}
                             disabled={isLoading}
                         >

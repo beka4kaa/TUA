@@ -6,8 +6,8 @@
  * 
  * Style: Minimal, editorial, subtle outlines with brand accents
  * Brand Colors:
- * - Primary Blue: #28547C
- * - Primary Orange: #E67E22
+ * - Primary Blue: #2F3B69
+ * - Primary Red: #8B3B3B
  */
 
 // === ILLUSTRATION PATHS ===

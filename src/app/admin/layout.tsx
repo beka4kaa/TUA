@@ -109,7 +109,7 @@ export default function AdminLayout({
                 <Sidebar className="border-r border-border">
                     <SidebarHeader className="p-4">
                         <Link href="/admin" className="flex items-center gap-2.5">
-                            <YmitMark color="blue" className="w-6 h-6" />
+                            <YmitMark className="w-6 h-6" />
                             <span className="font-body font-semibold text-base">Ymit Admin</span>
                         </Link>
                     </SidebarHeader>

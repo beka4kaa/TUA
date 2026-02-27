@@ -87,7 +87,7 @@ export default function ContactPage() {
       {/* Background decorations */}
       <ParallaxRing
         className="absolute -right-64 -top-64 w-150 h-150 z-0"
-        color="#28547C"
+        color="#2F3B69"
         opacity={0.03}
         speed={0.2}
       />
@@ -106,7 +106,7 @@ export default function ContactPage() {
         <motion.div variants={itemVariants} className="max-w-2xl mb-12">
           <Link
             href="/"
-            className="inline-flex items-center text-sm text-gray-500 hover:text-[#28547C] transition-colors mb-8"
+            className="inline-flex items-center text-sm text-gray-500 hover:text-[#2F3B69] transition-colors mb-8"
           >
             <svg
               className="w-4 h-4 mr-2"
@@ -153,7 +153,7 @@ export default function ContactPage() {
                       <FormControl>
                         <Input
                           placeholder="John Doe"
-                          className="h-12 border-gray-200 focus:border-[#28547C] focus:ring-[#28547C]/10"
+                          className="h-12 border-gray-200 focus:border-[#2F3B69] focus:ring-[#2F3B69]/10"
                           {...field}
                         />
                       </FormControl>
@@ -174,7 +174,7 @@ export default function ContactPage() {
                         <Input
                           type="email"
                           placeholder="john@example.com"
-                          className="h-12 border-gray-200 focus:border-[#28547C] focus:ring-[#28547C]/10"
+                          className="h-12 border-gray-200 focus:border-[#2F3B69] focus:ring-[#2F3B69]/10"
                           {...field}
                         />
                       </FormControl>
@@ -195,7 +195,7 @@ export default function ContactPage() {
                         <Input
                           type="tel"
                           placeholder="+1 (555) 000-0000"
-                          className="h-12 border-gray-200 focus:border-[#28547C] focus:ring-[#28547C]/10"
+                          className="h-12 border-gray-200 focus:border-[#2F3B69] focus:ring-[#2F3B69]/10"
                           {...field}
                         />
                       </FormControl>
@@ -215,7 +215,7 @@ export default function ContactPage() {
                       <FormControl>
                         <Textarea
                           placeholder="Tell us about your project..."
-                          className="min-h-40 border-gray-200 focus:border-[#28547C] focus:ring-[#28547C]/10 resize-none"
+                          className="min-h-40 border-gray-200 focus:border-[#2F3B69] focus:ring-[#2F3B69]/10 resize-none"
                           {...field}
                         />
                       </FormControl>
@@ -227,7 +227,7 @@ export default function ContactPage() {
                 <Button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full h-12 bg-[#28547C] hover:bg-[#1e3f5c] text-white font-medium transition-all duration-300"
+                  className="w-full h-12 bg-[#2F3B69] hover:bg-[#262F54] text-white font-medium transition-all duration-300"
                 >
                   {isSubmitting ? (
                     <span className="flex items-center justify-center">
@@ -265,9 +265,9 @@ export default function ContactPage() {
             <Card className="border-gray-100 shadow-lg overflow-hidden">
               <CardContent className="p-0">
                 {/* Map placeholder */}
-                <div className="h-48 bg-linear-to-br from-[#28547C]/10 to-[#28547C]/5 flex items-center justify-center">
+                <div className="h-48 bg-linear-to-br from-[#2F3B69]/10 to-[#2F3B69]/5 flex items-center justify-center">
                   <svg
-                    className="w-16 h-16 text-[#28547C]/30"
+                    className="w-16 h-16 text-[#2F3B69]/30"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -296,11 +296,11 @@ export default function ContactPage() {
                       {/* Email */}
                       <a
                         href="mailto:hello@ymitacademy.com"
-                        className="flex items-center text-gray-600 hover:text-[#28547C] transition-colors group"
+                        className="flex items-center text-gray-600 hover:text-[#2F3B69] transition-colors group"
                       >
-                        <div className="w-10 h-10 rounded-full bg-[#28547C]/10 flex items-center justify-center mr-3 group-hover:bg-[#28547C]/20 transition-colors">
+                        <div className="w-10 h-10 rounded-full bg-[#2F3B69]/10 flex items-center justify-center mr-3 group-hover:bg-[#2F3B69]/20 transition-colors">
                           <svg
-                            className="w-5 h-5 text-[#28547C]"
+                            className="w-5 h-5 text-[#2F3B69]"
                             fill="none"
                             viewBox="0 0 24 24"
                             stroke="currentColor"
@@ -319,11 +319,11 @@ export default function ContactPage() {
                       {/* Phone */}
                       <a
                         href="tel:+77770001234"
-                        className="flex items-center text-gray-600 hover:text-[#28547C] transition-colors group"
+                        className="flex items-center text-gray-600 hover:text-[#2F3B69] transition-colors group"
                       >
-                        <div className="w-10 h-10 rounded-full bg-[#28547C]/10 flex items-center justify-center mr-3 group-hover:bg-[#28547C]/20 transition-colors">
+                        <div className="w-10 h-10 rounded-full bg-[#2F3B69]/10 flex items-center justify-center mr-3 group-hover:bg-[#2F3B69]/20 transition-colors">
                           <svg
-                            className="w-5 h-5 text-[#28547C]"
+                            className="w-5 h-5 text-[#2F3B69]"
                             fill="none"
                             viewBox="0 0 24 24"
                             stroke="currentColor"
@@ -341,9 +341,9 @@ export default function ContactPage() {
 
                       {/* Address */}
                       <div className="flex items-start text-gray-600">
-                        <div className="w-10 h-10 rounded-full bg-[#28547C]/10 flex items-center justify-center mr-3 shrink-0">
+                        <div className="w-10 h-10 rounded-full bg-[#2F3B69]/10 flex items-center justify-center mr-3 shrink-0">
                           <svg
-                            className="w-5 h-5 text-[#28547C]"
+                            className="w-5 h-5 text-[#2F3B69]"
                             fill="none"
                             viewBox="0 0 24 24"
                             stroke="currentColor"
@@ -375,7 +375,7 @@ export default function ContactPage() {
                   <div className="border-t border-gray-100" />
 
                   {/* Book Consultation CTA */}
-                  <div className="bg-[#E67E22]/5 rounded-lg p-4">
+                  <div className="bg-[#8B3B3B]/5 rounded-lg p-4">
                     <h4 className="font-medium text-gray-900 mb-2">
                       Prefer a live consultation?
                     </h4>
@@ -383,7 +383,7 @@ export default function ContactPage() {
                       Schedule a one-on-one session with our experts.
                     </p>
                     <Link href="/bookings">
-                      <Button className="w-full bg-[#E67E22] hover:bg-[#E67E22]/90 text-white">
+                      <Button className="w-full bg-[#8B3B3B] hover:bg-[#8B3B3B]/90 text-white">
                         Schedule a Consultation
                       </Button>
                     </Link>
@@ -402,7 +402,7 @@ export default function ContactPage() {
                         <a
                           key={social}
                           href="#"
-                          className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center hover:bg-[#28547C] hover:text-white text-gray-600 transition-all"
+                          className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center hover:bg-[#2F3B69] hover:text-white text-gray-600 transition-all"
                         >
                           {social === "instagram" && (
                             <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">

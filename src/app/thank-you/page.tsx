@@ -45,13 +45,13 @@ export default function ThankYouPage() {
       {/* Background decorations */}
       <ParallaxRing
         className="absolute -left-64 -top-32 w-125 h-125 z-0"
-        color="#28547C"
+        color="#2F3B69"
         opacity={0.03}
         speed={0.15}
       />
       <ParallaxRing
         className="absolute -right-32 -bottom-48 w-100 h-100 z-0"
-        color="#E67E22"
+        color="#8B3B3B"
         opacity={0.02}
         speed={0.25}
       />
@@ -111,7 +111,7 @@ export default function ThankYouPage() {
           className="flex items-center justify-center gap-2 mb-8"
         >
           <span className="w-12 h-0.5 bg-gray-200 rounded-full" />
-          <span className="w-2 h-2 bg-[#E67E22] rounded-full" />
+          <span className="w-2 h-2 bg-[#8B3B3B] rounded-full" />
           <span className="w-12 h-0.5 bg-gray-200 rounded-full" />
         </motion.div>
 
@@ -130,8 +130,8 @@ export default function ThankYouPage() {
               "Let's schedule a call to discuss your project",
             ].map((item, index) => (
               <li key={index} className="flex items-start">
-                <span className="w-6 h-6 rounded-full bg-[#28547C]/10 flex items-center justify-center mr-3 shrink-0 mt-0.5">
-                  <span className="text-sm font-medium text-[#28547C]">
+                <span className="w-6 h-6 rounded-full bg-[#2F3B69]/10 flex items-center justify-center mr-3 shrink-0 mt-0.5">
+                  <span className="text-sm font-medium text-[#2F3B69]">
                     {index + 1}
                   </span>
                 </span>
@@ -148,7 +148,7 @@ export default function ThankYouPage() {
         >
           <Link
             href="/"
-            className="inline-flex items-center justify-center h-12 px-8 bg-[#28547C] hover:bg-[#1e3f5c] text-white font-medium rounded-lg transition-all duration-300 shadow-lg shadow-[#28547C]/20 hover:shadow-xl hover:shadow-[#28547C]/30 hover:-translate-y-0.5"
+            className="inline-flex items-center justify-center h-12 px-8 bg-[#2F3B69] hover:bg-[#262F54] text-white font-medium rounded-lg transition-all duration-300 shadow-lg shadow-[#2F3B69]/20 hover:shadow-xl hover:shadow-[#2F3B69]/30 hover:-translate-y-0.5"
           >
             <svg
               className="w-5 h-5 mr-2"
@@ -168,7 +168,7 @@ export default function ThankYouPage() {
 
           <Link
             href="/contact"
-            className="inline-flex items-center justify-center h-12 px-8 bg-white border border-gray-200 hover:border-[#28547C] text-gray-700 hover:text-[#28547C] font-medium rounded-lg transition-all duration-300"
+            className="inline-flex items-center justify-center h-12 px-8 bg-white border border-gray-200 hover:border-[#2F3B69] text-gray-700 hover:text-[#2F3B69] font-medium rounded-lg transition-all duration-300"
           >
             <svg
               className="w-5 h-5 mr-2"

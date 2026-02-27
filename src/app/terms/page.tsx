@@ -45,7 +45,7 @@ export default function TermsPage() {
       {/* Background decorations */}
       <ParallaxRing
         className="absolute -left-48 top-48 w-125 h-125 z-0"
-        color="#28547C"
+        color="#2F3B69"
         opacity={0.02}
         speed={0.12}
       />
@@ -64,7 +64,7 @@ export default function TermsPage() {
         <motion.div variants={itemVariants} className="max-w-3xl mb-12">
           <Link
             href="/"
-            className="inline-flex items-center text-sm text-gray-500 hover:text-[#28547C] transition-colors mb-8"
+            className="inline-flex items-center text-sm text-gray-500 hover:text-[#2F3B69] transition-colors mb-8"
           >
             <svg
               className="w-4 h-4 mr-2"
@@ -95,7 +95,7 @@ export default function TermsPage() {
           {/* Main content */}
           <motion.article
             variants={itemVariants}
-            className="flex-1 max-w-3xl prose prose-gray prose-headings:font-display prose-headings:text-gray-900 prose-a:text-[#28547C] prose-a:no-underline hover:prose-a:underline"
+            className="flex-1 max-w-3xl prose prose-gray prose-headings:font-display prose-headings:text-gray-900 prose-a:text-[#2F3B69] prose-a:no-underline hover:prose-a:underline"
           >
             <section id="acceptance">
               <h2>Acceptance of Terms</h2>
@@ -275,7 +275,7 @@ export default function TermsPage() {
                   <a
                     key={item.id}
                     href={`#${item.id}`}
-                    className="block text-sm text-gray-500 hover:text-[#28547C] transition-colors py-1"
+                    className="block text-sm text-gray-500 hover:text-[#2F3B69] transition-colors py-1"
                   >
                     {item.title}
                   </a>
@@ -289,13 +289,13 @@ export default function TermsPage() {
                 </p>
                 <Link
                   href="/privacy"
-                  className="block text-sm font-medium text-[#28547C] hover:underline mb-2"
+                  className="block text-sm font-medium text-[#2F3B69] hover:underline mb-2"
                 >
                   Privacy Policy
                 </Link>
                 <Link
                   href="/contact"
-                  className="inline-flex items-center text-sm font-medium text-[#28547C] hover:underline"
+                  className="inline-flex items-center text-sm font-medium text-[#2F3B69] hover:underline"
                 >
                   Contact us
                   <svg

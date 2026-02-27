@@ -45,13 +45,13 @@ export default function NotFound() {
       {/* Background decorations */}
       <ParallaxRing
         className="absolute -right-48 -top-48 w-150 h-150 z-0"
-        color="#E67E22"
+        color="#8B3B3B"
         opacity={0.03}
         speed={0.2}
       />
       <ParallaxRing
         className="absolute -left-32 bottom-0 w-100 h-100 z-0"
-        color="#28547C"
+        color="#2F3B69"
         opacity={0.03}
         speed={0.15}
       />
@@ -74,7 +74,7 @@ export default function NotFound() {
           <span className="font-display text-[120px] md:text-[180px] lg:text-[220px] font-bold text-gray-100 select-none">
             404
           </span>
-          <span className="absolute inset-0 font-display text-[120px] md:text-[180px] lg:text-[220px] font-bold bg-linear-to-br from-[#28547C] to-[#E67E22] bg-clip-text text-transparent translate-x-1 translate-y-1 md:translate-x-2 md:translate-y-2">
+          <span className="absolute inset-0 font-display text-[120px] md:text-[180px] lg:text-[220px] font-bold bg-linear-to-br from-[#2F3B69] to-[#8B3B3B] bg-clip-text text-transparent translate-x-1 translate-y-1 md:translate-x-2 md:translate-y-2">
             404
           </span>
         </motion.div>
@@ -115,9 +115,9 @@ export default function NotFound() {
                 width="70"
                 height="60"
                 rx="8"
-                fill="#28547C"
+                fill="#2F3B69"
                 opacity="0.1"
-                stroke="#28547C"
+                stroke="#2F3B69"
                 strokeWidth="2"
               />
               
@@ -128,14 +128,14 @@ export default function NotFound() {
                 width="50"
                 height="40"
                 rx="6"
-                fill="#28547C"
+                fill="#2F3B69"
                 opacity="0.15"
-                stroke="#28547C"
+                stroke="#2F3B69"
                 strokeWidth="2"
               />
               
               {/* Eyes - X marks */}
-              <g stroke="#E67E22" strokeWidth="3" strokeLinecap="round">
+              <g stroke="#8B3B3B" strokeWidth="3" strokeLinecap="round">
                 <line x1="88" y1="35" x2="95" y2="42" />
                 <line x1="95" y1="35" x2="88" y2="42" />
                 <line x1="105" y1="35" x2="112" y2="42" />
@@ -148,10 +148,10 @@ export default function NotFound() {
                 y1="20"
                 x2="100"
                 y2="8"
-                stroke="#28547C"
+                stroke="#2F3B69"
                 strokeWidth="2"
               />
-              <circle cx="100" cy="6" r="4" fill="#E67E22" />
+              <circle cx="100" cy="6" r="4" fill="#8B3B3B" />
               
               {/* Arms - disconnected */}
               <line
@@ -159,7 +159,7 @@ export default function NotFound() {
                 y1="70"
                 x2="45"
                 y2="85"
-                stroke="#28547C"
+                stroke="#2F3B69"
                 strokeWidth="3"
                 strokeLinecap="round"
               />
@@ -168,13 +168,13 @@ export default function NotFound() {
                 y1="70"
                 x2="155"
                 y2="85"
-                stroke="#28547C"
+                stroke="#2F3B69"
                 strokeWidth="3"
                 strokeLinecap="round"
               />
               
               {/* Sparks */}
-              <g stroke="#E67E22" strokeWidth="2" opacity="0.7">
+              <g stroke="#8B3B3B" strokeWidth="2" opacity="0.7">
                 <line x1="40" y1="75" x2="35" y2="70" />
                 <line x1="42" y1="80" x2="35" y2="82" />
                 <line x1="160" y1="75" x2="165" y2="70" />
@@ -187,7 +187,7 @@ export default function NotFound() {
                 y1="110"
                 x2="85"
                 y2="135"
-                stroke="#28547C"
+                stroke="#2F3B69"
                 strokeWidth="3"
                 strokeLinecap="round"
               />
@@ -196,14 +196,14 @@ export default function NotFound() {
                 y1="110"
                 x2="115"
                 y2="135"
-                stroke="#28547C"
+                stroke="#2F3B69"
                 strokeWidth="3"
                 strokeLinecap="round"
               />
               
               {/* Feet */}
-              <ellipse cx="85" cy="140" rx="10" ry="5" fill="#28547C" opacity="0.3" />
-              <ellipse cx="115" cy="140" rx="10" ry="5" fill="#28547C" opacity="0.3" />
+              <ellipse cx="85" cy="140" rx="10" ry="5" fill="#2F3B69" opacity="0.3" />
+              <ellipse cx="115" cy="140" rx="10" ry="5" fill="#2F3B69" opacity="0.3" />
             </svg>
           </div>
         </motion.div>
@@ -212,7 +212,7 @@ export default function NotFound() {
         <motion.div variants={itemVariants}>
           <Link
             href="/"
-            className="inline-flex items-center justify-center h-14 px-10 bg-[#28547C] hover:bg-[#1e3f5c] text-white font-medium rounded-xl transition-all duration-300 shadow-lg shadow-[#28547C]/20 hover:shadow-xl hover:shadow-[#28547C]/30 hover:-translate-y-1 group"
+            className="inline-flex items-center justify-center h-14 px-10 bg-[#2F3B69] hover:bg-[#262F54] text-white font-medium rounded-xl transition-all duration-300 shadow-lg shadow-[#2F3B69]/20 hover:shadow-xl hover:shadow-[#2F3B69]/30 hover:-translate-y-1 group"
           >
             <svg
               className="w-5 h-5 mr-2 transition-transform group-hover:-translate-x-1"
@@ -238,21 +238,21 @@ export default function NotFound() {
         >
           <Link
             href="/contact"
-            className="text-gray-500 hover:text-[#28547C] transition-colors"
+            className="text-gray-500 hover:text-[#2F3B69] transition-colors"
           >
             Contact Support
           </Link>
           <span className="text-gray-300">•</span>
           <Link
             href="/#services"
-            className="text-gray-500 hover:text-[#28547C] transition-colors"
+            className="text-gray-500 hover:text-[#2F3B69] transition-colors"
           >
             Our Services
           </Link>
           <span className="text-gray-300">•</span>
           <Link
             href="/#about"
-            className="text-gray-500 hover:text-[#28547C] transition-colors"
+            className="text-gray-500 hover:text-[#2F3B69] transition-colors"
           >
             About Us
           </Link>

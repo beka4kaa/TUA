@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { YmitLogo } from "@/components/brand/logo";
@@ -8,12 +9,35 @@ import { useAuth } from "@/contexts/auth-context";
 
 export function HomeNavigation() {
     const { user, isLoading } = useAuth();
+    const [scrolled, setScrolled] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => setScrolled(window.scrollY > 40);
+        window.addEventListener("scroll", handleScroll, { passive: true });
+        handleScroll();
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
 
     return (
-        <header className="sticky top-0 z-50 w-full glass-nav">
-            <div className="container-rivo">
-                <div className="flex h-14 sm:h-16 items-center justify-between">
-                    {/* Logo - New minimal design */}
+        <header
+            className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 ease-in-out ${
+                scrolled ? "border-b border-white/40 shadow-sm" : ""
+            }`}
+        >
+            {/* Glassmorphism blur backdrop - separate layer */}
+            <div
+                className="absolute inset-0 z-0 transition-all duration-300"
+                style={{
+                    backdropFilter: scrolled ? "blur(18px) saturate(1.8)" : "blur(12px) saturate(1.2)",
+                    WebkitBackdropFilter: scrolled ? "blur(18px) saturate(1.8)" : "blur(12px) saturate(1.2)",
+                    backgroundColor: scrolled ? "rgba(255,255,255,0.6)" : "rgba(246,246,246,0.5)",
+                }}
+            />
+            <div className="container-rivo relative z-10">
+                <div className={`flex items-center justify-between transition-all duration-300 ease-in-out ${
+                    scrolled ? "h-11 sm:h-12" : "h-14 sm:h-16"
+                }`}>
+                    {/* Logo */}
                     <Link href="/" className="flex items-center">
                         <YmitLogo variant="full" color="black" />
                     </Link>
@@ -47,7 +71,7 @@ export function HomeNavigation() {
                     <div className="flex items-center gap-3 sm:gap-4">
                         {/* Mobile fullscreen menu - visible on < lg */}
                         <FullscreenMenu />
-                        
+
                         {isLoading ? (
                             <div className="hidden sm:block w-20 h-6 bg-gray-200 animate-pulse rounded" />
                         ) : user ? (

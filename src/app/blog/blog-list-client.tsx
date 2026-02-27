@@ -122,11 +122,11 @@ export function BlogListClient({
       {/* Background decorations */}
       <DecorRings
         className="absolute -right-32 top-0 w-96 h-96 opacity-[0.02]"
-        color="#28547C"
+        color="#2F3B69"
       />
       <DecorDots
         className="absolute left-0 bottom-1/4 w-32 h-32 opacity-[0.03]"
-        color="#28547C"
+        color="#2F3B69"
       />
       
       {/* Header */}
@@ -138,7 +138,7 @@ export function BlogListClient({
       >
         <Link
           href="/"
-          className="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-[#28547C] transition-colors mb-8"
+          className="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-[#2F3B69] transition-colors mb-8"
         >
           <ArrowLeft className="w-4 h-4" />
           Back to Home
@@ -170,8 +170,8 @@ export function BlogListClient({
           animate={{ opacity: 1, y: 0 }}
           className="text-center py-20 bg-gray-50 rounded-3xl"
         >
-          <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-[#28547C]/10 flex items-center justify-center">
-            <svg className="w-8 h-8 text-[#28547C]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-[#2F3B69]/10 flex items-center justify-center">
+            <svg className="w-8 h-8 text-[#2F3B69]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
             </svg>
           </div>
@@ -186,7 +186,7 @@ export function BlogListClient({
           {activeTag && (
             <button
               onClick={() => handleTagChange(null)}
-              className="px-6 py-2 bg-[#28547C] text-white rounded-full hover:bg-[#28547C]/90 transition-colors"
+              className="px-6 py-2 bg-[#2F3B69] text-white rounded-full hover:bg-[#2F3B69]/90 transition-colors"
             >
               Показать все статьи
             </button>

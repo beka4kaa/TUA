@@ -158,7 +158,7 @@ export function MobileNav({ session }: MobileNavProps) {
                 <Link
                   href="/signup"
                   onClick={handleLinkClick}
-                  className="flex items-center justify-center w-full px-6 py-3.5 bg-brand-orange text-white font-body text-sm font-medium rounded-full hover:shadow-lg hover:shadow-brand-orange/20 transition-all"
+                  className="flex items-center justify-center w-full px-6 py-3.5 bg-[#8B3B3B] text-white font-body text-sm font-medium rounded-full hover:shadow-lg hover:shadow-[#8B3B3B]/20 transition-all"
                 >
                   Get Started
                   <ArrowUpRight className="w-4 h-4 ml-2" />

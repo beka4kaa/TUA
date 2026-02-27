@@ -42,8 +42,8 @@ interface SectionDecorationProps {
 }
 
 const colorMap = {
-  blue: "#28547C",
-  orange: "#E67E22",
+  blue: "#2F3B69",
+  orange: "#8B3B3B",
   gray: "#111111",
 };
 

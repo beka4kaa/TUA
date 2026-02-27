@@ -220,7 +220,7 @@ export function PostEditor({ post, tags: availableTags }: PostEditorProps) {
                 <Link
                   href={`/blog/${post.slug}`}
                   target="_blank"
-                  className="text-[#28547C] hover:underline"
+                  className="text-[#2F3B69] hover:underline"
                 >
                   Просмотреть
                 </Link>
@@ -239,7 +239,7 @@ export function PostEditor({ post, tags: availableTags }: PostEditorProps) {
             Сохранить черновик
           </Button>
           <Button
-            className="bg-[#28547C] hover:bg-[#28547C]/90"
+            className="bg-[#2F3B69] hover:bg-[#2F3B69]/90"
             onClick={() => handleSubmit("PUBLISHED")}
             disabled={isSubmitting}
           >
@@ -324,7 +324,7 @@ export function PostEditor({ post, tags: availableTags }: PostEditorProps) {
               <TabsContent value="preview" className="mt-3">
                 <div className="min-h-[400px] p-6 bg-white rounded-lg border border-gray-200">
                   {content ? (
-                    <div className="prose prose-gray max-w-none prose-headings:font-display prose-headings:text-[#111111] prose-a:text-[#28547C]">
+                    <div className="prose prose-gray max-w-none prose-headings:font-display prose-headings:text-[#111111] prose-a:text-[#2F3B69]">
                       <ReactMarkdown remarkPlugins={[remarkGfm]}>
                         {content}
                       </ReactMarkdown>
@@ -377,7 +377,7 @@ export function PostEditor({ post, tags: availableTags }: PostEditorProps) {
                   <Badge
                     key={tag.id}
                     variant="secondary"
-                    className="bg-[#28547C]/10 text-[#28547C] cursor-pointer hover:bg-[#28547C]/20"
+                    className="bg-[#2F3B69]/10 text-[#2F3B69] cursor-pointer hover:bg-[#2F3B69]/20"
                     onClick={() => handleTagSelect(tag)}
                   >
                     {tag.name}

@@ -80,7 +80,7 @@ export function YouTubeIcon({ className, size = 20 }: SocialIconProps) {
   );
 }
 
-// Social links with proper icons
+// Social links – Instagram only
 interface SocialLinksProps {
   className?: string;
   iconSize?: number;
@@ -88,31 +88,21 @@ interface SocialLinksProps {
 }
 
 export function SocialLinks({ className, iconSize = 18, vertical = false }: SocialLinksProps) {
-  const links = [
-    { name: "Instagram", href: "https://instagram.com/ymitacademy", icon: InstagramIcon },
-    { name: "LinkedIn", href: "https://linkedin.com/company/ymitacademy", icon: LinkedInIcon },
-    { name: "Facebook", href: "https://facebook.com/ymitacademy", icon: FacebookIcon },
-    { name: "YouTube", href: "https://youtube.com/@ymitacademy", icon: YouTubeIcon },
-  ];
-
   return (
     <div className={cn(
       "flex gap-4",
       vertical && "flex-col gap-5",
       className
     )}>
-      {links.map(({ name, href, icon: Icon }) => (
-        <a
-          key={name}
-          href={href}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label={`Follow us on ${name}`}
-          className="text-[#6B6B6B] hover:text-brand-blue transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-brand-blue focus:ring-offset-2 rounded-sm"
-        >
-          <Icon size={iconSize} />
-        </a>
-      ))}
+      <a
+        href="https://instagram.com/top_universities_advisors"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Follow us on Instagram"
+        className="text-[#6B6B6B] hover:text-brand-blue transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-brand-blue focus:ring-offset-2 rounded-sm"
+      >
+        <InstagramIcon size={iconSize} />
+      </a>
     </div>
   );
 }

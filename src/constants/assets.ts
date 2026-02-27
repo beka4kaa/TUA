@@ -5,8 +5,8 @@
  * No hardcoded paths in components.
  * 
  * Brand Colors (LOCKED):
- * - Primary Blue: #28547C
- * - Primary Orange: #E67E22
+ * - Primary Blue: #2F3B69
+ * - Primary Red: #8B3B3B
  */
 
 // === HERO SECTION ASSETS ===
@@ -159,7 +159,7 @@ export const services = [
   {
     number: "01",
     title: "University Shortlist & Strategy",
-    description: "We analyze your profile, goals, and preferences to create a tailored list of universities where you have the best chances of admission and fit.",
+    description: "We analyze your profile, goals, and preferences to create a tailored list of universities where you have the best chances of admission and fit. Reach, Target and Safety, anywhere in the world.",
   },
   {
     number: "02",
@@ -169,7 +169,7 @@ export const services = [
   {
     number: "03",
     title: "Scholarships & Financial Aid",
-    description: "We identify scholarship opportunities and guide you through applications to maximize your chances of receiving financial support.",
+    description: "We identify scholarship opportunities and guide you through applications to maximize your chances of receiving financial support. Assistance in filling out the forms for scholarships and Financial Aid.",
   },
   {
     number: "04",

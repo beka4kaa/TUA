@@ -247,7 +247,7 @@ export function HeroSection() {
           {/* Small tagline - Enhanced Glassmorphism pill */}
           <motion.div variants={getVariants(fadeInUp)} className="mb-6 sm:mb-8">
             <span className="glass-pill inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-[10px] sm:text-xs font-medium text-[#525252] uppercase tracking-wider">
-              <span className="w-1.5 h-1.5 rounded-full bg-brand-orange animate-pulse" />
+              <span className="w-1.5 h-1.5 rounded-full bg-[#8B3B3B] animate-pulse" />
               University Admissions Consulting
             </span>
           </motion.div>
@@ -260,7 +260,7 @@ export function HeroSection() {
             className="text-[#6B6B6B] text-sm sm:text-base md:text-lg max-w-md sm:max-w-lg mb-8 sm:mb-10 leading-relaxed"
             variants={getVariants(fadeInUp)}
           >
-            Expert admissions consulting for undergraduate and graduate programs at elite institutions worldwide.
+            Expert admissions consulting for undergraduate programs at elite institutions worldwide.
           </motion.p>
 
           {/* CTA Buttons */}
@@ -270,7 +270,7 @@ export function HeroSection() {
           >
             <Link
               href="/signup"
-              className="group inline-flex items-center justify-center gap-2 w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 bg-brand-orange text-white text-sm font-medium rounded-full hover:shadow-lg hover:shadow-brand-orange/25 hover:-translate-y-0.5 transition-all duration-300 btn-hover"
+              className="group inline-flex items-center justify-center gap-2 w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 bg-[#8B3B3B] text-white text-sm font-medium rounded-full hover:shadow-lg hover:shadow-[#8B3B3B]/25 hover:-translate-y-0.5 transition-all duration-300 btn-hover"
             >
               Book Free Consultation
               <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />

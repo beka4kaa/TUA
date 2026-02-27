@@ -50,7 +50,7 @@ export function HeroChips({ className }: HeroChipsProps) {
       case "blue":
         return "bg-brand-blue/5 border-brand-blue/20 text-brand-blue";
       case "orange":
-        return "bg-brand-orange/5 border-brand-orange/20 text-brand-orange";
+        return "bg-[#8B3B3B]/5 border-[#8B3B3B]/20 text-[#8B3B3B]";
       case "outline":
         return "bg-transparent border-[#D4D4D4] text-[#6B6B6B]";
       default:
@@ -134,7 +134,7 @@ export function FloatingChip({
       case "blue":
         return "bg-white border-brand-blue/30 text-brand-blue shadow-sm";
       case "orange":
-        return "bg-white border-brand-orange/30 text-brand-orange shadow-sm";
+        return "bg-white border-[#8B3B3B]/30 text-[#8B3B3B] shadow-sm";
       default:
         return "bg-white border-[#EDEDED] text-[#111111] shadow-sm";
     }

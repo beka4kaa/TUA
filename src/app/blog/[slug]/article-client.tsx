@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 /**
  * Article Client Component
@@ -84,7 +84,7 @@ export function ArticleClient({ post, relatedPosts }: ArticleClientProps) {
         {/* Background decorations */}
         <DecorRings
           className="absolute right-0 top-0 w-96 h-96 opacity-[0.02]"
-          color="#28547C"
+          color="#2F3B69"
         />
 
         <div className="container mx-auto px-4 py-12 md:py-20">
@@ -98,7 +98,7 @@ export function ArticleClient({ post, relatedPosts }: ArticleClientProps) {
             <motion.div variants={itemVariants}>
               <Link
                 href="/blog"
-                className="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-[#28547C] transition-colors mb-8"
+                className="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-[#2F3B69] transition-colors mb-8"
               >
                 <ArrowLeft className="w-4 h-4" />
                 Back to Blog
@@ -185,7 +185,7 @@ export function ArticleClient({ post, relatedPosts }: ArticleClientProps) {
       <section className="relative py-12 md:py-20">
         <DecorDots
           className="absolute left-0 top-1/4 w-24 h-24 opacity-[0.03]"
-          color="#28547C"
+          color="#2F3B69"
         />
 
         <div className="container mx-auto px-4">
@@ -203,7 +203,7 @@ export function ArticleClient({ post, relatedPosts }: ArticleClientProps) {
             )}
 
             {/* Markdown content */}
-            <div className="prose prose-lg prose-gray max-w-none prose-headings:font-display prose-headings:text-[#111111] prose-a:text-[#28547C] prose-a:no-underline hover:prose-a:underline prose-img:rounded-xl prose-pre:bg-gray-900 prose-code:text-[#E67E22]">
+            <div className="prose prose-lg prose-gray max-w-none prose-headings:font-display prose-headings:text-[#111111] prose-a:text-[#2F3B69] prose-a:no-underline hover:prose-a:underline prose-img:rounded-xl prose-pre:bg-gray-900 prose-code:text-[#8B3B3B]">
               <ReactMarkdown remarkPlugins={[remarkGfm]}>
                 {post.content || ""}
               </ReactMarkdown>

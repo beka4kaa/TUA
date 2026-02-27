@@ -108,7 +108,7 @@ export function BlogCard({ post, featured = false, index = 0 }: BlogCardProps) {
                 <rect width="100" height="100" fill={`url(#grid-${post.id})`} />
               </svg>
               {/* Accent line */}
-              <div className="absolute bottom-0 left-0 right-0 h-1 bg-linear-to-r from-[#28547C] via-[#E67E22] to-[#28547C] opacity-20" />
+              <div className="absolute bottom-0 left-0 right-0 h-1 bg-linear-to-r from-[#2F3B69] via-[#8B3B3B] to-[#2F3B69] opacity-20" />
             </div>
           )}
           
@@ -140,7 +140,7 @@ export function BlogCard({ post, featured = false, index = 0 }: BlogCardProps) {
           <h3
             className={cn(
               "font-display font-semibold text-gray-900 mb-2",
-              "group-hover:text-[#28547C] transition-colors duration-300",
+              "group-hover:text-[#2F3B69] transition-colors duration-300",
               featured ? "text-xl md:text-2xl" : "text-lg"
             )}
           >
@@ -179,7 +179,7 @@ export function BlogCard({ post, featured = false, index = 0 }: BlogCardProps) {
           
           {/* Read more */}
           <div className="flex items-center justify-between pt-4 border-t border-gray-100">
-            <span className="text-sm font-medium text-gray-900 group-hover:text-[#28547C] transition-colors flex items-center gap-1">
+            <span className="text-sm font-medium text-gray-900 group-hover:text-[#2F3B69] transition-colors flex items-center gap-1">
               Read more
               <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </span>

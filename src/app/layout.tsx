@@ -4,6 +4,7 @@ import { DM_Sans, Oswald } from "next/font/google";
 // import localFont from "next/font/local";
 import "./globals.css";
 import { Providers } from "@/components/providers";
+import { ChatbotWidget } from "@/components/ui/chatbot-widget";
 
 /**
  * TYPOGRAPHY SYSTEM
@@ -51,33 +52,35 @@ const oswald = Oswald({
 
 export const metadata: Metadata = {
   title: {
-    default: "Ymit Academy - University Admission Consulting",
-    template: "%s | Ymit Academy",
+    default: "TUA – Top Universities Advisor",
+    template: "%s | TUA",
   },
   description:
-    "Expert guidance for your university admission journey. Get personalized consulting, essay reviews, and application support from Ymit Academy.",
+    "Expert admissions consulting for undergraduate programs at elite institutions worldwide. TUA – Top Universities Advisor.",
   keywords: [
     "university admission",
     "college consulting",
+    "top universities",
+    "admissions advisor",
     "application support",
     "essay review",
     "higher education",
   ],
-  authors: [{ name: "Ymit Academy" }],
+  authors: [{ name: "TUA – Top Universities Advisor" }],
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://ymitacademy.com",
-    siteName: "Ymit Academy",
-    title: "Ymit Academy - University Admission Consulting",
+    url: "https://topuniversitiesadvisor.com",
+    siteName: "TUA – Top Universities Advisor",
+    title: "TUA – Top Universities Advisor",
     description:
-      "Expert guidance for your university admission journey. Get personalized consulting and support.",
+      "Expert admissions consulting for undergraduate programs at elite institutions worldwide.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ymit Academy - University Admission Consulting",
+    title: "TUA – Top Universities Advisor",
     description:
-      "Expert guidance for your university admission journey.",
+      "Expert admissions consulting for undergraduate programs at elite institutions worldwide.",
   },
 };
 
@@ -90,6 +93,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${dmSans.variable} ${oswald.variable} font-body antialiased`}>
         <Providers>{children}</Providers>
+        <ChatbotWidget />
       </body>
     </html>
   );

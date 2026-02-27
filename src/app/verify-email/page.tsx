@@ -126,12 +126,12 @@ function VerifyEmailContent() {
                 
                 {/* Dev mode: show verify button if token is in URL */}
                 {isDev && token && (
-                    <div className="p-4 bg-yellow-50 border border-yellow-200 rounded-lg space-y-3">
-                        <div className="flex items-center gap-2 text-yellow-800">
+                    <div className="p-4 bg-[#F5EAEA] border border-[#D7ABAB] rounded-lg space-y-3">
+                        <div className="flex items-center gap-2 text-[#6F2F2F]">
                             <AlertCircle className="h-4 w-4" />
                             <span className="text-sm font-medium">Development Mode</span>
                         </div>
-                        <p className="text-xs text-yellow-700">
+                        <p className="text-xs text-[#8B3B3B]">
                             Email sending is disabled. Click below to verify:
                         </p>
                         <Button 

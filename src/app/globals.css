@@ -22,30 +22,30 @@
   --font-body: var(--font-gilroy, var(--font-body)), 'Gilroy', 'DM Sans', 'Inter', system-ui, sans-serif;
   --font-display: var(--font-display), 'Oswald', 'Impact', system-ui, sans-serif;
 
-  /* Brand Colors - LOCKED (DO NOT CHANGE) */
-  --color-brand-blue: #28547C;
-  --color-brand-blue-50: #E8EEF3;
-  --color-brand-blue-100: #D1DDE7;
-  --color-brand-blue-200: #A3BBCF;
-  --color-brand-blue-300: #7599B7;
-  --color-brand-blue-400: #47779F;
-  --color-brand-blue-500: #28547C;
-  --color-brand-blue-600: #204363;
-  --color-brand-blue-700: #18324A;
-  --color-brand-blue-800: #102131;
-  --color-brand-blue-900: #081018;
+  /* Brand Colors */
+  --color-brand-blue: #2F3B69;
+  --color-brand-blue-50: #ECEEF5;
+  --color-brand-blue-100: #D9DCE9;
+  --color-brand-blue-200: #B3BAD4;
+  --color-brand-blue-300: #8D97BF;
+  --color-brand-blue-400: #6775A9;
+  --color-brand-blue-500: #2F3B69;
+  --color-brand-blue-600: #262F54;
+  --color-brand-blue-700: #1C233F;
+  --color-brand-blue-800: #13182A;
+  --color-brand-blue-900: #090C15;
 
-  --color-brand-orange: #E67E22;
-  --color-brand-orange-50: #FCF0E6;
-  --color-brand-orange-100: #F9E1CD;
-  --color-brand-orange-200: #F3C39B;
-  --color-brand-orange-300: #EDA569;
-  --color-brand-orange-400: #E78837;
-  --color-brand-orange-500: #E67E22;
-  --color-brand-orange-600: #B8651B;
-  --color-brand-orange-700: #8A4C14;
-  --color-brand-orange-800: #5C320D;
-  --color-brand-orange-900: #2E1907;
+  --color-brand-orange: #8B3B3B;
+  --color-brand-orange-50: #F5EAEA;
+  --color-brand-orange-100: #EBD5D5;
+  --color-brand-orange-200: #D7ABAB;
+  --color-brand-orange-300: #C38282;
+  --color-brand-orange-400: #AF5858;
+  --color-brand-orange-500: #8B3B3B;
+  --color-brand-orange-600: #6F2F2F;
+  --color-brand-orange-700: #522323;
+  --color-brand-orange-800: #371818;
+  --color-brand-orange-900: #1B0C0C;
 
   /* Rivo-style neutral colors */
   --color-neutral-50: #FAFAFA;
@@ -118,29 +118,29 @@
   --section-gray: #F6F6F6;
   --section-white: #FFFFFF;
 
-  /* Primary = Brand Blue #28547C */
-  --primary: #28547C;
+  /* Primary = Brand Blue #2F3B69 */
+  --primary: #2F3B69;
   --primary-foreground: #FFFFFF;
 
-  /* Secondary = Brand Orange #E67E22 */
-  --secondary: #E67E22;
+  /* Secondary = Brand Orange #8B3B3B */
+  --secondary: #8B3B3B;
   --secondary-foreground: #FFFFFF;
 
   --muted: #F5F5F5;
   --muted-foreground: #6B6B6B;
 
   /* Accent = Brand Orange */
-  --accent: #E67E22;
+  --accent: #8B3B3B;
   --accent-foreground: #FFFFFF;
 
   --destructive: #DC2626;
   --border: #EDEDED;
   --input: #EDEDED;
-  --ring: #28547C;
+  --ring: #2F3B69;
 
   /* Chart colors using brand palette */
-  --chart-1: #28547C;
-  --chart-2: #E67E22;
+  --chart-1: #2F3B69;
+  --chart-2: #8B3B3B;
   --chart-3: #47779F;
   --chart-4: #EDA569;
   --chart-5: #7599B7;
@@ -148,12 +148,12 @@
   /* Sidebar */
   --sidebar: #FAFAFA;
   --sidebar-foreground: #111111;
-  --sidebar-primary: #28547C;
+  --sidebar-primary: #2F3B69;
   --sidebar-primary-foreground: #FFFFFF;
-  --sidebar-accent: #E67E22;
+  --sidebar-accent: #8B3B3B;
   --sidebar-accent-foreground: #FFFFFF;
   --sidebar-border: #EDEDED;
-  --sidebar-ring: #28547C;
+  --sidebar-ring: #2F3B69;
 }
 
 .dark {
@@ -169,14 +169,14 @@
   --primary-foreground: #FFFFFF;
 
   /* Secondary = Brand Orange */
-  --secondary: #E67E22;
+  --secondary: #8B3B3B;
   --secondary-foreground: #FFFFFF;
 
   --muted: #262626;
   --muted-foreground: #A3A3A3;
 
   /* Accent = Brand Orange */
-  --accent: #E67E22;
+  --accent: #8B3B3B;
   --accent-foreground: #FFFFFF;
 
   --destructive: #EF4444;
@@ -186,7 +186,7 @@
 
   /* Chart colors for dark mode */
   --chart-1: #47779F;
-  --chart-2: #E67E22;
+  --chart-2: #8B3B3B;
   --chart-3: #7599B7;
   --chart-4: #EDA569;
   --chart-5: #A3BBCF;
@@ -196,7 +196,7 @@
   --sidebar-foreground: #FAFAFA;
   --sidebar-primary: #47779F;
   --sidebar-primary-foreground: #FFFFFF;
-  --sidebar-accent: #E67E22;
+  --sidebar-accent: #8B3B3B;
   --sidebar-accent-foreground: #FFFFFF;
   --sidebar-border: #404040;
   --sidebar-ring: #47779F;
@@ -214,6 +214,7 @@
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
+    max-width: 100vw;
   }
 
   /* Rivo-style container - max 1200px */
@@ -255,27 +256,27 @@
   }
 
   .text-brand-blue {
-    color: #28547C;
+    color: #2F3B69;
   }
 
   .text-brand-orange {
-    color: #E67E22;
+    color: #8B3B3B;
   }
 
   .bg-brand-blue {
-    background-color: #28547C;
+    background-color: #2F3B69;
   }
 
   .bg-brand-orange {
-    background-color: #E67E22;
+    background-color: #8B3B3B;
   }
 
   .border-brand-blue {
-    border-color: #28547C;
+    border-color: #2F3B69;
   }
 
   .border-brand-orange {
-    border-color: #E67E22;
+    border-color: #8B3B3B;
   }
 
   /* Rivo-style section divider */
@@ -455,11 +456,11 @@
 .shimmer-text {
   background: linear-gradient(
     110deg,
-    #28547C 0%,
-    #28547C 40%,
+    #2F3B69 0%,
+    #2F3B69 40%,
     #47779F 50%,
-    #28547C 60%,
-    #28547C 100%
+    #2F3B69 60%,
+    #2F3B69 100%
   );
   background-size: 200% 100%;
   -webkit-background-clip: text;
@@ -473,8 +474,8 @@
   .shimmer-text {
     animation: none;
     background: none;
-    -webkit-text-fill-color: #28547C;
-    color: #28547C;
+    -webkit-text-fill-color: #2F3B69;
+    color: #2F3B69;
   }
   
   .animate-fade-in-up,
@@ -542,11 +543,14 @@
 
 /* Glass nav - specifically for navigation header */
 .glass-nav {
-  background: rgba(246, 246, 246, 0.8);
-  backdrop-filter: blur(20px) saturate(1.2);
-  -webkit-backdrop-filter: blur(20px) saturate(1.2);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
   box-shadow: 0 1px 8px rgba(0, 0, 0, 0.03);
+}
+
+/* Glass nav scrolled - frosted glass when shrunk */
+.glass-nav-scrolled {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
 }
 
 /* Glass badge - minimal glass effect for inline badges */
@@ -679,6 +683,29 @@
     opacity: 0.3;
     transform: translateX(-50%) translateY(10px);
   }
+}
+
+/* ============================================
+ * MARQUEE (Alumni Logo Wall)
+ * ============================================ */
+@keyframes marquee-left {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes marquee-right {
+  0%   { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+.animate-marquee-left {
+  animation: marquee-left linear infinite;
+}
+.animate-marquee-right {
+  animation: marquee-right linear infinite;
+}
+/* Pause on hover */
+.animate-marquee-left:hover,
+.animate-marquee-right:hover {
+  animation-play-state: paused;
 }
 
 /* ============================================
