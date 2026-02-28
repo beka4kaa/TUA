@@ -24,7 +24,7 @@ export default function HomePage() {
   const { t } = useLanguage();
   const services = t.services.items;
   return (
-    <div className="flex flex-col min-h-screen bg-background relative">
+    <div className="flex flex-col min-h-screen bg-background relative overflow-x-hidden">
 
       {/* ===== NAVIGATION ===== */}
       <HomeNavigation />
