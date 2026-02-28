@@ -82,6 +82,13 @@ export const metadata: Metadata = {
     description:
       "Expert admissions consulting for undergraduate programs at elite institutions worldwide.",
   },
+  icons: {
+    icon: [
+      { url: "/brand/tua-favicon.svg", type: "image/svg+xml" },
+    ],
+    shortcut: "/brand/tua-favicon.svg",
+    apple: "/brand/tua-favicon.svg",
+  },
 };
 
 export default function RootLayout({
