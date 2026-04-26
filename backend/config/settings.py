@@ -1,5 +1,5 @@
 """
-Django settings for YMIT Academy Backend
+Django settings for TUA Backend
 """
 
 import os
@@ -26,7 +26,7 @@ ALLOWED_HOSTS.append('.vercel.app')
 CSRF_TRUSTED_ORIGINS = [
     'https://*.railway.app',
     'https://*.vercel.app',
-    'https://ymit.vercel.app',
+    'https://topuniversitiesadvisors.com',
     'http://localhost:3000',
     'http://127.0.0.1:3000',
 ]
@@ -162,8 +162,8 @@ CORS_ALLOW_ALL_ORIGINS = DEBUG
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
     'http://127.0.0.1:3000',
-    'https://ymit.vercel.app',
-    'https://ymit-production.up.railway.app',
+    'https://topuniversitiesadvisors.com',
+    'https://tua-production.up.railway.app',
 ]
 CORS_ALLOW_CREDENTIALS = True
 
@@ -178,7 +178,7 @@ EMAIL_PORT = int(os.getenv('EMAIL_PORT', '587'))
 EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER', '')
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD', '')
 EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS', 'True').lower() == 'true'
-DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL', 'YMIT Academy <noreply@ymit.kz>')
+DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL', 'TUA <noreply@topuniversitiesadvisors.com>')
 
 
 # Internationalization

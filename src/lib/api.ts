@@ -121,8 +121,8 @@ export interface ApiSuccess {
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://ymit-production.up.railway.app/api';
 
 // Token storage keys
-const ACCESS_TOKEN_KEY = 'ymit_access_token';
-const REFRESH_TOKEN_KEY = 'ymit_refresh_token';
+const ACCESS_TOKEN_KEY = 'tua_access_token';
+const REFRESH_TOKEN_KEY = 'tua_refresh_token';
 
 // ============================================
 // Token Management

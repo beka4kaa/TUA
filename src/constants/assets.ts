@@ -69,7 +69,7 @@ export const reviewsAssets = {
   videoPosterAlt: "Student testimonial video",
 } as const;
 
-// === GALLERY (WE ARE YMIT ACADEMY) ===
+// === GALLERY (WE ARE TUA) ===
 // Each gallery item is unique
 export const galleryAssets = {
   photos: [

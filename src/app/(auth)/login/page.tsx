@@ -1,8 +1,8 @@
 import { LoginForm } from "@/components/auth/login-form";
 
 export const metadata = {
-    title: "Login | Ymit Academy",
-    description: "Sign in to your Ymit Academy account",
+    title: "Login | TUA",
+    description: "Sign in to your TUA account",
 };
 
 export default function LoginPage() {

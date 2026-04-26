@@ -29,7 +29,7 @@ const TIME_SLOTS = [
 ];
 
 // Google Meet link for consultations (set in .env)
-const GOOGLE_MEET_LINK = process.env.NEXT_PUBLIC_GOOGLE_MEET_LINK || "https://meet.google.com/ymit-consult-room";
+const GOOGLE_MEET_LINK = process.env.NEXT_PUBLIC_GOOGLE_MEET_LINK || "https://meet.google.com/tua-consult-room";
 
 interface Booking {
     id: string;
@@ -189,14 +189,14 @@ export default function BookingsPage() {
 
         const icsContent = `BEGIN:VCALENDAR
 VERSION:2.0
-PRODID:-//Ymit Academy//Booking//EN
+PRODID:-//TUA//Booking//EN
 BEGIN:VEVENT
-UID:${booking.id}@ymitacademy.com
+UID:${booking.id}@topuniversitiesadvisors.com
 DTSTAMP:${formatIcsDate(new Date())}
 DTSTART:${formatIcsDate(startDate)}
 DTEND:${formatIcsDate(endDate)}
-SUMMARY:Consultation with Ymit Academy
-DESCRIPTION:Your scheduled consultation session with Ymit Academy.\n\nJoin Google Meet: ${GOOGLE_MEET_LINK}
+SUMMARY:Consultation with TUA
+DESCRIPTION:Your scheduled consultation session with TUA.\n\nJoin Google Meet: ${GOOGLE_MEET_LINK}
 LOCATION:${GOOGLE_MEET_LINK}
 END:VEVENT
 END:VCALENDAR`;
@@ -205,7 +205,7 @@ END:VCALENDAR`;
         const url = URL.createObjectURL(blob);
         const link = document.createElement("a");
         link.href = url;
-        link.download = `ymit-booking-${booking.date}.ics`;
+        link.download = `tua-booking-${booking.date}.ics`;
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
@@ -222,9 +222,9 @@ END:VCALENDAR`;
 
         const params = new URLSearchParams({
             action: "TEMPLATE",
-            text: "Consultation with Ymit Academy",
+            text: "Consultation with TUA",
             dates: `${formatGoogleDate(startDate)}/${formatGoogleDate(endDate)}`,
-            details: `Your scheduled consultation session with Ymit Academy.\n\n🔗 Join Google Meet: ${GOOGLE_MEET_LINK}`,
+            details: `Your scheduled consultation session with TUA.\n\n🔗 Join Google Meet: ${GOOGLE_MEET_LINK}`,
             location: GOOGLE_MEET_LINK,
         });
 

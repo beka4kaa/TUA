@@ -8,7 +8,7 @@ import { Home, Newspaper, Calendar, CreditCard, Settings, LogOut, Loader2 } from
 import { useAuth } from "@/contexts/auth-context";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { YmitLogo } from "@/components/brand/logo";
+import { TuaLogo } from "@/components/brand/logo";
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -73,7 +73,7 @@ export default function DashboardLayout({
                 <div className="max-w-7xl mx-auto px-8 md:px-10 flex h-16 items-center justify-between">
                     <div className="flex items-center gap-6">
                         <Link href="/dashboard" className="flex items-center pl-1">
-                            <YmitLogo color="black" />
+                            <TuaLogo color="black" />
                         </Link>
 
                         <nav className="hidden md:flex items-center gap-4">

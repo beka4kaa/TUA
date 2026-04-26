@@ -1,8 +1,8 @@
 import { SignupForm } from "@/components/auth/signup-form";
 
 export const metadata = {
-    title: "Sign Up | Ymit Academy",
-    description: "Create your Ymit Academy account",
+    title: "Sign Up | TUA",
+    description: "Create your TUA account",
 };
 
 export default function SignupPage() {

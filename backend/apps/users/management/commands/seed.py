@@ -39,12 +39,12 @@ class Command(BaseCommand):
             self.stdout.write(self.style.SUCCESS('Data cleared'))
 
         # Create admin user
-        admin_email = 'admin@ymit.kz'
+        admin_email = 'admin@tua.com'
         if not User.objects.filter(email=admin_email).exists():
             admin = User.objects.create(
                 email=admin_email,
                 first_name='Admin',
-                last_name='YMIT',
+                last_name='TUA',
                 password=make_password('Admin123!'),
                 role=User.Role.ADMIN,
                 status=User.Status.ACTIVE,
@@ -65,21 +65,21 @@ class Command(BaseCommand):
         # Create test users
         test_users = [
             {
-                'email': 'member@ymit.kz',
+                'email': 'member@tua.com',
                 'first_name': 'Member',
                 'last_name': 'User',
                 'role': User.Role.MEMBER,
                 'tier': Subscription.Tier.STANDARD,
             },
             {
-                'email': 'student@ymit.kz',
+                'email': 'student@tua.com',
                 'first_name': 'Student',
                 'last_name': 'User',
                 'role': User.Role.USER,
                 'tier': Subscription.Tier.FREE,
             },
             {
-                'email': 'new@ymit.kz',
+                'email': 'new@tua.com',
                 'first_name': 'New',
                 'last_name': 'User',
                 'role': User.Role.USER,
@@ -134,12 +134,12 @@ class Command(BaseCommand):
         
         posts = [
             {
-                'title': 'Добро пожаловать в YMIT!',
-                'slug': 'welcome-to-ymit',
+                'title': 'Добро пожаловать в TUA!',
+                'slug': 'welcome-to-TUA',
                 'content': '''
-# Добро пожаловать в YMIT!
+# Добро пожаловать в TUA!
 
-Мы рады приветствовать вас на нашей платформе. YMIT - это место, где вы можете учиться, развиваться и достигать своих целей.
+Мы рады приветствовать вас на нашей платформе. TUA - это место, где вы можете учиться, развиваться и достигать своих целей.
 
 ## Что вас ждет?
 
@@ -149,7 +149,7 @@ class Command(BaseCommand):
 
 Начните свой путь к успеху уже сегодня!
                 ''',
-                'excerpt': 'Добро пожаловать на платформу YMIT! Узнайте о наших возможностях.',
+                'excerpt': 'Добро пожаловать на платформу TUA! Узнайте о наших возможностях.',
                 'tags': ['news', 'important'],
                 'status': Post.Status.PUBLISHED,
             },
@@ -159,7 +159,7 @@ class Command(BaseCommand):
                 'content': '''
 # Как начать обучение на платформе
 
-Начать обучение на YMIT очень просто! Следуйте этим шагам:
+Начать обучение на TUA очень просто! Следуйте этим шагам:
 
 ## Шаг 1: Регистрация
 
@@ -212,7 +212,7 @@ class Command(BaseCommand):
 
         self.stdout.write(self.style.SUCCESS('\nSeeding completed!'))
         self.stdout.write('\nTest accounts:')
-        self.stdout.write('  Admin: admin@ymit.kz / Admin123!')
-        self.stdout.write('  Member: member@ymit.kz / Test123!')
-        self.stdout.write('  Student: student@ymit.kz / Test123!')
-        self.stdout.write('  Unverified: new@ymit.kz / Test123!')
+        self.stdout.write('  Admin: admin@tua.com / Admin123!')
+        self.stdout.write('  Member: member@tua.com / Test123!')
+        self.stdout.write('  Student: student@tua.com / Test123!')
+        self.stdout.write('  Unverified: new@tua.com / Test123!')

@@ -41,7 +41,7 @@ type Message = {
 const INITIAL_MESSAGE: Message = {
   id: 0,
   role: "assistant",
-  text: "Hi! 👋 I'm your Ymit Academy advisor. How can I help you with university admissions today?",
+  text: "Hi! 👋 I'm your TUA advisor. How can I help you with university admissions today?",
 };
 
 // ─── Widget ─────────────────────────────────────────────────────────────────

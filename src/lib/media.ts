@@ -1,82 +1,82 @@
 /**
- * Централизованная мапа всех медиа-ассетов сайта.
- * Это единственный источник истины для изображений - никаких хардкод путей в компонентах.
+ * Centralized media asset map for all site images.
+ * Single source of truth — no hardcoded paths in components.
  * 
- * ВАЖНО: В проекте доступны только SVG файлы, реальных фотографий нет.
- * Все изображения назначены осознанно, с минимизацией повторов.
+ * NOTE: Only SVG assets are available; no real photos yet.
+ * All images are intentionally assigned to minimize repetition.
  */
 
-// === ДЕКОРАТИВНЫЕ ЭЛЕМЕНТЫ ===
+// === DECORATIVE ELEMENTS ===
 
 export const decorativeAssets = {
-  // Большие декоративные овалы для фоновых элементов
+  // Large decorative ellipses for background elements
   ellipsesLarge: "/main_page/Elements big.svg",
   ellipsesSmall: "/main_page/Elements big-1.svg",
-  
-  // Интерактивные кнопки-круги
+
+  // Interactive circle buttons
   contactButton: "/main_page/Contact us button.svg",
   scrollIndicator: "/main_page/Scroll to explore.svg",
-  
-  // Социальные иконки (вертикальная группа)
+
+  // Social icons (vertical group)
   socialIcons: "/main_page/Social icons.svg",
 } as const;
 
-// === ИКОНКИ ИЗ PUBLIC ROOT ===
+// === ICONS FROM PUBLIC ROOT ===
 
 export const icons = {
-  globe: "/globe.svg",      // Для international/global контекста
-  file: "/file.svg",        // Для документов/эссе
-  window: "/window.svg",    // Для онлайн/платформа
+  globe: "/globe.svg",      // International / global context
+  file: "/file.svg",        // Documents / essays
+  window: "/window.svg",    // Online / platform
 } as const;
 
 // === HERO SECTION ===
 
 export const heroMedia = {
-  // Floating pill рядом со "STUDENTS" - используем иконку Play (инлайн в компоненте)
+  // Floating pill next to "STUDENTS" — uses inline Play icon in component
   storyPill: null,
-  
-  // Круг рядом с "GET INTO" - декоративный скролл индикатор (релевантно для hero)
+
+  // Circle next to "GET INTO" — decorative scroll indicator
   decorativeCircle: decorativeAssets.scrollIndicator,
-  
-  // Левый sidebar - социальные иконки
+
+  // Left sidebar — social icons
   socialIcons: decorativeAssets.socialIcons,
-  
-  // Scroll indicator справа внизу - тот же элемент используется в UI
+
+  // Scroll indicator (bottom-right) — same element reused in the UI
   scrollIndicator: decorativeAssets.scrollIndicator,
 } as const;
 
 // === WHO WE ARE SECTION ===
 
 export const whoWeAreMedia = {
-  // Видео постер / главное изображение секции
-  // Используем CTA кнопку как символ "начала работы с нами" (интерактивность)
-  // НЕ используем ellipsesLarge - он будет в Success Stories
+  // Video poster / main section image
+  // CTA button as a symbol of "start your journey with us"
+  // ellipsesLarge is reserved for Success Stories
   videoPoster: decorativeAssets.contactButton,
-  videoPosterAlt: "Start your journey with Ymit Academy",
+  videoPosterAlt: "Start your journey with TUA",
 } as const;
 
 // === SUCCESS STORIES ===
-// ВАЖНО: Каждая карточка должна иметь УНИКАЛЬНЫЙ визуал!
-// Стратегия распределения ассетов для минимизации повторов:
-// - 2 карточки с ellipsesLarge (разные bgStyle)
-// - 1 карточка с ellipsesSmall
-// - 3 карточки с разными иконками (window, globe, file)
+// Each card must have a UNIQUE visual!
+// Asset distribution strategy to minimize repetition:
+// - 2 cards with ellipsesLarge (different bgStyle)
+// - 1 card with ellipsesSmall
+// - 3 cards with distinct icons (window, globe, file)
 
 export type SuccessStory = {
   id: string;
   title: string;
   subtitle: string;
   year: string;
-  // Визуальное оформление карточки
+  // Card visual styling
   visual: {
     type: "pattern" | "icon" | "gradient";
-    // Для pattern - какой SVG использовать как фон
+    // For pattern — which SVG to use as background
     patternSrc?: string;
-    // Для icon - какую иконку показать
+    // For icon — which icon to display
     iconSrc?: string;
-    // Акцентный цвет: "blue" | "orange" | "neutral"
+    // Accent color
     accent: "blue" | "orange" | "neutral";
-    // Стиль фона
+    // Background style
     bgStyle: "light" | "outline" | "gradient";
   };
 };
@@ -89,7 +89,7 @@ export const successStories: SuccessStory[] = [
     year: "2024",
     visual: {
       type: "pattern",
-      patternSrc: decorativeAssets.ellipsesLarge, // Первое использование ellipsesLarge
+      patternSrc: decorativeAssets.ellipsesLarge, // First use of ellipsesLarge
       accent: "blue",
       bgStyle: "light",
     },
@@ -101,7 +101,7 @@ export const successStories: SuccessStory[] = [
     year: "2024",
     visual: {
       type: "icon",
-      iconSrc: icons.window, // Tech/CS контекст - окно как символ софта
+      iconSrc: icons.window, // Tech/CS context
       accent: "orange",
       bgStyle: "outline",
     },
@@ -113,7 +113,7 @@ export const successStories: SuccessStory[] = [
     year: "2024",
     visual: {
       type: "pattern",
-      patternSrc: decorativeAssets.ellipsesSmall, // Единственное использование ellipsesSmall в Success Stories
+      patternSrc: decorativeAssets.ellipsesSmall, // Single use of ellipsesSmall in Success Stories
       accent: "blue",
       bgStyle: "gradient",
     },
@@ -125,7 +125,7 @@ export const successStories: SuccessStory[] = [
     year: "2023",
     visual: {
       type: "icon",
-      iconSrc: icons.globe, // International/UK - глобус
+      iconSrc: icons.globe, // International / UK
       accent: "orange",
       bgStyle: "light",
     },
@@ -137,7 +137,7 @@ export const successStories: SuccessStory[] = [
     year: "2023",
     visual: {
       type: "pattern",
-      patternSrc: decorativeAssets.ellipsesLarge, // Второе использование ellipsesLarge (но разный bgStyle: gradient вместо light)
+      patternSrc: decorativeAssets.ellipsesLarge, // Second use of ellipsesLarge (different bgStyle)
       accent: "blue",
       bgStyle: "gradient",
     },
@@ -149,7 +149,7 @@ export const successStories: SuccessStory[] = [
     year: "2023",
     visual: {
       type: "icon",
-      iconSrc: icons.file, // Business/Documents/Essays - файл
+      iconSrc: icons.file, // Business / Documents / Essays
       accent: "neutral",
       bgStyle: "outline",
     },
@@ -159,15 +159,15 @@ export const successStories: SuccessStory[] = [
 // === REVIEWS SECTION ===
 
 export const reviewsMedia = {
-  // Постер для видео-отзыва
-  // Используем социальные иконки как символ коммуникации/отзывов (уникально для этой секции)
+  // Video testimonial poster
+  // Social icons as a symbol of communication / reviews (unique to this section)
   videoPoster: decorativeAssets.socialIcons,
   videoPosterAlt: "Student testimonial and success story",
 } as const;
 
-// === GALLERY "WE ARE YMIT ACADEMY" ===
-// 4 разных визуала для галереи - НЕ повторяющиеся!
-// Стратегия: используем ВСЕ доступные иконки + ellipsesSmall (который не используется в других секциях так активно)
+// === GALLERY "WE ARE TUA" ===
+// 4 unique visuals for the gallery — no duplicates!
+// Strategy: all available icons + ellipsesSmall (less used in other sections)
 
 export type GalleryItem = {
   id: string;
@@ -186,7 +186,7 @@ export const galleryItems: GalleryItem[] = [
     alt: "Team collaboration session",
     visual: {
       type: "pattern",
-      patternSrc: decorativeAssets.ellipsesSmall, // Второе использование ellipsesSmall (первое - MIT в Success Stories)
+      patternSrc: decorativeAssets.ellipsesSmall, // Second use of ellipsesSmall (first — MIT)
       accent: "blue",
     },
   },
@@ -195,7 +195,7 @@ export const galleryItems: GalleryItem[] = [
     alt: "Student consultation meeting",
     visual: {
       type: "icon",
-      iconSrc: icons.globe, // Глобальный охват - второе использование globe (первое - Oxford)
+      iconSrc: icons.globe, // Global reach — second use of globe (first — Oxford)
       accent: "orange",
     },
   },
@@ -204,7 +204,7 @@ export const galleryItems: GalleryItem[] = [
     alt: "Office workspace and documents",
     visual: {
       type: "icon",
-      iconSrc: icons.file, // Работа с документами - второе использование file (первое - Wharton)
+      iconSrc: icons.file, // Documents — second use of file (first — Wharton)
       accent: "neutral",
     },
   },
@@ -213,7 +213,7 @@ export const galleryItems: GalleryItem[] = [
     alt: "Digital learning platform",
     visual: {
       type: "icon",
-      iconSrc: icons.window, // Онлайн платформа - второе использование window (первое - Stanford)
+      iconSrc: icons.window, // Online platform — second use of window (first — Stanford)
       accent: "blue",
     },
   },
@@ -222,7 +222,7 @@ export const galleryItems: GalleryItem[] = [
 // === CONTACT SECTION ===
 
 export const contactMedia = {
-  // Декоративный элемент для секции контактов
+  // Decorative element for the contact section
   decorative: decorativeAssets.contactButton,
 } as const;
 

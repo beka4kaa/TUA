@@ -76,7 +76,6 @@ export default function ContactPage() {
     // Simulate API call
     await new Promise((resolve) => setTimeout(resolve, 1500));
     
-    console.log("Form submitted:", data);
     
     // Redirect to thank you page
     router.push("/thank-you");
@@ -295,7 +294,7 @@ export default function ContactPage() {
                     <div className="space-y-4">
                       {/* Email */}
                       <a
-                        href="mailto:hello@ymitacademy.com"
+                        href="mailto:hello@topuniversitiesadvisors.com"
                         className="flex items-center text-gray-600 hover:text-[#2F3B69] transition-colors group"
                       >
                         <div className="w-10 h-10 rounded-full bg-[#2F3B69]/10 flex items-center justify-center mr-3 group-hover:bg-[#2F3B69]/20 transition-colors">
@@ -313,7 +312,7 @@ export default function ContactPage() {
                             />
                           </svg>
                         </div>
-                        hello@ymitacademy.com
+                        hello@topuniversitiesadvisors.com
                       </a>
 
                       {/* Phone */}

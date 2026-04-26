@@ -12,7 +12,7 @@ interface LogoProps {
 }
 
 // Mark only – TUA crest SVG in a navy container
-export function YmitMark({ className }: Omit<LogoProps, "variant" | "color">) {
+export function TuaMark({ className }: Omit<LogoProps, "variant" | "color">) {
   return (
     <div
       className={cn(
@@ -33,7 +33,7 @@ export function YmitMark({ className }: Omit<LogoProps, "variant" | "color">) {
 }
 
 // Full logo – Mark + wordmark
-export function YmitLogo({ className, variant = "full", color = "black" }: LogoProps) {
+export function TuaLogo({ className, variant = "full", color = "black" }: LogoProps) {
   const textColor =
     color === "white"
       ? "text-white"
@@ -42,7 +42,7 @@ export function YmitLogo({ className, variant = "full", color = "black" }: LogoP
       : "text-[#111111]";
 
   if (variant === "mark") {
-    return <YmitMark className={className} />;
+    return <TuaMark className={className} />;
   }
 
   return (
@@ -50,7 +50,7 @@ export function YmitLogo({ className, variant = "full", color = "black" }: LogoP
       className={cn("flex items-center gap-2.5", className)}
       aria-label="TUA – Top Universities Advisor"
     >
-      <YmitMark />
+      <TuaMark />
       <div className={cn("flex flex-col leading-none", textColor)}>
         <span className="font-display text-[15px] font-bold tracking-wider uppercase">
           TUA
@@ -63,4 +63,4 @@ export function YmitLogo({ className, variant = "full", color = "black" }: LogoP
   );
 }
 
-export default YmitLogo;
+export default TuaLogo;

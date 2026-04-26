@@ -5,7 +5,7 @@ import Image from "next/image";
 import { ArrowRight, Play, ArrowUpRight } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import { YmitLogo, YmitMark } from "@/components/brand/logo";
+import { TuaLogo, TuaMark } from "@/components/brand/logo";
 import { FullscreenMenu } from "@/components/navigation/fullscreen-menu";
 import {
   whoWeAreAssets,
@@ -363,7 +363,7 @@ export default function HomePage() {
         </div>
       </AnimatedSection>
 
-      {/* ===== WE ARE YMIT ACADEMY / TEAM SECTION - Gray background ===== */}
+      {/* ===== WE ARE TUA / TEAM SECTION - Gray background ===== */}
       {/* ===== CONTACTS SECTION - White background ===== */}
       <AnimatedSection id="contact" className="relative py-16 sm:py-20 md:py-24 lg:py-32 section-white">
         {/* Decorative elements with parallax */}
@@ -491,8 +491,8 @@ export default function HomePage() {
             {/* Left - Logo and tagline */}
             <div className="w-full lg:w-1/4">
               <Link href="/" className="inline-flex items-center mb-4 sm:mb-6">
-                <YmitLogo color="black" className="dark:hidden" />
-                <YmitLogo color="white" className="hidden dark:block" />
+                <TuaLogo color="black" className="dark:hidden" />
+                <TuaLogo color="white" className="hidden dark:block" />
               </Link>
               <p className="font-body text-xs sm:text-sm text-[#6B6B6B] dark:text-[#888888] max-w-[200px]">
                 {t.footer.tagline}

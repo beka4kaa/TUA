@@ -122,7 +122,7 @@ export const storyCards: StoryCardData[] = [
     id: "quote-sarah",
     type: "quote",
     quote:
-      "Ymit Academy transformed my application journey. Their strategic guidance helped me secure admission to my dream school with a full scholarship.",
+      "TUA transformed my application journey. Their strategic guidance helped me secure admission to my dream school with a full scholarship.",
     author: "Sarah Chen",
     school: "Harvard University '24",
     accentColor: "blue",
@@ -131,7 +131,7 @@ export const storyCards: StoryCardData[] = [
     id: "quote-alex",
     type: "quote",
     quote:
-      "I was rejected from every school I applied to on my own. With Ymit, I got into Stanford, MIT, and Cornell — and chose where I actually wanted to go.",
+      "I was rejected from every school I applied to on my own. With TUA, I got into Stanford, MIT, and Cornell — and chose where I actually wanted to go.",
     author: "Alex Petrov",
     school: "Stanford University '25",
     accentColor: "orange",

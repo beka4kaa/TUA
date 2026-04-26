@@ -1,5 +1,5 @@
 """
-URL configuration for YMIT Academy Backend
+URL configuration for TUA Backend
 """
 
 from django.contrib import admin

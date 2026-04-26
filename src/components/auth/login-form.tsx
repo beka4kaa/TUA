@@ -44,7 +44,7 @@ export function LoginForm() {
             <CardHeader className="space-y-1">
                 <CardTitle className="text-2xl font-bold text-center">Welcome back</CardTitle>
                 <CardDescription className="text-center">
-                    Sign in to your Ymit Academy account
+                    Sign in to your TUA account
                 </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">

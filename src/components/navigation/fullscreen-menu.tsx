@@ -17,7 +17,7 @@ import { createPortal } from "react-dom";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import { YmitLogo } from "@/components/brand/logo";
+import { TuaLogo } from "@/components/brand/logo";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { LanguageSwitcher } from "@/components/ui/language-switcher";
 import { cn } from "@/lib/utils";
@@ -45,7 +45,7 @@ const footerInfo = {
     { name: "Kazakhstan", phone: "+7 777 777 7777" },
     { name: "International", phone: "+1 234 567 8900" },
   ],
-  email: "info@ymitacademy.com",
+  email: "topuniversitiesadvisors@gmail.com",
 };
 
 export function FullscreenMenu() {
@@ -260,7 +260,7 @@ export function FullscreenMenu() {
             className="flex items-center justify-between px-6 md:px-10 lg:px-16 py-5 md:py-6 border-b border-[#E5E5E5] dark:border-[#2a2a2a]"
           >
             <Link href="/" onClick={() => setIsOpen(false)} className="flex items-center">
-              <YmitLogo variant="full" color="black" />
+              <TuaLogo variant="full" color="black" />
             </Link>
             <div className="flex items-center gap-3">
               <LanguageSwitcher />

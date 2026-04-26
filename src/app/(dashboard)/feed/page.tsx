@@ -84,7 +84,7 @@ export default function FeedPage() {
         <DashboardShell narrow>
             <DashboardHeader 
                 title="News Feed"
-                description="Latest updates and announcements from Ymit Academy"
+                description="Latest updates and announcements from TUA"
             />
 
             {isLoading ? (

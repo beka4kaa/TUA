@@ -27,7 +27,7 @@ import {
   SheetTrigger,
   SheetClose,
 } from "@/components/ui/sheet";
-import { YmitLogo } from "@/components/brand/logo";
+import { TuaLogo } from "@/components/brand/logo";
 import { cn } from "@/lib/utils";
 
 interface NavLink {
@@ -92,7 +92,7 @@ export function MobileNav({ session }: MobileNavProps) {
         {/* Custom header with logo */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-[#EDEDED]">
           <Link href="/" onClick={handleLinkClick}>
-            <YmitLogo variant="full" color="black" />
+            <TuaLogo variant="full" color="black" />
           </Link>
           <SheetClose asChild>
             <button
