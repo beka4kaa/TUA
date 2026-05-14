@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { X, Send, GraduationCap } from "lucide-react";
+import { X, Send, Loader2 } from "lucide-react";
 
 // ─── Teacher Avatar SVG ─────────────────────────────────────────────────────
 function TeacherAvatar({ size = 40 }: { size?: number }) {
@@ -31,6 +31,22 @@ function TeacherAvatar({ size = 40 }: { size?: number }) {
   );
 }
 
+// ─── Typing indicator ────────────────────────────────────────────────────────
+function TypingBubble() {
+  return (
+    <div className="flex gap-2 flex-row">
+      <div className="flex-shrink-0 mt-0.5">
+        <TeacherAvatar size={28} />
+      </div>
+      <div className="rounded-2xl rounded-tl-none bg-[#F3F4F6] px-4 py-3 flex items-center gap-1">
+        <span className="w-1.5 h-1.5 rounded-full bg-[#2F3B69] animate-bounce [animation-delay:0ms]" />
+        <span className="w-1.5 h-1.5 rounded-full bg-[#2F3B69] animate-bounce [animation-delay:150ms]" />
+        <span className="w-1.5 h-1.5 rounded-full bg-[#2F3B69] animate-bounce [animation-delay:300ms]" />
+      </div>
+    </div>
+  );
+}
+
 // ─── Types ──────────────────────────────────────────────────────────────────
 type Message = {
   id: number;
@@ -41,7 +57,7 @@ type Message = {
 const INITIAL_MESSAGE: Message = {
   id: 0,
   role: "assistant",
-  text: "Hi! 👋 I'm your TUA advisor. How can I help you with university admissions today?",
+  text: "Hi! 👋 I'm your TUA Admissions Advisor. Ask me anything about university admissions, scholarships, or studying abroad — for example: \"I'm a grade 11 student and want to get a scholarship in Korea. What do I need to do?\"",
 };
 
 // ─── Widget ─────────────────────────────────────────────────────────────────
@@ -49,6 +65,7 @@ export function ChatbotWidget() {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([INITIAL_MESSAGE]);
   const [input, setInput] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const [nextId, setNextId] = useState(1);
   const bottomRef = useRef<HTMLDivElement>(null);
 
@@ -57,22 +74,53 @@ export function ChatbotWidget() {
     if (isOpen) {
       bottomRef.current?.scrollIntoView({ behavior: "smooth" });
     }
-  }, [messages, isOpen]);
+  }, [messages, isOpen, isLoading]);
 
-  const sendMessage = () => {
+  const sendMessage = async () => {
     const trimmed = input.trim();
-    if (!trimmed) return;
+    if (!trimmed || isLoading) return;
 
     const userMsg: Message = { id: nextId, role: "user", text: trimmed };
-    const botMsg: Message = {
-      id: nextId + 1,
-      role: "assistant",
-      text: "Thanks for your message! Our team will get back to you shortly. In the meantime, feel free to book a free consultation.",
-    };
+    const updatedMessages = [...messages, userMsg];
 
-    setMessages((prev) => [...prev, userMsg, botMsg]);
+    setMessages(updatedMessages);
     setNextId((n) => n + 2);
     setInput("");
+    setIsLoading(true);
+
+    try {
+      const res = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          // Send only user/assistant messages, skip the system greeting id=0
+          messages: updatedMessages.map(({ role, text }) => ({ role, text })),
+        }),
+      });
+
+      const data = await res.json();
+
+      const botMsg: Message = {
+        id: nextId + 1,
+        role: "assistant",
+        text: res.ok
+          ? data.reply
+          : (data.error ?? "Something went wrong. Please try again."),
+      };
+
+      setMessages((prev) => [...prev, botMsg]);
+    } catch {
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: nextId + 1,
+          role: "assistant",
+          text: "Network error — please check your connection and try again.",
+        },
+      ]);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -100,7 +148,7 @@ export function ChatbotWidget() {
                 TUA Advisor
               </p>
               <p className="text-white/60 text-[11px] leading-tight">
-                Admissions support
+                Admissions support · AI-powered
               </p>
             </div>
             <button
@@ -125,7 +173,7 @@ export function ChatbotWidget() {
                   </div>
                 )}
                 <div
-                  className={`rounded-2xl px-3 py-2 max-w-[80%] leading-snug ${
+                  className={`rounded-2xl px-3 py-2 max-w-[80%] leading-snug whitespace-pre-wrap ${
                     msg.role === "user"
                       ? "bg-[#2F3B69] text-white rounded-tr-none"
                       : "bg-[#F3F4F6] text-[#111111] rounded-tl-none"
@@ -135,6 +183,10 @@ export function ChatbotWidget() {
                 </div>
               </div>
             ))}
+
+            {/* Typing indicator */}
+            {isLoading && <TypingBubble />}
+
             <div ref={bottomRef} />
           </div>
 
@@ -147,15 +199,20 @@ export function ChatbotWidget() {
               onKeyDown={handleKeyDown}
               placeholder="Type a message…"
               aria-label="Chat message input"
-              className="flex-1 text-sm bg-[#F9FAFB] border border-[#E5E7EB] rounded-full px-4 py-2 outline-none focus:border-[#2F3B69] transition-colors placeholder:text-[#9CA3AF] text-[#111111]"
+              disabled={isLoading}
+              className="flex-1 text-sm bg-[#F9FAFB] border border-[#E5E7EB] rounded-full px-4 py-2 outline-none focus:border-[#2F3B69] transition-colors placeholder:text-[#9CA3AF] text-[#111111] disabled:opacity-60"
             />
             <button
               onClick={sendMessage}
               aria-label="Send message"
-              disabled={!input.trim()}
+              disabled={!input.trim() || isLoading}
               className="flex-shrink-0 w-9 h-9 rounded-full bg-[#8B3B3B] flex items-center justify-center text-white disabled:opacity-40 hover:bg-[#6F2F2F] transition-colors"
             >
-              <Send className="w-4 h-4" />
+              {isLoading ? (
+                <Loader2 className="w-4 h-4 animate-spin" />
+              ) : (
+                <Send className="w-4 h-4" />
+              )}
             </button>
           </div>
         </div>
