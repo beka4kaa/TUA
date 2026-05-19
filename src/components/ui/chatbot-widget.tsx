@@ -57,7 +57,7 @@ type Message = {
 const INITIAL_MESSAGE: Message = {
   id: 0,
   role: "assistant",
-  text: "Hi! 👋 I'm your TUA Admissions Advisor. Ask me anything about university admissions, scholarships, or studying abroad — for example: \"I'm a grade 11 student and want to get a scholarship in Korea. What do I need to do?\"",
+  text: "Hi! 👋 I'm your Stockermans Admissions Advisor. Ask me anything about university admissions, scholarships, or studying abroad — for example: \"I'm a grade 11 student and want to get a scholarship in Korea. What do I need to do?\"",
 };
 
 // ─── Widget ─────────────────────────────────────────────────────────────────
@@ -145,7 +145,7 @@ export function ChatbotWidget() {
             <TeacherAvatar size={36} />
             <div className="flex-1 min-w-0">
               <p className="text-white text-sm font-semibold leading-tight truncate">
-                TUA Advisor
+                Stockermans Advisor
               </p>
               <p className="text-white/60 text-[11px] leading-tight">
                 Admissions support · AI-powered

@@ -1,5 +1,5 @@
 /**
- * TUA – Top Universities Advisor
+ * Stockermans Education Advisors
  * Logo Components
  */
 
@@ -11,8 +11,8 @@ interface LogoProps {
   color?: "black" | "blue" | "white";
 }
 
-// Mark only – TUA crest SVG in a navy container
-export function TuaMark({ className }: Omit<LogoProps, "variant" | "color">) {
+// Mark only – Stockermans crest SVG in a navy container
+export function StockermansMark({ className }: Omit<LogoProps, "variant" | "color">) {
   return (
     <div
       className={cn(
@@ -20,12 +20,12 @@ export function TuaMark({ className }: Omit<LogoProps, "variant" | "color">) {
         "bg-[#2F3B69] w-9 h-9",
         className
       )}
-      aria-label="TUA – Top Universities Advisor"
+      aria-label="Stockermans Education Advisors"
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src="/brand/tua-logo.svg"
-        alt="TUA crest"
+        src="/brand/stockermans-logo.svg"
+        alt="Stockermans crest"
         className="w-full h-full object-contain p-0.5"
       />
     </div>
@@ -33,7 +33,7 @@ export function TuaMark({ className }: Omit<LogoProps, "variant" | "color">) {
 }
 
 // Full logo – Mark + wordmark
-export function TuaLogo({ className, variant = "full", color = "black" }: LogoProps) {
+export function StockermansLogo({ className, variant = "full", color = "black" }: LogoProps) {
   const textColor =
     color === "white"
       ? "text-white"
@@ -42,25 +42,25 @@ export function TuaLogo({ className, variant = "full", color = "black" }: LogoPr
       : "text-[#111111]";
 
   if (variant === "mark") {
-    return <TuaMark className={className} />;
+    return <StockermansMark className={className} />;
   }
 
   return (
     <div
       className={cn("flex items-center gap-2.5", className)}
-      aria-label="TUA – Top Universities Advisor"
+      aria-label="Stockermans Education Advisors"
     >
-      <TuaMark />
+      <StockermansMark />
       <div className={cn("flex flex-col leading-none", textColor)}>
         <span className="font-display text-[15px] font-bold tracking-wider uppercase">
-          TUA
+          Stockermans
         </span>
         <span className="font-body text-[8.5px] tracking-widest uppercase opacity-55 mt-0.5">
-          Top Universities Advisor
+          Stockermans Education Advisors
         </span>
       </div>
     </div>
   );
 }
 
-export default TuaLogo;
+export default StockermansLogo;

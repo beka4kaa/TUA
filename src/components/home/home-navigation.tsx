@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import { TuaLogo } from "@/components/brand/logo";
+import { StockermansLogo } from "@/components/brand/logo";
 import { FullscreenMenu } from "@/components/navigation/fullscreen-menu";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { LanguageSwitcher } from "@/components/ui/language-switcher";
@@ -52,7 +52,7 @@ export function HomeNavigation() {
                 }`}>
                     {/* Logo */}
                     <Link href="/" className="flex items-center">
-                        <TuaLogo variant="full" color={isDark ? "white" : "black"} />
+                        <StockermansLogo variant="full" color={isDark ? "white" : "black"} />
                     </Link>
 
                     {/* Center Navigation - hidden on mobile/tablet */}

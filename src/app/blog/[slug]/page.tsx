@@ -13,13 +13,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   if (!post) {
     return {
-      title: "Article Not Found | TUA",
+      title: "Article Not Found | Stockermans",
     };
   }
 
   return {
-    title: `${post.title} | TUA Blog`,
-    description: post.excerpt || `Read ${post.title} on TUA Blog`,
+    title: `${post.title} | Stockermans Blog`,
+    description: post.excerpt || `Read ${post.title} on Stockermans Blog`,
     openGraph: {
       title: post.title,
       description: post.excerpt || undefined,

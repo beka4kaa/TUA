@@ -1,5 +1,5 @@
 <p align="center">
-  <strong>TUA – Top Universities Advisor</strong><br/>
+  <strong>Stockermans Education Advisors</strong><br/>
   <a href="https://www.topuniversitiesadvisors.com">www.topuniversitiesadvisors.com</a>
 </p>
 
@@ -14,11 +14,11 @@
 
 ---
 
-# TUA – Top Universities Advisor
+# Stockermans Education Advisors
 
 > Expert admissions consulting platform for undergraduate programs at elite institutions worldwide.
 
-**TUA** helps students navigate the complex university admissions process with personalized consulting, essay reviews, scholarship guidance, and interview preparation. The platform combines a modern, animated marketing website with a full-featured authenticated dashboard for students, consultants, and administrators.
+**Stockermans** helps students navigate the complex university admissions process with personalized consulting, essay reviews, scholarship guidance, and interview preparation. The platform combines a modern, animated marketing website with a full-featured authenticated dashboard for students, consultants, and administrators.
 
 🌐 **Live:** [www.topuniversitiesadvisors.com](https://www.topuniversitiesadvisors.com)
 
@@ -108,7 +108,7 @@
 ## Project Structure
 
 ```
-TUA/
+Stockermans/
 ├── src/                          # Next.js frontend source
 │   ├── app/                      # App Router pages and layouts
 │   │   ├── (auth)/               # Auth pages (login, signup)
@@ -175,8 +175,8 @@ TUA/
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/beka4kaa/TUA.git
-cd TUA
+git clone https://github.com/beka4kaa/Stockermans.git
+cd Stockermans
 ```
 
 ### 2. Frontend Setup
@@ -202,7 +202,7 @@ The frontend will run at **http://localhost:3000**.
 ```bash
 cd backend
 
-# Create and activate a virtual environment
+# Create and activate a virstockermansl environment
 python -m venv venv
 source venv/bin/activate      # macOS/Linux
 # venv\Scripts\activate       # Windows
@@ -364,4 +364,4 @@ Railway configuration is provided in `backend/railway.json`.
 
 This project is proprietary. All rights reserved.
 
-© 2026 TUA – Top Universities Advisor. [www.topuniversitiesadvisors.com](https://www.topuniversitiesadvisors.com)
+© 2026 Stockermans Education Advisors. [www.topuniversitiesadvisors.com](https://www.topuniversitiesadvisors.com)

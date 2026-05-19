@@ -84,7 +84,7 @@ export default function FeedPage() {
         <DashboardShell narrow>
             <DashboardHeader 
                 title="News Feed"
-                description="Latest updates and announcements from TUA"
+                description="Latest updates and announcements from Stockermans"
             />
 
             {isLoading ? (

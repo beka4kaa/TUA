@@ -197,7 +197,7 @@ export function SectionDecoration({
     [-50 * parallaxSpeed, 50 * parallaxSpeed]
   );
 
-  const actualColor = colorMap[color as keyof typeof colorMap] || color;
+  const acstockermanslColor = colorMap[color as keyof typeof colorMap] || color;
 
   const positionStyle: React.CSSProperties = {
     position: "absolute",
@@ -226,15 +226,15 @@ export function SectionDecoration({
 
     switch (type) {
       case "topographic":
-        return <TopographicPattern color={actualColor} opacity={opacity} />;
+        return <TopographicPattern color={acstockermanslColor} opacity={opacity} />;
       case "dots":
-        return <DotsPattern color={actualColor} opacity={opacity} />;
+        return <DotsPattern color={acstockermanslColor} opacity={opacity} />;
       case "circles":
-        return <CirclesPattern color={actualColor} opacity={opacity} />;
+        return <CirclesPattern color={acstockermanslColor} opacity={opacity} />;
       case "wave":
-        return <WavePattern color={actualColor} opacity={opacity} />;
+        return <WavePattern color={acstockermanslColor} opacity={opacity} />;
       default:
-        return <TopographicPattern color={actualColor} opacity={opacity} />;
+        return <TopographicPattern color={acstockermanslColor} opacity={opacity} />;
     }
   };
 
@@ -283,7 +283,7 @@ export function LargeParallaxCircle({
     [0, 600 * speedFactor]
   );
 
-  const actualColor = colorMap[color];
+  const acstockermanslColor = colorMap[color];
   const positionStyle = position === "right" 
     ? { right: `-${size / 3}px`, top }
     : { left: `-${size / 3}px`, top };
@@ -304,11 +304,11 @@ export function LargeParallaxCircle({
         fill="none"
         style={{ opacity }}
       >
-        <circle cx="200" cy="200" r="195" stroke={actualColor} strokeWidth="1.5" fill="none" />
-        <circle cx="200" cy="200" r="160" stroke={actualColor} strokeWidth="1" fill="none" />
-        <circle cx="200" cy="200" r="125" stroke={actualColor} strokeWidth="0.75" fill="none" />
-        <circle cx="200" cy="200" r="90" stroke={actualColor} strokeWidth="0.5" fill="none" />
-        <circle cx="200" cy="200" r="55" stroke={actualColor} strokeWidth="0.4" fill="none" />
+        <circle cx="200" cy="200" r="195" stroke={acstockermanslColor} strokeWidth="1.5" fill="none" />
+        <circle cx="200" cy="200" r="160" stroke={acstockermanslColor} strokeWidth="1" fill="none" />
+        <circle cx="200" cy="200" r="125" stroke={acstockermanslColor} strokeWidth="0.75" fill="none" />
+        <circle cx="200" cy="200" r="90" stroke={acstockermanslColor} strokeWidth="0.5" fill="none" />
+        <circle cx="200" cy="200" r="55" stroke={acstockermanslColor} strokeWidth="0.4" fill="none" />
       </svg>
     </motion.div>
   );

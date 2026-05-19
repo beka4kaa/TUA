@@ -1,7 +1,7 @@
 <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
   <!-- Blue background -->
   <rect width="32" height="32" rx="4" fill="#28547C"/>
-  <!-- White "TUA" text -->
+  <!-- White "Stockermans" text -->
   <text
     x="16"
     y="22"
@@ -11,5 +11,5 @@
     fill="white"
     text-anchor="middle"
     letter-spacing="0.5"
-  >TUA</text>
+  >Stockermans</text>
 </svg>

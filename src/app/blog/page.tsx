@@ -3,7 +3,7 @@ import { getPublishedPosts, getAllTags } from "@/lib/blog";
 import { BlogListClient } from "./blog-list-client";
 
 export const metadata = {
-  title: "Blog | TUA",
+  title: "Blog | Stockermans",
   description: "Insights, tips, and guides on university admissions, scholarships, and studying abroad.",
 };
 

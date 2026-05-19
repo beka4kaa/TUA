@@ -69,7 +69,7 @@ export const reviewsAssets = {
   videoPosterAlt: "Student testimonial video",
 } as const;
 
-// === GALLERY (WE ARE TUA) ===
+// === GALLERY (WE ARE Stockermans) ===
 // Each gallery item is unique
 export const galleryAssets = {
   photos: [

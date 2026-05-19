@@ -99,7 +99,7 @@ export default function PrivacyPage() {
             <section id="introduction">
               <h2>Introduction</h2>
               <p>
-                Welcome to TUA. We respect your privacy and are committed to 
+                Welcome to Stockermans. We respect your privacy and are committed to 
                 protecting your personal data. This privacy policy will inform you about 
                 how we look after your personal data when you visit our website and tell 
                 you about your privacy rights and how the law protects you.
@@ -251,7 +251,7 @@ export default function PrivacyPage() {
               <ul>
                 <li>
                   Email:{" "}
-                  <a href="mailto:privacy@TUA.com">privacy@TUA.com</a>
+                  <a href="mailto:privacy@Stockermans.com">privacy@Stockermans.com</a>
                 </li>
                 <li>Address: Al-Farabi Ave 77/7, Almaty, Kazakhstan</li>
               </ul>

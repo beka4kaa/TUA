@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 
 const WHATSAPP_NUMBER = "77760071040";
-const WHATSAPP_MESSAGE = encodeURIComponent("Hello! I'm interested in TUA's Human Intelligence services.");
+const WHATSAPP_MESSAGE = encodeURIComponent("Hello! I'm interested in Stockermans's Human Intelligence services.");
 
 export function SignupForm() {
     return (
@@ -16,7 +16,7 @@ export function SignupForm() {
                         <Sparkles className="h-6 w-6 text-primary" />
                     </div>
                 </div>
-                <CardTitle className="text-2xl font-bold text-center">Welcome to TUA</CardTitle>
+                <CardTitle className="text-2xl font-bold text-center">Welcome to Stockermans</CardTitle>
                 <CardDescription className="text-center text-sm leading-relaxed">
                     Connecting you with real human expertise and intelligence.
                     Get in touch to learn how we can help you.

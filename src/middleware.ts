@@ -68,7 +68,7 @@ export function middleware(request: NextRequest) {
     }
     
     // For protected routes, we can't check JWT from server-side middleware
-    // The actual auth check happens on the client with useAuth hook
+    // The acstockermansl auth check happens on the client with useAuth hook
     // But we can do basic checks and set headers
     
     // Check if it's a protected route

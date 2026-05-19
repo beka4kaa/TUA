@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
-const SYSTEM_PROMPT = `You are a knowledgeable and friendly Stockermans Admissions Advisor at TUA (Top Universities Advisor). 
+const SYSTEM_PROMPT = `You are a knowledgeable and friendly Stockermans Admissions Advisor at Stockermans (Stockermans Education Advisors). 
 Your role is to help students navigate university admissions, scholarships, and study-abroad opportunities — with a special focus on Korea, Kazakhstan, and other popular destinations.
 
 You can answer questions such as:
@@ -12,7 +12,7 @@ You can answer questions such as:
 - Differences between government scholarships (e.g. GKS/KGSP) and university scholarships
 - Preparation timelines for different grade levels
 
-Always be encouraging, clear, and actionable. Use bullet points when listing steps. If you don't know something specific, say so honestly and suggest the student contact TUA directly for personalised guidance.`;
+Always be encouraging, clear, and actionable. Use bullet points when listing steps. If you don't know something specific, say so honestly and suggest the student contact Stockermans directly for personalised guidance.`;
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY!);
 
@@ -58,7 +58,7 @@ export async function POST(req: NextRequest) {
         const status  = (err as Record<string, unknown>).status;
         console.error("[/api/chat] Gemini error →", { message, status });
         return NextResponse.json(
-            { error: message },   // return actual error text to the client
+            { error: message },   // return acstockermansl error text to the client
             { status: 500 }
         );
     }

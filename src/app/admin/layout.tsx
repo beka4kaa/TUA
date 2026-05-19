@@ -17,7 +17,7 @@ import { useAuth } from "@/contexts/auth-context";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Separator } from "@/components/ui/separator";
-import { TuaMark } from "@/components/brand/logo";
+import { StockermansMark } from "@/components/brand/logo";
 import {
     Sidebar,
     SidebarContent,
@@ -109,8 +109,8 @@ export default function AdminLayout({
                 <Sidebar className="border-r border-border">
                     <SidebarHeader className="p-4">
                         <Link href="/admin" className="flex items-center gap-2.5">
-                            <TuaMark className="w-6 h-6" />
-                            <span className="font-body font-semibold text-base">TUA Admin</span>
+                            <StockermansMark className="w-6 h-6" />
+                            <span className="font-body font-semibold text-base">Stockermans Admin</span>
                         </Link>
                     </SidebarHeader>
 

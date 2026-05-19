@@ -52,11 +52,11 @@ const oswald = Oswald({
 
 export const metadata: Metadata = {
   title: {
-    default: "TUA – Top Universities Advisor",
-    template: "%s | TUA",
+    default: "Stockermans Education Advisors",
+    template: "%s | Stockermans",
   },
   description:
-    "Expert admissions consulting for undergraduate programs at elite institutions worldwide. TUA – Top Universities Advisor.",
+    "Expert admissions consulting for undergraduate programs at elite institutions worldwide. Stockermans Education Advisors.",
   keywords: [
     "university admission",
     "college consulting",
@@ -66,28 +66,28 @@ export const metadata: Metadata = {
     "essay review",
     "higher education",
   ],
-  authors: [{ name: "TUA – Top Universities Advisor" }],
+  authors: [{ name: "Stockermans Education Advisors" }],
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://topuniversitiesadvisor.com",
-    siteName: "TUA – Top Universities Advisor",
-    title: "TUA – Top Universities Advisor",
+    siteName: "Stockermans Education Advisors",
+    title: "Stockermans Education Advisors",
     description:
       "Expert admissions consulting for undergraduate programs at elite institutions worldwide.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "TUA – Top Universities Advisor",
+    title: "Stockermans Education Advisors",
     description:
       "Expert admissions consulting for undergraduate programs at elite institutions worldwide.",
   },
   icons: {
     icon: [
-      { url: "/brand/tua-favicon.svg", type: "image/svg+xml" },
+      { url: "/brand/stockermans-favicon.svg", type: "image/svg+xml" },
     ],
-    shortcut: "/brand/tua-favicon.svg",
-    apple: "/brand/tua-favicon.svg",
+    shortcut: "/brand/stockermans-favicon.svg",
+    apple: "/brand/stockermans-favicon.svg",
   },
 };
 

@@ -118,11 +118,11 @@ export interface ApiSuccess {
 // API Configuration
 // ============================================
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://ymit-production.up.railway.app/api';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://stockermans-production.up.railway.app/api';
 
 // Token storage keys
-const ACCESS_TOKEN_KEY = 'tua_access_token';
-const REFRESH_TOKEN_KEY = 'tua_refresh_token';
+const ACCESS_TOKEN_KEY = 'stockermans_access_token';
+const REFRESH_TOKEN_KEY = 'stockermans_refresh_token';
 
 // ============================================
 // Token Management

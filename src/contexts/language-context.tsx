@@ -134,13 +134,13 @@ export const translations = {
         quotes: [
           {
             id: "quote-sarah",
-            quote: "TUA transformed my application journey. Their strategic guidance helped me secure admission to my dream school with a full scholarship.",
+            quote: "Stockermans transformed my application journey. Their strategic guidance helped me secure admission to my dream school with a full scholarship.",
             author: "Sarah Chen",
             school: "Harvard University '24",
           },
           {
             id: "quote-alex",
-            quote: "I was rejected from every school I applied to on my own. With TUA, I got into Stanford, MIT, and Cornell — and chose where I actually wanted to go.",
+            quote: "I was rejected from every school I applied to on my own. With Stockermans, I got into Stanford, MIT, and Cornell — and chose where I acstockermanslly wanted to go.",
             author: "Alex Petrov",
             school: "Stanford University '25",
           },
@@ -157,7 +157,7 @@ export const translations = {
     // Reviews
     reviews: {
       heading: "REVIEWS",
-      quote: "TUA transformed my application journey. Their strategic guidance helped me secure admission to my dream school with a full scholarship. The personalized attention made all the difference.",
+      quote: "Stockermans transformed my application journey. Their strategic guidance helped me secure admission to my dream school with a full scholarship. The personalized attention made all the difference.",
       author: "Sarah Chen",
       school: "Harvard University '24",
     },
@@ -344,13 +344,13 @@ export const translations = {
         quotes: [
           {
             id: "quote-sarah",
-            quote: "TUA изменила мой путь к поступлению. Их стратегическое руководство помогло мне поступить в университет мечты с полной стипендией.",
+            quote: "Stockermans изменила мой путь к поступлению. Их стратегическое руководство помогло мне поступить в университет мечты с полной стипендией.",
             author: "Sarah Chen",
             school: "Harvard University '24",
           },
           {
             id: "quote-alex",
-            quote: "Самостоятельно меня отклонили везде. С TUA я поступил в Stanford, MIT и Cornell — и выбрал тот университет, который действительно хотел.",
+            quote: "Самостоятельно меня отклонили везде. С Stockermans я поступил в Stanford, MIT и Cornell — и выбрал тот университет, который действительно хотел.",
             author: "Alex Petrov",
             school: "Stanford University '25",
           },
@@ -367,7 +367,7 @@ export const translations = {
     // Reviews
     reviews: {
       heading: "ОТЗЫВЫ",
-      quote: "TUA изменила мой путь к поступлению. Их стратегическое руководство помогло мне поступить в университет мечты с полной стипендией. Индивидуальный подход решил всё.",
+      quote: "Stockermans изменила мой путь к поступлению. Их стратегическое руководство помогло мне поступить в университет мечты с полной стипендией. Индивидуальный подход решил всё.",
       author: "Sarah Chen",
       school: "Harvard University '24",
     },

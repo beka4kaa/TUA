@@ -17,7 +17,7 @@ import { createPortal } from "react-dom";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import { TuaLogo } from "@/components/brand/logo";
+import { StockermansLogo } from "@/components/brand/logo";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { LanguageSwitcher } from "@/components/ui/language-switcher";
 import { cn } from "@/lib/utils";
@@ -260,7 +260,7 @@ export function FullscreenMenu() {
             className="flex items-center justify-between px-6 md:px-10 lg:px-16 py-5 md:py-6 border-b border-[#E5E5E5] dark:border-[#2a2a2a]"
           >
             <Link href="/" onClick={() => setIsOpen(false)} className="flex items-center">
-              <TuaLogo variant="full" color="black" />
+              <StockermansLogo variant="full" color="black" />
             </Link>
             <div className="flex items-center gap-3">
               <LanguageSwitcher />

@@ -52,7 +52,7 @@ export const whoWeAreMedia = {
   // CTA button as a symbol of "start your journey with us"
   // ellipsesLarge is reserved for Success Stories
   videoPoster: decorativeAssets.contactButton,
-  videoPosterAlt: "Start your journey with TUA",
+  videoPosterAlt: "Start your journey with Stockermans",
 } as const;
 
 // === SUCCESS STORIES ===
@@ -165,7 +165,7 @@ export const reviewsMedia = {
   videoPosterAlt: "Student testimonial and success story",
 } as const;
 
-// === GALLERY "WE ARE TUA" ===
+// === GALLERY "WE ARE Stockermans" ===
 // 4 unique visuals for the gallery — no duplicates!
 // Strategy: all available icons + ellipsesSmall (less used in other sections)
 

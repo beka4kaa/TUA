@@ -5,7 +5,7 @@ import Image from "next/image";
 import { ArrowRight, Play, ArrowUpRight } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import { TuaLogo, TuaMark } from "@/components/brand/logo";
+import { StockermansLogo, StockermansMark } from "@/components/brand/logo";
 import { FullscreenMenu } from "@/components/navigation/fullscreen-menu";
 import {
   whoWeAreAssets,
@@ -62,7 +62,7 @@ export default function HomePage() {
           <div className="flex flex-col lg:flex-row gap-8 sm:gap-10 lg:gap-20">
             {/* Left - Intro Video Placeholder */}
             <AnimatedItem className="w-full lg:w-1/2">
-              {/* TODO: Replace with actual video embed (YouTube / Vimeo / <video> tag) */}
+              {/* TODO: Replace with acstockermansl video embed (YouTube / Vimeo / <video> tag) */}
               <div className="relative aspect-video bg-[#0D1B2A] rounded-xl sm:rounded-2xl overflow-hidden group cursor-pointer shadow-lg">
                 {/* Thumbnail / poster layer */}
                 <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 px-6">
@@ -363,7 +363,7 @@ export default function HomePage() {
         </div>
       </AnimatedSection>
 
-      {/* ===== WE ARE TUA / TEAM SECTION - Gray background ===== */}
+      {/* ===== WE ARE Stockermans / TEAM SECTION - Gray background ===== */}
       {/* ===== CONTACTS SECTION - White background ===== */}
       <AnimatedSection id="contact" className="relative py-16 sm:py-20 md:py-24 lg:py-32 section-white">
         {/* Decorative elements with parallax */}
@@ -491,8 +491,8 @@ export default function HomePage() {
             {/* Left - Logo and tagline */}
             <div className="w-full lg:w-1/4">
               <Link href="/" className="inline-flex items-center mb-4 sm:mb-6">
-                <TuaLogo color="black" className="dark:hidden" />
-                <TuaLogo color="white" className="hidden dark:block" />
+                <StockermansLogo color="black" className="dark:hidden" />
+                <StockermansLogo color="white" className="hidden dark:block" />
               </Link>
               <p className="font-body text-xs sm:text-sm text-[#6B6B6B] dark:text-[#888888] max-w-[200px]">
                 {t.footer.tagline}
@@ -536,7 +536,7 @@ export default function HomePage() {
           {/* Bottom */}
           <div className="pt-6 sm:pt-8 border-t border-[#EDEDED]/60 dark:border-[#333]/60 flex flex-col sm:flex-row justify-between items-center gap-4 sm:gap-6">
             <p className="font-body text-[10px] sm:text-xs text-[#A3A3A3] order-2 sm:order-1">
-              © {new Date().getFullYear()} TUA – Top Universities Advisor. {t.footer.copyright}
+              © {new Date().getFullYear()} Stockermans Education Advisors. {t.footer.copyright}
             </p>
             <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-8 order-1 sm:order-2">
               <a

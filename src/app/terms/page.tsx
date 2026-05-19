@@ -31,7 +31,7 @@ const tocItems = [
   { id: "services", title: "Our Services" },
   { id: "user-accounts", title: "User Accounts" },
   { id: "acceptable-use", title: "Acceptable Use" },
-  { id: "intellectual-property", title: "Intellectual Property" },
+  { id: "intellecstockermansl-property", title: "Intellecstockermansl Property" },
   { id: "payment", title: "Payment Terms" },
   { id: "limitation", title: "Limitation of Liability" },
   { id: "termination", title: "Termination" },
@@ -100,7 +100,7 @@ export default function TermsPage() {
             <section id="acceptance">
               <h2>Acceptance of Terms</h2>
               <p>
-                By accessing and using TUA&apos;s website and services, you agree 
+                By accessing and using Stockermans&apos;s website and services, you agree 
                 to be bound by these Terms of Service (&quot;Terms&quot;). If you do not agree 
                 to these Terms, please do not use our services.
               </p>
@@ -114,7 +114,7 @@ export default function TermsPage() {
             <section id="services">
               <h2>Our Services</h2>
               <p>
-                TUA provides educational services, including but not limited to:
+                Stockermans provides educational services, including but not limited to:
               </p>
               <ul>
                 <li>Online courses and training programs</li>
@@ -160,12 +160,12 @@ export default function TermsPage() {
               </ul>
             </section>
 
-            <section id="intellectual-property">
-              <h2>Intellectual Property</h2>
+            <section id="intellecstockermansl-property">
+              <h2>Intellecstockermansl Property</h2>
               <p>
                 All content on our website, including text, graphics, logos, images, 
-                videos, course materials, and software, is the property of TUA 
-                or its licensors and is protected by copyright and other intellectual 
+                videos, course materials, and software, is the property of Stockermans 
+                or its licensors and is protected by copyright and other intellecstockermansl 
                 property laws.
               </p>
               <p>
@@ -201,7 +201,7 @@ export default function TermsPage() {
             <section id="limitation">
               <h2>Limitation of Liability</h2>
               <p>
-                TO THE MAXIMUM EXTENT PERMITTED BY LAW, TUA SHALL NOT BE LIABLE 
+                TO THE MAXIMUM EXTENT PERMITTED BY LAW, Stockermans SHALL NOT BE LIABLE 
                 FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, 
                 INCLUDING BUT NOT LIMITED TO LOSS OF PROFITS, DATA, OR GOODWILL.
               </p>
@@ -254,7 +254,7 @@ export default function TermsPage() {
               <ul>
                 <li>
                   Email:{" "}
-                  <a href="mailto:legal@TUA.com">legal@TUA.com</a>
+                  <a href="mailto:legal@Stockermans.com">legal@Stockermans.com</a>
                 </li>
                 <li>Address: Al-Farabi Ave 77/7, Almaty, Kazakhstan</li>
               </ul>
