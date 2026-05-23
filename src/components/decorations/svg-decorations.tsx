@@ -1,7 +1,7 @@
 /**
  * Enhanced Decorative SVG Components
  * Reusable background decoration elements matching Rivo agency style
- * Brand colors: Blue #2F3B69, Red #8B3B3B
+ * Brand colors: Blue #1B5FAA, Red #1B5FAA
  * 
  * Key: These decorations should be MORE VISIBLE than before
  * - Use opacity 0.06-0.15 for most decorations
@@ -18,8 +18,8 @@ interface DecorativeProps {
 }
 
 const colorMap = {
-  blue: "#2F3B69",
-  orange: "#8B3B3B",
+  blue: "#1B5FAA",
+  orange: "#1B5FAA",
   gray: "#111111" // Using darker gray for better visibility
 };
 
@@ -125,7 +125,7 @@ export function TopographicLines({ className, color = "blue", opacity = 0.08 }: 
 export function AccentDots({ className, opacity = 1 }: DecorativeProps) {
   return (
     <div className={cn("flex items-center gap-1.5", className)} style={{ opacity }}>
-      <div className="w-3 h-3 rounded-full bg-[#8B3B3B]" />
+      <div className="w-3 h-3 rounded-full bg-[#1B5FAA]" />
       <div className="w-3 h-3 rounded-full bg-brand-blue" />
       <div className="w-3 h-3 rounded-full bg-[#D4D4D4]" />
     </div>

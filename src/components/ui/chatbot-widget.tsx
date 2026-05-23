@@ -15,18 +15,18 @@ function TeacherAvatar({ size = 40 }: { size?: number }) {
       aria-hidden="true"
     >
       {/* Background circle */}
-      <circle cx="20" cy="20" r="20" fill="#2F3B69" />
+      <circle cx="20" cy="20" r="20" fill="#1B5FAA" />
       {/* Head */}
       <circle cx="20" cy="15" r="7" fill="#E8C9A0" />
       {/* Grad cap – brim */}
-      <rect x="10" y="9" width="20" height="3" rx="1.5" fill="#8B3B3B" />
+      <rect x="10" y="9" width="20" height="3" rx="1.5" fill="#1B5FAA" />
       {/* Grad cap – top */}
-      <polygon points="20,4 28,9 12,9" fill="#8B3B3B" />
+      <polygon points="20,4 28,9 12,9" fill="#1B5FAA" />
       {/* Tassel */}
-      <line x1="28" y1="9" x2="30" y2="14" stroke="#8B3B3B" strokeWidth="1.5" strokeLinecap="round" />
-      <circle cx="30" cy="15" r="1.5" fill="#8B3B3B" />
+      <line x1="28" y1="9" x2="30" y2="14" stroke="#1B5FAA" strokeWidth="1.5" strokeLinecap="round" />
+      <circle cx="30" cy="15" r="1.5" fill="#1B5FAA" />
       {/* Body / shoulders */}
-      <path d="M8 36 C8 28 12 26 20 26 C28 26 32 28 32 36" fill="#1C233F" />
+      <path d="M8 36 C8 28 12 26 20 26 C28 26 32 28 32 36" fill="#103966" />
     </svg>
   );
 }
@@ -39,9 +39,9 @@ function TypingBubble() {
         <TeacherAvatar size={28} />
       </div>
       <div className="rounded-2xl rounded-tl-none bg-[#F3F4F6] px-4 py-3 flex items-center gap-1">
-        <span className="w-1.5 h-1.5 rounded-full bg-[#2F3B69] animate-bounce [animation-delay:0ms]" />
-        <span className="w-1.5 h-1.5 rounded-full bg-[#2F3B69] animate-bounce [animation-delay:150ms]" />
-        <span className="w-1.5 h-1.5 rounded-full bg-[#2F3B69] animate-bounce [animation-delay:300ms]" />
+        <span className="w-1.5 h-1.5 rounded-full bg-[#1B5FAA] animate-bounce [animation-delay:0ms]" />
+        <span className="w-1.5 h-1.5 rounded-full bg-[#1B5FAA] animate-bounce [animation-delay:150ms]" />
+        <span className="w-1.5 h-1.5 rounded-full bg-[#1B5FAA] animate-bounce [animation-delay:300ms]" />
       </div>
     </div>
   );
@@ -141,7 +141,7 @@ export function ChatbotWidget() {
           style={{ height: "420px" }}
         >
           {/* Header */}
-          <div className="flex items-center gap-3 px-4 py-3 bg-[#2F3B69]">
+          <div className="flex items-center gap-3 px-4 py-3 bg-[#1B5FAA]">
             <TeacherAvatar size={36} />
             <div className="flex-1 min-w-0">
               <p className="text-white text-sm font-semibold leading-tight truncate">
@@ -175,7 +175,7 @@ export function ChatbotWidget() {
                 <div
                   className={`rounded-2xl px-3 py-2 max-w-[80%] leading-snug whitespace-pre-wrap ${
                     msg.role === "user"
-                      ? "bg-[#2F3B69] text-white rounded-tr-none"
+                      ? "bg-[#1B5FAA] text-white rounded-tr-none"
                       : "bg-[#F3F4F6] text-[#111111] rounded-tl-none"
                   }`}
                 >
@@ -200,13 +200,13 @@ export function ChatbotWidget() {
               placeholder="Type a message…"
               aria-label="Chat message input"
               disabled={isLoading}
-              className="flex-1 text-sm bg-[#F9FAFB] border border-[#E5E7EB] rounded-full px-4 py-2 outline-none focus:border-[#2F3B69] transition-colors placeholder:text-[#9CA3AF] text-[#111111] disabled:opacity-60"
+              className="flex-1 text-sm bg-[#F9FAFB] border border-[#E5E7EB] rounded-full px-4 py-2 outline-none focus:border-[#1B5FAA] transition-colors placeholder:text-[#9CA3AF] text-[#111111] disabled:opacity-60"
             />
             <button
               onClick={sendMessage}
               aria-label="Send message"
               disabled={!input.trim() || isLoading}
-              className="flex-shrink-0 w-9 h-9 rounded-full bg-[#8B3B3B] flex items-center justify-center text-white disabled:opacity-40 hover:bg-[#6F2F2F] transition-colors"
+              className="flex-shrink-0 w-9 h-9 rounded-full bg-[#1B5FAA] flex items-center justify-center text-white disabled:opacity-40 hover:bg-[#164C88] transition-colors"
             >
               {isLoading ? (
                 <Loader2 className="w-4 h-4 animate-spin" />
@@ -222,7 +222,7 @@ export function ChatbotWidget() {
       <button
         onClick={() => setIsOpen((v) => !v)}
         aria-label={isOpen ? "Close support chat" : "Open support chat"}
-        className="fixed bottom-5 right-4 sm:right-6 z-[9999] w-14 h-14 rounded-full shadow-xl flex items-center justify-center bg-[#2F3B69] hover:bg-[#262F54] transition-all duration-200 hover:scale-105 active:scale-95"
+        className="fixed bottom-5 right-4 sm:right-6 z-[9999] w-14 h-14 rounded-full shadow-xl flex items-center justify-center bg-[#1B5FAA] hover:bg-[#164C88] transition-all duration-200 hover:scale-105 active:scale-95"
       >
         {isOpen ? (
           <X className="w-6 h-6 text-white" />
@@ -230,7 +230,7 @@ export function ChatbotWidget() {
           <span className="relative flex items-center justify-center">
             <TeacherAvatar size={40} />
             {/* Notification dot */}
-            <span className="absolute -top-1 -right-1 w-3.5 h-3.5 bg-[#8B3B3B] rounded-full border-2 border-white animate-pulse" />
+            <span className="absolute -top-1 -right-1 w-3.5 h-3.5 bg-[#1B5FAA] rounded-full border-2 border-white animate-pulse" />
           </span>
         )}
       </button>

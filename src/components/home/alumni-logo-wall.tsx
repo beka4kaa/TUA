@@ -101,12 +101,12 @@ export const universities: UniversityEntry[] = [
 
 // ─── Region colour accents (border / badge) ──────────────────────────────────
 const REGION_COLORS: Record<UniversityEntry["region"], string> = {
-  USA:       "border-[#B3BAD4] text-[#2F3B69] bg-[#ECEEF5]",
-  Canada:    "border-[#D7ABAB] text-[#8B3B3B] bg-[#F5EAEA]",
+  USA:       "border-[#B3BAD4] text-[#1B5FAA] bg-[#ECEEF5]",
+  Canada:    "border-[#D7ABAB] text-[#1B5FAA] bg-[#F5EAEA]",
   UK:        "border-[#8B94B8] text-[#1F2847] bg-[#DDE0ED]",
-  Europe:    "border-[#C6CBDF] text-[#2F3B69] bg-[#F2F3F8]",
-  Asia:      "border-[#C38282] text-[#6F2F2F] bg-[#F0E0E0]",
-  Australia: "border-[#9BA4C4] text-[#2F3B69] bg-[#E4E6F0]",
+  Europe:    "border-[#C6CBDF] text-[#1B5FAA] bg-[#F2F3F8]",
+  Asia:      "border-[#C38282] text-[#164C88] bg-[#F0E0E0]",
+  Australia: "border-[#9BA4C4] text-[#1B5FAA] bg-[#E4E6F0]",
 };
 
 // ─── Single logo card ────────────────────────────────────────────────────────

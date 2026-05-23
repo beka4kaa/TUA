@@ -21,7 +21,7 @@ export function LineDivider({ className, color = "gray" }: DividerProps) {
     gray: "bg-[#EDEDED]",
     white: "bg-white/50",
     blue: "bg-brand-blue/10",
-    orange: "bg-[#8B3B3B]/10",
+    orange: "bg-[#1B5FAA]/10",
   };
 
   return (
@@ -41,7 +41,7 @@ export function GradientDivider({ className, color = "gray" }: DividerProps) {
     gray: "from-transparent via-[#EDEDED] to-transparent",
     white: "from-transparent via-white/60 to-transparent",
     blue: "from-transparent via-brand-blue/10 to-transparent",
-    orange: "from-transparent via-[#8B3B3B]/10 to-transparent",
+    orange: "from-transparent via-[#1B5FAA]/10 to-transparent",
   };
 
   return (
@@ -60,8 +60,8 @@ export function WaveDivider({ className, color = "gray" }: DividerProps) {
   const colors = {
     gray: "#F6F6F6",
     white: "#FFFFFF",
-    blue: "#2F3B69",
-    orange: "#8B3B3B",
+    blue: "#1B5FAA",
+    orange: "#1B5FAA",
   };
 
   return (
@@ -92,8 +92,8 @@ export function DotsDivider({ className, color = "gray" }: DividerProps) {
   const colors = {
     gray: "#D4D4D4",
     white: "#FFFFFF",
-    blue: "#2F3B69",
-    orange: "#8B3B3B",
+    blue: "#1B5FAA",
+    orange: "#1B5FAA",
   };
 
   return (

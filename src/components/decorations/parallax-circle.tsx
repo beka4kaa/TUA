@@ -38,8 +38,8 @@ interface ParallaxCircleProps {
 }
 
 const colorMap = {
-  blue: "#2F3B69",
-  orange: "#8B3B3B",
+  blue: "#1B5FAA",
+  orange: "#1B5FAA",
   gray: "#111111",
 };
 

@@ -110,7 +110,7 @@ export default function SubscriptionPage() {
         } else if (status === "canceled") {
             return <Badge variant="secondary">Canceled</Badge>;
         } else if (status === "trialing") {
-            return <Badge className="bg-[#2F3B69] hover:bg-[#262F54]">Trial</Badge>;
+            return <Badge className="bg-[#1B5FAA] hover:bg-[#164C88]">Trial</Badge>;
         }
         return null;
     };
@@ -137,12 +137,12 @@ export default function SubscriptionPage() {
 
             {/* Current Plan Status */}
             {isPremium && billing && (
-                <Card className="mb-8 border-[#8B3B3B]/30 bg-gradient-to-r from-[#8B3B3B]/5 to-transparent">
+                <Card className="mb-8 border-[#1B5FAA]/30 bg-gradient-to-r from-[#1B5FAA]/5 to-transparent">
                     <CardHeader>
                         <div className="flex items-center justify-between">
                             <div className="flex items-center gap-3">
-                                <div className="h-10 w-10 rounded-full bg-[#8B3B3B]/10 flex items-center justify-center">
-                                    <Crown className="h-5 w-5 text-[#8B3B3B]" />
+                                <div className="h-10 w-10 rounded-full bg-[#1B5FAA]/10 flex items-center justify-center">
+                                    <Crown className="h-5 w-5 text-[#1B5FAA]" />
                                 </div>
                                 <div>
                                     <CardTitle className="text-lg">Premium Plan</CardTitle>
@@ -160,7 +160,7 @@ export default function SubscriptionPage() {
                                 <p className="text-muted-foreground">
                                     {billing.cancelAtPeriodEnd ? (
                                         <>
-                                            <AlertCircle className="inline h-4 w-4 mr-1 text-[#8B3B3B]" />
+                                            <AlertCircle className="inline h-4 w-4 mr-1 text-[#1B5FAA]" />
                                             Your subscription ends on{" "}
                                             <span className="font-medium text-foreground">
                                                 {format(new Date(billing.currentPeriodEnd), "MMMM d, yyyy")}
@@ -250,12 +250,12 @@ export default function SubscriptionPage() {
 
                 {/* Premium Plan */}
                 <Card className={cn(
-                    "relative border-[#8B3B3B]/50",
-                    isPremium && "ring-1 ring-[#8B3B3B]"
+                    "relative border-[#1B5FAA]/50",
+                    isPremium && "ring-1 ring-[#1B5FAA]"
                 )}>
                     {isPremium && (
                         <div className="absolute -top-3 left-4">
-                            <Badge className="bg-[#8B3B3B]">Current Plan</Badge>
+                            <Badge className="bg-[#1B5FAA]">Current Plan</Badge>
                         </div>
                     )}
                     <div className="absolute -top-3 right-4">
@@ -263,7 +263,7 @@ export default function SubscriptionPage() {
                     </div>
                     <CardHeader className="pt-8">
                         <CardTitle className="flex items-center gap-2">
-                            <Crown className="h-5 w-5 text-[#8B3B3B]" />
+                            <Crown className="h-5 w-5 text-[#1B5FAA]" />
                             Premium
                         </CardTitle>
                         <CardDescription>
@@ -278,7 +278,7 @@ export default function SubscriptionPage() {
                         <ul className="space-y-3">
                             {PREMIUM_FEATURES.map((feature, i) => (
                                 <li key={i} className="flex items-center gap-2 text-sm">
-                                    <Check className="h-4 w-4 text-[#8B3B3B]" />
+                                    <Check className="h-4 w-4 text-[#1B5FAA]" />
                                     {feature}
                                 </li>
                             ))}
@@ -303,7 +303,7 @@ export default function SubscriptionPage() {
                             </Button>
                         ) : (
                             <Button
-                                className="w-full bg-[#8B3B3B] hover:bg-[#8B3B3B]/90"
+                                className="w-full bg-[#1B5FAA] hover:bg-[#1B5FAA]/90"
                                 onClick={handleUpgrade}
                                 disabled={isUpgrading}
                             >

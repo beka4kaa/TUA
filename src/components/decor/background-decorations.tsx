@@ -12,7 +12,7 @@ import { useRef } from "react";
 // Concentric rings decoration
 export function DecorRings({
   className = "",
-  color = "#2F3B69",
+  color = "#1B5FAA",
   opacity = 0.03,
 }: {
   className?: string;
@@ -37,7 +37,7 @@ export function DecorRings({
 // Dotted grid decoration
 export function DecorDots({
   className = "",
-  color = "#2F3B69",
+  color = "#1B5FAA",
   opacity = 0.04,
   rows = 8,
   cols = 8,
@@ -76,7 +76,7 @@ export function DecorDots({
 // Wavy line decoration
 export function DecorWave({
   className = "",
-  color = "#2F3B69",
+  color = "#1B5FAA",
   opacity = 0.05,
 }: {
   className?: string;
@@ -109,7 +109,7 @@ export function DecorWave({
 // Parallax ring that moves slower than scroll
 export function ParallaxRing({
   className = "",
-  color = "#2F3B69",
+  color = "#1B5FAA",
   opacity = 0.04,
   speed = 0.3, // 0-1, lower = slower parallax
 }: {
@@ -142,7 +142,7 @@ export function ParallaxRing({
 // Cross/plus pattern
 export function DecorCrosses({
   className = "",
-  color = "#2F3B69",
+  color = "#1B5FAA",
   opacity = 0.03,
 }: {
   className?: string;

@@ -1,5 +1,5 @@
 """
-URL configuration for TUA Backend
+URL configuration for SEA Backend
 """
 
 from django.contrib import admin

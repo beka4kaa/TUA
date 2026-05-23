@@ -53,7 +53,7 @@ export function InteractiveChips({ className }: InteractiveChipsProps) {
       case "blue":
         return "bg-brand-blue/5 border-brand-blue/20 text-brand-blue";
       case "orange":
-        return "bg-[#8B3B3B]/5 border-[#8B3B3B]/20 text-[#8B3B3B]";
+        return "bg-[#1B5FAA]/5 border-[#1B5FAA]/20 text-[#1B5FAA]";
       case "outline":
         return "bg-transparent border-[#D4D4D4] text-[#6B6B6B]";
       default:

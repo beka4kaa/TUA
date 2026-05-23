@@ -95,7 +95,7 @@ export function SocialLinks({ className, iconSize = 18, vertical = false }: Soci
       className
     )}>
       <a
-        href="https://instagram.com/top_universities_advisors"
+        href="https://instagram.com/stockermans_education"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Follow us on Instagram"

@@ -58,7 +58,7 @@ export async function POST(req: NextRequest) {
         const status  = (err as Record<string, unknown>).status;
         console.error("[/api/chat] Gemini error →", { message, status });
         return NextResponse.json(
-            { error: message },   // return acstockermansl error text to the client
+            { error: message },   // return actual error text to the client
             { status: 500 }
         );
     }

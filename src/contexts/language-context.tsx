@@ -140,7 +140,7 @@ export const translations = {
           },
           {
             id: "quote-alex",
-            quote: "I was rejected from every school I applied to on my own. With Stockermans, I got into Stanford, MIT, and Cornell — and chose where I acstockermanslly wanted to go.",
+            quote: "I was rejected from every school I applied to on my own. With Stockermans, I got into Stanford, MIT, and Cornell — and chose where I actually wanted to go.",
             author: "Alex Petrov",
             school: "Stanford University '25",
           },

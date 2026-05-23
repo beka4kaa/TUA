@@ -1,5 +1,5 @@
 """
-Email utilities for TUA
+Email utilities for SEA
 Supports: Django SMTP, Resend API
 """
 
@@ -75,12 +75,12 @@ def send_verification_email(user, token: str):
     frontend_url = getattr(settings, 'FRONTEND_URL', 'http://localhost:3000')
     verification_url = f"{frontend_url}/verify-email?token={token}"
     
-    subject = "Verify your email - TUA"
+    subject = "Verify your email - SEA"
     
     message = f"""
 Hello {user.first_name or 'there'}!
 
-Welcome to TUA! Please verify your email address by clicking the link below:
+Welcome to SEA! Please verify your email address by clicking the link below:
 
 {verification_url}
 
@@ -89,7 +89,7 @@ This link will expire in 24 hours.
 If you didn't create an account, you can safely ignore this email.
 
 Best regards,
-TUA Team
+SEA Team
 """
     
     html_message = f"""
@@ -101,7 +101,7 @@ TUA Team
 </head>
 <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
     <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 30px; text-align: center; border-radius: 10px 10px 0 0;">
-        <h1 style="color: white; margin: 0; font-size: 28px;">TUA</h1>
+        <h1 style="color: white; margin: 0; font-size: 28px;">SEA</h1>
     </div>
     
     <div style="background: #f9f9f9; padding: 30px; border-radius: 0 0 10px 10px;">
@@ -109,7 +109,7 @@ TUA Team
         
         <p>Hello {user.first_name or 'there'}!</p>
         
-        <p>Welcome to TUA! Please verify your email address by clicking the button below:</p>
+        <p>Welcome to SEA! Please verify your email address by clicking the button below:</p>
         
         <div style="text-align: center; margin: 30px 0;">
             <a href="{verification_url}" 
@@ -136,7 +136,7 @@ TUA Team
     </div>
     
     <div style="text-align: center; padding: 20px; color: #999; font-size: 12px;">
-        &copy; 2026 TUA. All rights reserved.
+        &copy; 2026 SEA. All rights reserved.
     </div>
 </body>
 </html>
@@ -151,12 +151,12 @@ def send_password_reset_email(user, token: str):
     frontend_url = getattr(settings, 'FRONTEND_URL', 'http://localhost:3000')
     reset_url = f"{frontend_url}/reset-password?token={token}"
     
-    subject = "Reset your password - TUA"
+    subject = "Reset your password - SEA"
     
     message = f"""
 Hello {user.first_name or 'there'}!
 
-We received a request to reset your password for your TUA account.
+We received a request to reset your password for your SEA account.
 
 Click the link below to reset your password:
 
@@ -167,7 +167,7 @@ This link will expire in 1 hour.
 If you didn't request a password reset, you can safely ignore this email.
 
 Best regards,
-TUA Team
+SEA Team
 """
     
     html_message = f"""
@@ -179,7 +179,7 @@ TUA Team
 </head>
 <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
     <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 30px; text-align: center; border-radius: 10px 10px 0 0;">
-        <h1 style="color: white; margin: 0; font-size: 28px;">TUA</h1>
+        <h1 style="color: white; margin: 0; font-size: 28px;">SEA</h1>
     </div>
     
     <div style="background: #f9f9f9; padding: 30px; border-radius: 0 0 10px 10px;">
@@ -214,7 +214,7 @@ TUA Team
     </div>
     
     <div style="text-align: center; padding: 20px; color: #999; font-size: 12px;">
-        &copy; 2026 TUA. All rights reserved.
+        &copy; 2026 SEA. All rights reserved.
     </div>
 </body>
 </html>

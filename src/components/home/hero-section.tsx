@@ -253,7 +253,7 @@ export function HeroSection() {
           {/* Small tagline - Enhanced Glassmorphism pill */}
           <motion.div variants={getVariants(fadeInUp)} className="mb-6 sm:mb-8">
               <span className="glass-pill inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-[10px] sm:text-xs font-medium text-[#525252] dark:text-[#AAAAAA] uppercase tracking-wider">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#8B3B3B] animate-pulse" />
+              <span className="w-1.5 h-1.5 rounded-full bg-[#1B5FAA] animate-pulse" />
               {t.hero.tagline}
             </span>
           </motion.div>
@@ -276,7 +276,7 @@ export function HeroSection() {
           >
             <Link
               href="/signup"
-              className="group inline-flex items-center justify-center gap-2 w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 bg-[#8B3B3B] text-white text-sm font-medium rounded-full hover:shadow-lg hover:shadow-[#8B3B3B]/25 hover:-translate-y-0.5 transition-all duration-300 btn-hover"
+              className="group inline-flex items-center justify-center gap-2 w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 bg-[#1B5FAA] text-white text-sm font-medium rounded-full hover:shadow-lg hover:shadow-[#1B5FAA]/25 hover:-translate-y-0.5 transition-all duration-300 btn-hover"
             >
               {t.hero.bookConsultation}
               <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
@@ -300,7 +300,7 @@ export function HeroSection() {
           >
             <div className="flex flex-col gap-3">
               <a 
-                href="https://instagram.com/top_universities_advisors" 
+                href="https://instagram.com/stockermans_education" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="w-9 h-9 rounded-full glass-pill flex items-center justify-center text-[#6B6B6B] hover:text-brand-blue transition-colors"

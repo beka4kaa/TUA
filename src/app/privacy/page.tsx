@@ -44,7 +44,7 @@ export default function PrivacyPage() {
       {/* Background decorations */}
       <ParallaxRing
         className="absolute -right-64 top-32 w-125 h-125 z-0"
-        color="#2F3B69"
+        color="#1B5FAA"
         opacity={0.02}
         speed={0.1}
       />
@@ -63,7 +63,7 @@ export default function PrivacyPage() {
         <motion.div variants={itemVariants} className="max-w-3xl mb-12">
           <Link
             href="/"
-            className="inline-flex items-center text-sm text-gray-500 hover:text-[#2F3B69] transition-colors mb-8"
+            className="inline-flex items-center text-sm text-gray-500 hover:text-[#1B5FAA] transition-colors mb-8"
           >
             <svg
               className="w-4 h-4 mr-2"
@@ -94,7 +94,7 @@ export default function PrivacyPage() {
           {/* Main content */}
           <motion.article
             variants={itemVariants}
-            className="flex-1 max-w-3xl prose prose-gray prose-headings:font-display prose-headings:text-gray-900 prose-a:text-[#2F3B69] prose-a:no-underline hover:prose-a:underline"
+            className="flex-1 max-w-3xl prose prose-gray prose-headings:font-display prose-headings:text-gray-900 prose-a:text-[#1B5FAA] prose-a:no-underline hover:prose-a:underline"
           >
             <section id="introduction">
               <h2>Introduction</h2>
@@ -272,7 +272,7 @@ export default function PrivacyPage() {
                   <a
                     key={item.id}
                     href={`#${item.id}`}
-                    className="block text-sm text-gray-500 hover:text-[#2F3B69] transition-colors py-1"
+                    className="block text-sm text-gray-500 hover:text-[#1B5FAA] transition-colors py-1"
                   >
                     {item.title}
                   </a>
@@ -286,7 +286,7 @@ export default function PrivacyPage() {
                 </p>
                 <Link
                   href="/contact"
-                  className="inline-flex items-center text-sm font-medium text-[#2F3B69] hover:underline"
+                  className="inline-flex items-center text-sm font-medium text-[#1B5FAA] hover:underline"
                 >
                   Contact us
                   <svg

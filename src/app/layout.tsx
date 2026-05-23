@@ -70,7 +70,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://topuniversitiesadvisor.com",
+    url: "https://stockermans.net",
     siteName: "Stockermans Education Advisors",
     title: "Stockermans Education Advisors",
     description:

@@ -41,9 +41,9 @@ export function PageWrapper({
               viewBox="0 0 400 400"
               fill="none"
             >
-              <circle cx="200" cy="200" r="180" stroke="#2F3B69" strokeWidth="1" />
-              <circle cx="200" cy="200" r="140" stroke="#2F3B69" strokeWidth="1" />
-              <circle cx="200" cy="200" r="100" stroke="#2F3B69" strokeWidth="1" />
+              <circle cx="200" cy="200" r="180" stroke="#1B5FAA" strokeWidth="1" />
+              <circle cx="200" cy="200" r="140" stroke="#1B5FAA" strokeWidth="1" />
+              <circle cx="200" cy="200" r="100" stroke="#1B5FAA" strokeWidth="1" />
             </svg>
             
             {/* Bottom left dots */}
@@ -58,7 +58,7 @@ export function PageWrapper({
                     cx={20 + i * 20}
                     cy={20 + j * 20}
                     r="2"
-                    fill="#2F3B69"
+                    fill="#1B5FAA"
                   />
                 ))
               )}

@@ -191,7 +191,7 @@ export default function BookingsPage() {
 VERSION:2.0
 PRODID:-//Stockermans//Booking//EN
 BEGIN:VEVENT
-UID:${booking.id}@topuniversitiesadvisors.com
+UID:${booking.id}@stockermans.net
 DTSTAMP:${formatIcsDate(new Date())}
 DTSTART:${formatIcsDate(startDate)}
 DTEND:${formatIcsDate(endDate)}
@@ -330,7 +330,7 @@ END:VCALENDAR`;
                                                         className={cn(
                                                             "h-12 w-full font-semibold",
                                                             isBooked && "bg-muted text-muted-foreground border-muted cursor-not-allowed opacity-60",
-                                                            isSelected && "bg-[#8B3B3B] hover:bg-[#8B3B3B]/90 text-white border-none"
+                                                            isSelected && "bg-[#1B5FAA] hover:bg-[#1B5FAA]/90 text-white border-none"
                                                         )}
                                                         onClick={() => handleTimeSelect(time)}
                                                         disabled={isBooked}
@@ -367,7 +367,7 @@ END:VCALENDAR`;
                                             </div>
                                         </div>
                                         <Button
-                                            className="w-full bg-[#8B3B3B] hover:bg-[#8B3B3B]/90"
+                                            className="w-full bg-[#1B5FAA] hover:bg-[#1B5FAA]/90"
                                             onClick={() => setConfirmDialogOpen(true)}
                                         >
                                             Confirm Booking
@@ -403,8 +403,8 @@ END:VCALENDAR`;
                                 <Card key={booking.id}>
                                     <CardContent className="flex items-center justify-between py-4">
                                         <div className="flex items-center gap-4">
-                                            <div className="h-12 w-12 rounded-full bg-[#2F3B69]/10 flex items-center justify-center">
-                                                <CalendarIcon className="h-6 w-6 text-[#2F3B69]" />
+                                            <div className="h-12 w-12 rounded-full bg-[#1B5FAA]/10 flex items-center justify-center">
+                                                <CalendarIcon className="h-6 w-6 text-[#1B5FAA]" />
                                             </div>
                                             <div>
                                                 <p className="font-medium">
@@ -425,7 +425,7 @@ END:VCALENDAR`;
                                             <Button
                                                 variant="default"
                                                 size="sm"
-                                                className="bg-[#8B3B3B] hover:bg-[#6F2F2F] gap-2"
+                                                className="bg-[#1B5FAA] hover:bg-[#164C88] gap-2"
                                                 onClick={() => window.open(GOOGLE_MEET_LINK, "_blank")}
                                             >
                                                 <Video className="h-4 w-4" />
@@ -504,7 +504,7 @@ END:VCALENDAR`;
                     </DialogHeader>
                     <div className="py-4 space-y-4">
                         <div className="flex items-center gap-3 p-4 bg-muted rounded-lg">
-                            <CalendarIcon className="h-5 w-5 text-[#2F3B69]" />
+                            <CalendarIcon className="h-5 w-5 text-[#1B5FAA]" />
                             <div>
                                 <p className="font-medium">
                                     {selectedDate && format(selectedDate, "EEEE, MMMM d, yyyy")}
@@ -523,7 +523,7 @@ END:VCALENDAR`;
                             Cancel
                         </Button>
                         <Button
-                            className="bg-[#8B3B3B] hover:bg-[#8B3B3B]/90"
+                            className="bg-[#1B5FAA] hover:bg-[#1B5FAA]/90"
                             onClick={handleConfirmBooking}
                             disabled={isLoading}
                         >

@@ -5,8 +5,8 @@
  * No hardcoded paths in components.
  * 
  * Brand Colors (LOCKED):
- * - Primary Blue: #2F3B69
- * - Primary Red: #8B3B3B
+ * - Primary Blue: #1B5FAA
+ * - Primary Red: #1B5FAA
  */
 
 // === HERO SECTION ASSETS ===

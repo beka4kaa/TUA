@@ -17,7 +17,7 @@ export function StockermansMark({ className }: Omit<LogoProps, "variant" | "colo
     <div
       className={cn(
         "relative shrink-0 overflow-hidden rounded-full",
-        "bg-[#2F3B69] w-9 h-9",
+        "bg-[#1B5FAA] w-9 h-9",
         className
       )}
       aria-label="Stockermans Education Advisors"
@@ -38,7 +38,7 @@ export function StockermansLogo({ className, variant = "full", color = "black" }
     color === "white"
       ? "text-white"
       : color === "blue"
-      ? "text-[#2F3B69]"
+      ? "text-[#1B5FAA]"
       : "text-[#111111]";
 
   if (variant === "mark") {

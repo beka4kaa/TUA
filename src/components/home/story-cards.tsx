@@ -131,7 +131,7 @@ export const storyCards: StoryCardData[] = [
     id: "quote-alex",
     type: "quote",
     quote:
-      "I was rejected from every school I applied to on my own. With Stockermans, I got into Stanford, MIT, and Cornell — and chose where I acstockermanslly wanted to go.",
+      "I was rejected from every school I applied to on my own. With Stockermans, I got into Stanford, MIT, and Cornell — and chose where I actually wanted to go.",
     author: "Alex Petrov",
     school: "Stanford University '25",
     accentColor: "orange",
@@ -151,7 +151,7 @@ export const storyCards: StoryCardData[] = [
 
 function PhotoCard({ card }: { card: StoryCardData }) {
   const isTall = card.size === "tall";
-  const accentBg = card.accentColor === "orange" ? "bg-[#8B3B3B]" : "bg-[#2F3B69]";
+  const accentBg = card.accentColor === "orange" ? "bg-[#1B5FAA]" : "bg-[#1B5FAA]";
 
   return (
     <div
@@ -203,7 +203,7 @@ function PhotoCard({ card }: { card: StoryCardData }) {
 
 function VideoCard({ card }: { card: StoryCardData }) {
   const isTall = card.size === "tall";
-  const accentBg = card.accentColor === "orange" ? "bg-[#8B3B3B]" : "bg-[#2F3B69]";
+  const accentBg = card.accentColor === "orange" ? "bg-[#1B5FAA]" : "bg-[#1B5FAA]";
 
   return (
     <div
@@ -271,19 +271,19 @@ function QuoteCard({ card }: { card: StoryCardData }) {
   return (
     <div
       className={`relative p-5 sm:p-6 rounded-xl sm:rounded-2xl break-inside-avoid mb-4 sm:mb-5 overflow-hidden border transition-all duration-300 hover:shadow-xl hover:shadow-black/[0.08] dark:hover:shadow-black/30 hover:-translate-y-1 hover:bg-white dark:hover:bg-[#1e1e1e] ${
-        isOrange ? "border-[#8B3B3B]/20" : "border-[#2F3B69]/20"
+        isOrange ? "border-[#1B5FAA]/20" : "border-[#1B5FAA]/20"
       }`}
     >
       {/* Background accent */}
       <div
         className={`absolute top-0 left-0 w-1 h-full ${
-          isOrange ? "bg-[#8B3B3B]" : "bg-[#2F3B69]"
+          isOrange ? "bg-[#1B5FAA]" : "bg-[#1B5FAA]"
         }`}
       />
 
       {/* Quote icon */}
       <Quote
-        className={`w-7 h-7 mb-3 ${isOrange ? "text-[#8B3B3B]/30" : "text-[#2F3B69]/30"}`}
+        className={`w-7 h-7 mb-3 ${isOrange ? "text-[#1B5FAA]/30" : "text-[#1B5FAA]/30"}`}
       />
 
       <blockquote className="text-sm sm:text-base text-[#111111] dark:text-[#F0F0F0] leading-relaxed mb-4 italic">
@@ -294,7 +294,7 @@ function QuoteCard({ card }: { card: StoryCardData }) {
         {/* Avatar placeholder */}
         <div
           className={`w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0 ${
-            isOrange ? "bg-[#8B3B3B]" : "bg-[#2F3B69]"
+            isOrange ? "bg-[#1B5FAA]" : "bg-[#1B5FAA]"
           }`}
         >
           {card.author?.charAt(0) ?? "?"}

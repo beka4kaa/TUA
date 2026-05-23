@@ -62,7 +62,7 @@ export default function HomePage() {
           <div className="flex flex-col lg:flex-row gap-8 sm:gap-10 lg:gap-20">
             {/* Left - Intro Video Placeholder */}
             <AnimatedItem className="w-full lg:w-1/2">
-              {/* TODO: Replace with acstockermansl video embed (YouTube / Vimeo / <video> tag) */}
+              {/* TODO: Replace with actual video embed (YouTube / Vimeo / <video> tag) */}
               <div className="relative aspect-video bg-[#0D1B2A] rounded-xl sm:rounded-2xl overflow-hidden group cursor-pointer shadow-lg">
                 {/* Thumbnail / poster layer */}
                 <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 px-6">
@@ -89,7 +89,7 @@ export default function HomePage() {
                   </p>
                 </div>
                 {/* Corner label */}
-                <span className="absolute top-3 left-3 bg-[#8B3B3B] text-white text-[10px] font-semibold uppercase tracking-wider px-2.5 py-1 rounded-full">
+                <span className="absolute top-3 left-3 bg-[#1B5FAA] text-white text-[10px] font-semibold uppercase tracking-wider px-2.5 py-1 rounded-full">
                   {t.about.videoLabel}
                 </span>
               </div>
@@ -223,7 +223,7 @@ export default function HomePage() {
                             {service.description}
                           </p>
                         </div>
-                        <ArrowUpRight className="w-4 h-4 sm:w-5 sm:h-5 text-[#D4D4D4] group-hover:text-[#8B3B3B] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all shrink-0" />
+                        <ArrowUpRight className="w-4 h-4 sm:w-5 sm:h-5 text-[#D4D4D4] group-hover:text-[#1B5FAA] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all shrink-0" />
                       </div>
                     </div>
                   </AnimatedItem>
@@ -233,7 +233,7 @@ export default function HomePage() {
               {/* ── Profile Pillars (appended after service list) ── */}
               <AnimatedItem>
                 <div className="mt-6 sm:mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="border-l-2 border-[#8B3B3B] pl-4 py-1">
+                  <div className="border-l-2 border-[#1B5FAA] pl-4 py-1">
                     <p className="text-xs sm:text-sm font-semibold text-[#111111] dark:text-[#F0F0F0] mb-1">
                       {t.services.pillars.academic.title}
                     </p>
@@ -353,7 +353,7 @@ export default function HomePage() {
                     <p className="font-medium text-sm sm:text-base text-[#111111] dark:text-[#F0F0F0]">{t.reviews.author}</p>
                     <p className="text-xs sm:text-sm text-[#6B6B6B] dark:text-[#888888]">{t.reviews.school}</p>
                   </div>
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#8B3B3B] rounded-lg flex items-center justify-center hover:scale-105 hover:shadow-lg hover:shadow-[#8B3B3B]/20 transition-all cursor-pointer">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#1B5FAA] rounded-lg flex items-center justify-center hover:scale-105 hover:shadow-lg hover:shadow-[#1B5FAA]/20 transition-all cursor-pointer">
                     <ArrowUpRight className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
                   </div>
                 </div>
@@ -454,8 +454,8 @@ export default function HomePage() {
                 <div className="space-y-4 sm:space-y-6">
                   <div>
                     <p className="text-[9px] sm:text-[10px] text-[#A3A3A3] dark:text-[#666] uppercase tracking-wider mb-1">{t.contact.emailContact}</p>
-                    <a href="mailto:topuniversitiesadvisors@gmail.com" className="text-xs sm:text-sm text-[#111111] dark:text-[#D0D0D0] hover:text-brand-blue transition-colors">
-                      topuniversitiesadvisors@gmail.com
+                    <a href="mailto:advisor@stockermans.net" className="text-xs sm:text-sm text-[#111111] dark:text-[#D0D0D0] hover:text-brand-blue transition-colors">
+                      advisor@stockermans.net
                     </a>
                   </div>
 
@@ -469,12 +469,12 @@ export default function HomePage() {
                   <div>
                     <p className="text-[9px] sm:text-[10px] text-[#A3A3A3] dark:text-[#666] uppercase tracking-wider mb-1">{t.contact.instagram}</p>
                     <a
-                      href="https://instagram.com/top_universities_advisors"
+                      href="https://instagram.com/stockermans_education"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-xs sm:text-sm text-[#111111] dark:text-[#D0D0D0] hover:text-brand-blue transition-colors"
                     >
-                      @top_universities_advisors
+                      @stockermans_education
                     </a>
                   </div>
                 </div>
@@ -540,12 +540,12 @@ export default function HomePage() {
             </p>
             <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-8 order-1 sm:order-2">
               <a
-                href="https://instagram.com/top_universities_advisors"
+                href="https://instagram.com/stockermans_education"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="font-body text-[10px] sm:text-xs text-[#A3A3A3] hover:text-[#111111] transition-colors"
               >
-                @top_universities_advisors
+                @stockermans_education
               </a>
               <div className="flex items-center gap-4 sm:gap-6">
                 <Link href="#" className="font-body text-[10px] sm:text-xs text-[#A3A3A3] hover:text-[#111111] transition-colors">
